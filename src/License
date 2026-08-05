@@ -1,4 +1,4 @@
-- mgf.c and refcount.h use some fraction of GPL-licensed source, openssl-1.1.1t and openssl-3.1.0.
+- mgf.c and refcount.h use some fraction of specific licensed sources, openssl-1.1.1t and openssl-3.1.0.
 - PQCgenKAT_sign.c, rng.c, rng.h, and api.h (api_h_gen.c) are almost ( or perfectlry ) identical to the code provided by NIST.
 - All other programs are licensed under the BSD 0-clause license.
 
