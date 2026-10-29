@@ -1,0 +1,451 @@
+{
+    "EVP_CIPHER_CTX_free": {
+        "secret-buf": "ctx",
+        "output": "ctx"
+    },
+    "EVP_EncryptInit_ex": {
+        "secret-buf": "key",
+        "output": "ctx"
+    },
+    "EVP_EncryptUpdate": {
+        "secret-buf": "ctx",
+        "fixed-scalars": "inl",
+        "output": [
+            "ctx",
+            "out",
+            "outl"
+        ]
+    },
+    "ExpandMatrixVxM": {
+        "secret-buf": "src",
+        "output": "A"
+    },
+    "ExpandVectorV": {
+        "eph_secret": "src",
+        "output": "A"
+    },
+    "Expand_sk": {
+        "secret-buf": "seed_sk",
+        "output": [
+            "Sd",
+            "SdT"
+        ],
+        "output-repr": "fq:*"
+    },
+    "Expand_y": {
+        "eph_secret": "seed_y",
+        "output": "y",
+        "output-repr": "fq:*"
+    },
+    "Fq_add": {
+        "secret-buf": "X",
+        "output": "ret"
+    },
+    "Fq_add.25": {
+        "secret-buf": "X",
+        "output": "ret"
+    },
+    "Fq_inv": {
+        "secret-buf": "X",
+        "output": "ret"
+    },
+    "Fq_mul": {
+        "secret-buf": "X",
+        "output": "ret"
+    },
+    "Fq_mxm_identity": {
+        "secret-buf": "A",
+        "output": "A"
+    },
+    "Fq_sub": {
+        "secret-buf": "X",
+        "output": "ret"
+    },
+    "Fq_sub.28": {
+        "secret-buf": "Y",
+        "eph_secret": "X",
+        "output": "ret"
+    },
+    "Fq_vec_add": {
+        "secret-buf": "a",
+        "output": "ret"
+    },
+    "Fq_vec_dot_accumulate": {
+        "secret-buf": "a",
+        "output": "ret",
+        "output-repr": "u64:*"
+    },
+    "Fq_vec_sub": {
+        "secret-buf": "b",
+        "eph_secret": "a",
+        "output": "ret"
+    },
+    "Fql2Fq": {
+        "eph_secret": "Z",
+        "fixed-scalars": "i",
+        "output": "ret"
+    },
+    "Fql_mul": {
+        "eph_secret": "X,Y",
+        "output": "Z"
+    },
+    "Fql_sub": {
+        "secret-buf": "Y",
+        "eph_secret": "X",
+        "output": "Z"
+    },
+    "LU_decompose": {
+        "secret-buf": "A",
+        "output": [
+            "A",
+            "perm",
+            "rank",
+            "index"
+        ],
+        "output-repr": {
+            "perm": "i32:*",
+            "rank": "i32:*",
+            "index": "i32:*"
+        }
+    },
+    "L_inverse": {
+        "secret-buf": "A",
+        "fixed-scalars": "rank",
+        "output": "R"
+    },
+    "MATRIX_ADD_MxM": {
+        "secret-buf": "B",
+        "output": "C"
+    },
+    "MATRIX_MUL_ADD_MxV_VxM": {
+        "secret-buf": "A",
+        "output": "C"
+    },
+    "MATRIX_MUL_MxV_VxM": {
+        "secret-buf": "B",
+        "output": "C"
+    },
+    "MATRIX_MxV_MUL_SYMMETRIC_MATRIX_VxV": {
+        "secret-buf": "A",
+        "output": "C"
+    },
+    "MATRIX_SUB_MxV": {
+        "secret-buf": "B",
+        "output": "C"
+    },
+    "MATRIX_TRANSPOSE_VxM": {
+        "secret-buf": "A",
+        "output": "C"
+    },
+    "OPENSSL_cleanse": {
+        "secret-buf": "ptr",
+        "fixed-scalars": "len",
+        "output": "ptr"
+    },
+    "PRG_final_aes_ctr": {
+        "secret-buf": "ctx",
+        "output": "ctx"
+    },
+    "PRG_init_aes_ctr": {
+        "secret-buf": "seed",
+        "output": "ret"
+    },
+    "QRUOV_KeyGen": {
+        "secret-buf": "seed_sk",
+        "output": "P3",
+        "output-repr": "fq:*"
+    },
+    "QRUOV_Sign": {
+        "secret-buf": "seed_sk",
+        "eph_secret": "seed_y",
+        "fixed-scalars": "message_length",
+        "output": "sig",
+        "output-repr": {
+            "sig": "bytes:16,fq:*"
+        }
+    },
+    "RejSamp": {
+        "secret-buf": "dst",
+        "fixed-scalars": "length,tau",
+        "output": "dst",
+        "output-repr": "fq:54,bytes:*"
+    },
+    "RejSampPRG_aes_ctr": {
+        "secret-buf": "ctx",
+        "fixed-scalars": "index,length,tau",
+        "output": [
+            "ctx",
+            "dst"
+        ]
+    },
+    "SIG_GEN": {
+        "secret-buf": "Sd",
+        "eph_secret": "vineger",
+        "output": "sig",
+        "output-repr": {
+            "sig": "bytes:16,fq:*"
+        }
+    },
+    "VECTOR_M_ADD": {
+        "secret-buf": "B",
+        "output": "C"
+    },
+    "VECTOR_M_CLEAR_TAIL": {
+        "secret-buf": "C",
+        "output": "C"
+    },
+    "VECTOR_M_CLEAR_TAIL.40": {
+        "secret-buf": "C",
+        "output": "C"
+    },
+    "VECTOR_M_SUB": {
+        "secret-buf": "B",
+        "eph_secret": "A",
+        "output": "C"
+    },
+    "VECTOR_M_dot_VECTOR_M": {
+        "secret-buf": "B",
+        "output": "C"
+    },
+    "VECTOR_V_CLEAR_TAIL": {
+        "eph_secret": "C",
+        "output": "C"
+    },
+    "VECTOR_V_CLEAR_TAIL.35": {
+        "secret-buf": "C",
+        "output": "C"
+    },
+    "VECTOR_V_MUL_MATRIX_VxM": {
+        "secret-buf": "B",
+        "output": "C"
+    },
+    "VECTOR_V_MUL_SYMMETRIC_MATRIX_VxV": {
+        "secret-buf": "A",
+        "output": "C"
+    },
+    "VECTOR_V_SUB": {
+        "secret-buf": "B",
+        "output": "C"
+    },
+    "VECTOR_V_dot_VECTOR_V": {
+        "secret-buf": "A",
+        "output": "C"
+    },
+    "add_round_key": {
+        "secret-buf": "sk",
+        "output": "q"
+    },
+    "aes128_ecb": {
+        "secret-buf": "ctx",
+        "fixed-scalars": "nblocks",
+        "output": "out"
+    },
+    "aes128_ecb_keyexp": {
+        "secret-buf": "key",
+        "output": "r"
+    },
+    "aes192_ecb": {
+        "secret-buf": "ctx",
+        "fixed-scalars": "nblocks",
+        "output": "out"
+    },
+    "aes192_ecb_keyexp": {
+        "secret-buf": "key",
+        "output": "r"
+    },
+    "aes256_ecb": {
+        "secret-buf": "ctx",
+        "fixed-scalars": "nblocks",
+        "output": "out"
+    },
+    "aes256_ecb_keyexp": {
+        "secret-buf": "key",
+        "output": "r"
+    },
+    "aes_ecb": {
+        "secret-buf": "rkeys",
+        "fixed-scalars": "nblocks,nrounds",
+        "output": "out"
+    },
+    "aes_ecb4x": {
+        "secret-buf": "sk_exp",
+        "fixed-scalars": "nrounds",
+        "output": "out"
+    },
+    "aes_encrypt_blocks": {
+        "secret-buf": "ctx",
+        "fixed-scalars": "nblocks",
+        "output": "out"
+    },
+    "aes_keyexp": {
+        "secret-buf": "key",
+        "output": "ctx"
+    },
+    "aes_release": {
+        "secret-buf": "ctx",
+        "output": "ctx"
+    },
+    "aes_rk_words": {
+        "secret-buf": "c",
+        "output": "ret"
+    },
+    "br_aes_ct64_bitslice_Sbox": {
+        "secret-buf": "q",
+        "output": "q"
+    },
+    "br_aes_ct64_interleave_in": {
+        "secret-buf": "w",
+        "output": [
+            "q0",
+            "q1"
+        ]
+    },
+    "br_aes_ct64_interleave_out": {
+        "secret-buf": "q0",
+        "output": "w"
+    },
+    "br_aes_ct64_keysched": {
+        "secret-buf": "key",
+        "fixed-scalars": "key_len",
+        "output": "comp_skey"
+    },
+    "br_aes_ct64_ortho": {
+        "secret-buf": "q",
+        "output": "q"
+    },
+    "br_aes_ct64_skey_expand": {
+        "secret-buf": "comp_skey",
+        "fixed-scalars": "nrounds",
+        "output": "skey"
+    },
+    "br_dec32le": {
+        "secret-buf": "src",
+        "output": "ret"
+    },
+    "br_enc32le": {
+        "secret-buf": "x",
+        "output": "dst"
+    },
+    "br_range_dec32le": {
+        "secret-buf": "src",
+        "fixed-scalars": "num",
+        "output": "v"
+    },
+    "br_range_enc32le": {
+        "secret-buf": "v",
+        "fixed-scalars": "num",
+        "output": "dst"
+    },
+    "consistent": {
+        "secret-buf": "A",
+        "eph_secret": "b",
+        "fixed-scalars": "rank",
+        "output": [
+            "cacheR",
+            "R"
+        ],
+        "output-repr": {
+            "cacheR": "i32:*"
+        }
+    },
+    "crypto_sign": {
+        "secret-buf": "sk",
+        "fixed-scalars": "smlen,mlen",
+        "output": "sm",
+        "output-repr": {
+            "sm": "bytes:16,fq7:210,bytes:*"
+        }
+    },
+    "crypto_sign_keypair": {
+        "secret-buf": "sk",
+        "output": [
+            "pk",
+            "sk"
+        ],
+        "output-repr": {
+            "pk": "bytes:16,fq7:*"
+        }
+    },
+    "ctr128_inc": {
+        "secret-buf": "ctr",
+        "output": "ctr"
+    },
+    "example_qruov": {
+        "secret-buf": "sk",
+        "output": "ret"
+    },
+    "mix_columns": {
+        "secret-buf": "q",
+        "output": "q"
+    },
+    "randombytes": {
+        "secret-buf": "x",
+        "fixed-scalars": "xlen",
+        "output": "x"
+    },
+    "rejsamp_and_q": {
+        "secret-buf": "dst",
+        "fixed-scalars": "tau",
+        "output": "dst"
+    },
+    "rejsamp_rejection_with_aux": {
+        "secret-buf": "dst",
+        "fixed-scalars": "length",
+        "output": "dst",
+        "output-repr": "fq:54,bytes:*"
+    },
+    "restore_QRUOV_SEED": {
+        "secret-buf": "pool",
+        "fixed-scalars": "pool_bits",
+        "output": "seed"
+    },
+    "rotr32": {
+        "secret-buf": "x",
+        "output": "ret"
+    },
+    "sample_a_solution": {
+        "secret-buf": "A",
+        "eph_secret": "b",
+        "fixed-scalars": "rank",
+        "output": [
+            "x",
+            "b2"
+        ]
+    },
+    "shift_rows": {
+        "secret-buf": "q",
+        "output": "q"
+    },
+    "store_QRUOV_SEED": {
+        "secret-buf": "seed",
+        "fixed-scalars": "pool_bits",
+        "output": "pool"
+    },
+    "sub_word": {
+        "secret-buf": "x",
+        "output": "ret"
+    },
+    "vector_M_add": {
+        "secret-buf": "B",
+        "output": "C"
+    },
+    "vector_M_dot_vector_M": {
+        "secret-buf": "B",
+        "output": "ret",
+        "output-repr": "u64:*"
+    },
+    "vector_M_sub": {
+        "secret-buf": "B",
+        "eph_secret": "A",
+        "output": "C"
+    },
+    "vector_V_dot_vector_V": {
+        "secret-buf": "A",
+        "output": "ret",
+        "output-repr": "u64:*"
+    },
+    "vector_V_sub": {
+        "secret-buf": "B",
+        "output": "C"
+    }
+}

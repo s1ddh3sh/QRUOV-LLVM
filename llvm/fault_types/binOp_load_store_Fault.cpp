@@ -39,6 +39,8 @@
 #include <memory>
 #include <set>
 
+#include "lower_intrinsics.h"
+
 using namespace llvm;
 static constexpr unsigned kMaxUnrollTripCount = 2000;
 
@@ -433,7 +435,7 @@ unsigned inferPointerAllocSize(Argument *arg, unsigned defaultSize) {
 // Inputs default to zero: every buffer is zero-filled and every scalar
 // anchor starts at 0 (or at the constant the real call site passes, e.g. a
 // length). The simulation overwrites them per trial; which arguments are
-// secret / outputs comes from mayo.json, not from per-function testcases.
+// secret / outputs comes from qruov.json, not from per-function testcases.
 // Buffers keep their !llvmbmc.var name: the simulation's witness extractor
 // locates them by it (no llvmbmc is run here).
 void createDynamicDriverFunction(Module &OriginalM, Module &ExtractedM,
@@ -613,11 +615,18 @@ static Instruction *getInstByIndex(Function &F, unsigned targetInst) {
   return nullptr;
 }
 
+// Several targets can share one !dbg (macro expansions such as SWAPN in
+// br_aes_ct64_ortho, one-line expressions, llvmgen's lowered intrinsics), so
+// the debug location alone does not identify an instruction. opcode (0 = any
+// of the wanted kind) and rank (position among the same-location, same-kind
+// candidates in program order) pick the exact one.
 struct InstLocator {
   bool hasDbg = false;
   unsigned dbgLine = 0;
   unsigned dbgCol = 0;
   unsigned fallbackIndex = 0; // used only if no debug info is available
+  unsigned opcode = 0;
+  unsigned rank = 0;
 };
 
 static InstLocator captureInstLocator(Instruction *I, unsigned idxInFunction) {
@@ -648,31 +657,63 @@ static bool matchesTargetKind(Instruction *I, bool wantBinOp,
   return true;
 }
 
+// Instructions at loc's debug location of the wanted kind (and opcode, if
+// matchOpcode), in program order. In an unrolled function only the first
+// iteration's copies count, since the fault goes into iteration 0.
+static std::vector<Instruction *> locCandidates(Function &F,
+                                                const InstLocator &loc,
+                                                bool wantBinOp,
+                                                bool wantLoadOrStore,
+                                                bool matchOpcode) {
+  std::vector<Instruction *> all, firstIter;
+  for (BasicBlock &BB : F) {
+    for (Instruction &I : BB) {
+      DebugLoc DL = I.getDebugLoc();
+      if (!DL || DL.getLine() != loc.dbgLine || DL.getCol() != loc.dbgCol)
+        continue;
+      if (!matchesTargetKind(&I, wantBinOp, wantLoadOrStore))
+        continue;
+      if (matchOpcode && I.getOpcode() != loc.opcode)
+        continue;
+      all.push_back(&I);
+      if (isFirstIterationBlock(BB))
+        firstIter.push_back(&I);
+    }
+  }
+  return firstIter.empty() ? all : firstIter;
+}
+
+static unsigned rankIn(const std::vector<Instruction *> &C, Instruction *I) {
+  return std::find(C.begin(), C.end(), I) - C.begin();
+}
+
+// post is k >= 2 back-to-back copies of pre (same opcodes and types in
+// order), so ranks in pre map onto the first copy.
+static bool isRepeatedGroup(const std::vector<Instruction *> &pre,
+                            const std::vector<Instruction *> &post) {
+  if (pre.size() < 2 || post.size() <= pre.size() ||
+      post.size() % pre.size() != 0)
+    return false;
+  for (size_t i = 0; i < post.size(); i++) {
+    Instruction *a = pre[i % pre.size()], *b = post[i];
+    if (a->getOpcode() != b->getOpcode() || a->getType() != b->getType())
+      return false;
+  }
+  return true;
+}
+
 static Instruction *findInstByLocator(Function &F, const InstLocator &loc,
                                       bool wantBinOp, bool wantLoadOrStore) {
   if (loc.hasDbg) {
-    Instruction *firstIterMatch = nullptr;
-    Instruction *anyMatch = nullptr;
-
-    for (BasicBlock &BB : F) {
-      for (Instruction &I : BB) {
-        DebugLoc DL = I.getDebugLoc();
-        if (!DL || DL.getLine() != loc.dbgLine || DL.getCol() != loc.dbgCol)
-          continue;
-        if (!matchesTargetKind(&I, wantBinOp, wantLoadOrStore))
-          continue;
-        if (!anyMatch)
-          anyMatch = &I;
-        if (!firstIterMatch && isFirstIterationBlock(BB))
-          firstIterMatch = &I;
-      }
-    }
-
-    if (firstIterMatch)
-      return firstIterMatch;
-
-    if (anyMatch) {
-      return anyMatch;
+    std::vector<Instruction *> C =
+        locCandidates(F, loc, wantBinOp, wantLoadOrStore, loc.opcode != 0);
+    if (loc.rank < C.size())
+      return C[loc.rank];
+    if (!C.empty()) {
+      errs() << "Error: " << C.size() << " candidate(s) at debug loc "
+             << loc.dbgLine << ":" << loc.dbgCol << ", wanted #" << loc.rank
+             << "\n";
+      return nullptr;
     }
     errs() << "Warning: no instruction with debug loc " << loc.dbgLine << ":"
            << loc.dbgCol << " found; falling back to index "
@@ -868,9 +909,9 @@ Function *getOrCloneHelper(Module &M, Module &SourceM, StringRef Name) {
 
 void replaceMemoryIntrinsics(Module &M, Module &SourceM) {
 
-  Function *MayoMemset = getOrCloneHelper(M, SourceM, "mayo_memset");
+  Function *QruovMemset = getOrCloneHelper(M, SourceM, "qruov_memset");
 
-  Function *MayoMemcpy = getOrCloneHelper(M, SourceM, "mayo_memcpy");
+  Function *QruovMemcpy = getOrCloneHelper(M, SourceM, "qruov_memcpy");
 
   SmallVector<CallInst *, 64> Worklist;
 
@@ -907,7 +948,7 @@ void replaceMemoryIntrinsics(Module &M, Module &SourceM) {
 
       auto *MSI = cast<MemSetInst>(CI);
 
-      B.CreateCall(MayoMemset,
+      B.CreateCall(QruovMemset,
                    {MSI->getDest(), MSI->getValue(),
                     B.CreateIntCast(MSI->getLength(),
                                     Type::getInt32Ty(M.getContext()), false)});
@@ -920,7 +961,7 @@ void replaceMemoryIntrinsics(Module &M, Module &SourceM) {
 
       auto *MCI = cast<MemCpyInst>(CI);
 
-      B.CreateCall(MayoMemcpy,
+      B.CreateCall(QruovMemcpy,
                    {MCI->getDest(), MCI->getSource(),
                     B.CreateIntCast(MCI->getLength(),
                                     Type::getInt32Ty(M.getContext()), false)});
@@ -1018,6 +1059,16 @@ int main(int argc, char **argv) {
   }
 
   InstLocator sourceLoc = captureInstLocator(origInst, line);
+  // Which of the same-location siblings the target is, by opcode and by kind
+  // only (InstCombine may change an opcode, e.g. add -> or disjoint).
+  std::vector<Instruction *> preByOpcode, preByKind;
+  if (sourceLoc.hasDbg) {
+    sourceLoc.opcode = origInst->getOpcode();
+    preByOpcode =
+        locCandidates(*preOptF, sourceLoc, isBinOp, isLoadOrStore, true);
+    preByKind =
+        locCandidates(*preOptF, sourceLoc, isBinOp, isLoadOrStore, false);
+  }
   if (!sourceLoc.hasDbg) {
     errs() << "Warning: instruction at line " << line
            << " has no debug location; post-optimization re-lookup will "
@@ -1078,6 +1129,7 @@ int main(int argc, char **argv) {
     }
     MPM.addPass(GlobalOptPass());
   });
+  fault_types::lowerIntrinsics(*funcModule);
   replaceMemoryIntrinsics(*funcModule, *module);
   cleanup(*funcModule);
   {
@@ -1118,8 +1170,42 @@ int main(int argc, char **argv) {
            << "\n";
     return 1;
   }
-  Instruction *postPipelineInst =
-      findInstByLocator(*postPipelineF, sourceLoc, isBinOp, isLoadOrStore);
+  // Map the target onto the post-pipeline siblings at the same location: by
+  // opcode rank if the opcode-matching siblings all survived, else by kind
+  // rank if the same-kind siblings did, else (a unique target) the first
+  // match. Anything else would guess, so it is an error.
+  Instruction *postPipelineInst = nullptr;
+  if (sourceLoc.hasDbg) {
+    std::vector<Instruction *> postByOpcode =
+        locCandidates(*postPipelineF, sourceLoc, isBinOp, isLoadOrStore, true);
+    std::vector<Instruction *> postByKind =
+        locCandidates(*postPipelineF, sourceLoc, isBinOp, isLoadOrStore, false);
+    if (!postByOpcode.empty() && postByOpcode.size() == preByOpcode.size())
+      postPipelineInst = postByOpcode[rankIn(preByOpcode, origInst)];
+    else if (!postByKind.empty() && postByKind.size() == preByKind.size())
+      postPipelineInst = postByKind[rankIn(preByKind, origInst)];
+    else if (preByKind.size() == 1 && !postByKind.empty())
+      postPipelineInst = postByKind.front();
+    else if (isRepeatedGroup(preByKind, postByKind)) {
+      // the pipeline duplicated the whole group (loop rotation copies a
+      // while condition into the guard): take the first copy
+      postPipelineInst = postByKind[rankIn(preByKind, origInst)];
+      errs() << "Note: the " << preByKind.size()
+             << " instructions at debug loc " << sourceLoc.dbgLine << ":"
+             << sourceLoc.dbgCol << " appear "
+             << postByKind.size() / preByKind.size()
+             << " times after the pipeline; faulting the first copy\n";
+    }
+    else if (!postByKind.empty())
+      errs() << "Error: target is " << rankIn(preByKind, origInst) + 1
+             << " of " << preByKind.size() << " instructions at debug loc "
+             << sourceLoc.dbgLine << ":" << sourceLoc.dbgCol << ", but "
+             << postByKind.size()
+             << " remain after the pipeline; cannot tell which one it is\n";
+  } else {
+    postPipelineInst =
+        findInstByLocator(*postPipelineF, sourceLoc, isBinOp, isLoadOrStore);
+  }
   if (!postPipelineInst) {
     errs() << "Could not re-locate target instruction after unroll/optimize "
               "pipeline (source line "
@@ -1128,8 +1214,14 @@ int main(int argc, char **argv) {
   }
   InstLocator locator =
       captureInstLocator(postPipelineInst, /*fallbackIndex=*/0);
+  if (locator.hasDbg) {
+    locator.opcode = postPipelineInst->getOpcode();
+    locator.rank = rankIn(locCandidates(*postPipelineF, locator, isBinOp,
+                                        isLoadOrStore, true),
+                          postPipelineInst);
+  }
 
-  std::string filename = "../../test_mayo/" + funcName + "/";
+  std::string filename = "../../test_qruov/" + funcName + "/";
   dump_module(*funcModule, filename + funcName + ".ll");
   outs() << "Wrote " << filename << funcName << ".ll\n";
 

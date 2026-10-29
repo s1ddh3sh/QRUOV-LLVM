@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.20)
 
-project(fault_types)
+project(qruov_fault_types)
 set(LLVM_DIR "/usr/lib/llvm-20/lib/cmake/llvm")
 
 find_package(LLVM REQUIRED CONFIG)

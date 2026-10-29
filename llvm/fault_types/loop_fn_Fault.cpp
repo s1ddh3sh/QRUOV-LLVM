@@ -52,6 +52,8 @@
 #include <utility>
 #include <vector>
 
+#include "lower_intrinsics.h"
+
 using namespace llvm;
 static constexpr unsigned kMaxUnrollTripCount = 2000;
 
@@ -220,10 +222,8 @@ public:
                              ? CI->getCalledFunction()->getName()
                              : "<indirect>")
                      << " at dbg " << loc.dbgLine << ":" << loc.dbgCol << "\n";
-              if (!CI->getType()->isVoidTy() && CI->arg_size() > 0) {
-                Value *v = CI->getArgOperand(0);
+              if (Value *v = fault_types::skippedCallResult(CI))
                 CI->replaceAllUsesWith(v);
-              }
               CI->eraseFromParent();
             }
           }
@@ -528,7 +528,7 @@ unsigned inferPointerAllocSize(Argument *arg, unsigned defaultSize) {
 // Inputs default to zero: every buffer is zero-filled and every scalar
 // anchor starts at 0 (or at the constant the real call site passes, e.g. a
 // length). The simulation overwrites them per trial; which arguments are
-// secret / outputs comes from mayo.json, not from per-function testcases.
+// secret / outputs comes from qruov.json, not from per-function testcases.
 // Buffers keep their !llvmbmc.var name: the simulation's witness extractor
 // locates them by it (no llvmbmc is run here).
 void createDynamicDriverFunction(Module &OriginalM, Module &ExtractedM,
@@ -756,17 +756,7 @@ public:
            << (CI->getCalledFunction() ? CI->getCalledFunction()->getName()
                                        : "<indirect>")
            << "\n";
-    Value *replacement = nullptr;
-    if (!CI->getType()->isVoidTy()) {
-      if (CI->arg_size() > 0 &&
-          CI->getArgOperand(0)->getType() == CI->getType()) {
-        replacement = CI->getArgOperand(0);
-      } else {
-        replacement = Constant::getNullValue(CI->getType());
-        // or: IRBuilder<>(CI).CreateZExtOrTrunc(CI->getArgOperand(0),
-        // CI->getType());
-      }
-    }
+    Value *replacement = fault_types::skippedCallResult(CI);
     if (replacement)
       CI->replaceAllUsesWith(replacement);
     CI->eraseFromParent();
@@ -1007,9 +997,9 @@ Function *getOrCloneHelper(Module &M, Module &SourceM, StringRef Name) {
 
 void replaceMemoryIntrinsics(Module &M, Module &SourceM) {
 
-  Function *MayoMemset = getOrCloneHelper(M, SourceM, "mayo_memset");
+  Function *QruovMemset = getOrCloneHelper(M, SourceM, "qruov_memset");
 
-  Function *MayoMemcpy = getOrCloneHelper(M, SourceM, "mayo_memcpy");
+  Function *QruovMemcpy = getOrCloneHelper(M, SourceM, "qruov_memcpy");
 
   SmallVector<CallInst *, 64> Worklist;
 
@@ -1046,7 +1036,7 @@ void replaceMemoryIntrinsics(Module &M, Module &SourceM) {
 
       auto *MSI = cast<MemSetInst>(CI);
 
-      B.CreateCall(MayoMemset,
+      B.CreateCall(QruovMemset,
                    {MSI->getDest(), MSI->getValue(),
                     B.CreateIntCast(MSI->getLength(),
                                     Type::getInt32Ty(M.getContext()), false)});
@@ -1059,7 +1049,7 @@ void replaceMemoryIntrinsics(Module &M, Module &SourceM) {
 
       auto *MCI = cast<MemCpyInst>(CI);
 
-      B.CreateCall(MayoMemcpy,
+      B.CreateCall(QruovMemcpy,
                    {MCI->getDest(), MCI->getSource(),
                     B.CreateIntCast(MCI->getLength(),
                                     Type::getInt32Ty(M.getContext()), false)});
@@ -1259,6 +1249,7 @@ int main(int argc, char **argv) {
     }
     MPM.addPass(GlobalOptPass());
   });
+  fault_types::lowerIntrinsics(*funcModule);
   replaceMemoryIntrinsics(*funcModule, *module);
   cleanup(*funcModule);
   {
@@ -1293,14 +1284,14 @@ int main(int argc, char **argv) {
     errs() << "Invalid IR after LabeledUnrollPass\n";
     return 1;
   }
-  std::string original = "../../test_mayo/" + funcName + "/" + funcName + ".ll";
+  std::string original = "../../test_qruov/" + funcName + "/" + funcName + ".ll";
 
   dump_module(*funcModule, original);
   outs() << "Wrote" << original << "\n";
 
   // Clone and inject fault
   std::string faultyFile =
-      "../../test_mayo/" + funcName + "/loopOrFuncSkip/" + funcName;
+      "../../test_qruov/" + funcName + "/loopOrFuncSkip/" + funcName;
   std::string outFile;
   if (mode == LOOP_SKIP) {
     auto faultModule = CloneModule(*funcModule);
@@ -1445,6 +1436,7 @@ int main(int argc, char **argv) {
 
       MPM.addPass(GlobalOptPass());
     });
+    fault_types::lowerIntrinsics(*preUnrollClone);
     replaceMemoryIntrinsics(*preUnrollClone, *module);
     cleanup(*preUnrollClone);
     {

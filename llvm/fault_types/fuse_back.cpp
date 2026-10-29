@@ -1,6 +1,6 @@
 //===- fuseback_gated.cpp ------------------------------------------------===//
 //
-// Take a full-MAYO base module and a single faulted variant of one function,
+// Take a full-QR-UOV base module (no_struct/qruov1.ll) and a single faulted variant of one function,
 // and emit a module in which:
 //
 //   * the faulted body is imported under the name  <funcName>__faulted
@@ -12,14 +12,14 @@
 //
 // The faulted variant already bakes in exactly one fault on its first internal
 // iteration, so the only selection left is which dynamic CALL occurrence to
-// fault -- that is the counter gate. Default target occurrence = 1 (matches the
-// correction attack, which targets s_0).
+// fault -- that is the counter gate. Default target occurrence = 1 (the first
+// dynamic call of <funcName>).
 //
 // Usage:
 //   ./fuseback_gated <base.ll> <faulted_function.ll> <functionName>
 //                    [entryFunctionName] [targetOccurrence]
 //
-//   entryFunctionName defaults to pqmayo_MAYO_1_ref_mayo_sign_signature
+//   entryFunctionName defaults to QRUOV_Sign
 //   targetOccurrence  defaults to 1
 //
 // Run once per faulted variant file.
@@ -49,7 +49,7 @@
 
 using namespace llvm;
 
-static const char *DEFAULT_ENTRY = "pqmayo_MAYO_1_ref_mayo_sign_signature";
+static const char *DEFAULT_ENTRY = "QRUOV_Sign";
 
 //===----------------------------------------------------------------------===//
 // dependency import (unchanged from your fuseback.cpp)
@@ -238,17 +238,26 @@ static void gateCallSites(Module &M, Function *Orig, Function *Faulted,
 // ensure a main that calls the signature entry
 //===----------------------------------------------------------------------===//
 
-static GlobalVariable *getExternI32(Module &M, StringRef Name) {
+static GlobalVariable *getExternInt(Module &M, StringRef Name, Type *Ty) {
   if (auto *G = M.getGlobalVariable(Name, true))
     return G;
-  Type *I32 = Type::getInt32Ty(M.getContext());
-  auto *G = new GlobalVariable(M, I32, /*isConstant=*/false,
+  auto *G = new GlobalVariable(M, Ty, /*isConstant=*/false,
                                GlobalValue::ExternalLinkage,
                                /*Init=*/nullptr, Name);
-  G->setAlignment(Align(4));
+  G->setAlignment(Align(Ty->getPrimitiveSizeInBits() / 8));
   return G;
 }
 
+// Zero-filled bytes per pointer argument of a synthesised main. Large enough
+// for the QR-UOV sign / API entries (sig 226 B, sm 232 B, seeds 16 B); an
+// entry taking P3 (52 KB, QRUOV_KeyGen / QRUOV_Verify) needs its own main.
+static constexpr unsigned kEntryBufBytes = 1024;
+
+// Only used when the base module has no main (no_struct/qruov1.ll has the
+// example.c one). Built from the entry's own signature: every pointer
+// argument gets a zeroed buffer, every integer argument is loaded from the
+// extern anchor __mbc_arg_<entry>_<arg> (same naming as the per-function
+// drivers) and an integer result goes to __mbc_ret_anchor_<entry>.
 static void ensureMain(Module &M, Function *Entry) {
   if (M.getFunction("main"))
     return; // keep the existing (BMC) main
@@ -258,42 +267,44 @@ static void ensureMain(Module &M, Function *Entry) {
   Type *Ptr = PointerType::getUnqual(Ctx);
 
   FunctionCallee Memset =
-      M.getOrInsertFunction("mayo_memset", Type::getVoidTy(Ctx), Ptr, I8, I32);
+      M.getOrInsertFunction("qruov_memset", Type::getVoidTy(Ctx), Ptr, I8, I32);
 
   std::string EN = Entry->getName().str();
-  GlobalVariable *ArgMlen = getExternI32(M, "__mbc_arg_" + EN + "_mlen");
-  GlobalVariable *RetAnchor = getExternI32(M, "__mbc_ret_anchor_" + EN);
 
   Function *MainF = Function::Create(FunctionType::get(I32, false),
                                      GlobalValue::ExternalLinkage, "main", &M);
   BasicBlock *BB = BasicBlock::Create(Ctx, "entry", MainF);
   IRBuilder<> B(BB);
 
-  auto mkBuf = [&](unsigned N, const char *Nm) -> AllocaInst * {
-    ArrayType *AT = ArrayType::get(I8, N);
-    AllocaInst *A = B.CreateAlloca(AT, nullptr, Nm);
-    A->setAlignment(Align(16));
-    B.CreateCall(Memset, {A, B.getInt8(0), B.getInt32(N)});
-    return A;
-  };
+  std::vector<Value *> Args;
+  for (Argument &A : Entry->args()) {
+    Type *Ty = A.getType();
+    std::string AN = A.getName().empty() ? "arg" + std::to_string(A.getArgNo())
+                                         : A.getName().str();
+    if (Ty->isPointerTy()) {
+      ArrayType *AT = ArrayType::get(I8, kEntryBufBytes);
+      AllocaInst *Buf = B.CreateAlloca(AT, nullptr, AN + "_buf");
+      Buf->setAlignment(Align(16));
+      B.CreateCall(Memset, {Buf, B.getInt8(0), B.getInt32(kEntryBufBytes)});
+      Args.push_back(Buf);
+    } else if (Ty->isIntegerTy()) {
+      GlobalVariable *Anchor =
+          getExternInt(M, "__mbc_arg_" + EN + "_" + AN, Ty);
+      LoadInst *L = B.CreateLoad(Ty, Anchor, AN + "_val");
+      L->setVolatile(true);
+      Args.push_back(L);
+    } else {
+      Args.push_back(Constant::getNullValue(Ty));
+    }
+  }
 
-  AllocaInst *PBuf = mkBuf(128, "p_buf");
-  AllocaInst *SigBuf = mkBuf(431, "sig_buf");
-  AllocaInst *SigLen = B.CreateAlloca(I32, nullptr, "siglen");
-  SigLen->setAlignment(Align(16));
-  B.CreateStore(B.getInt32(0), SigLen);
-  AllocaInst *MBuf = mkBuf(128, "m_buf");
-  LoadInst *Mlen = B.CreateLoad(I32, ArgMlen, "mlen_val");
-  Mlen->setVolatile(true);
-  Mlen->setAlignment(Align(4));
-  AllocaInst *Heap24 = mkBuf(24, "heap_24");
-
-  CallInst *Ret =
-      B.CreateCall(Entry->getFunctionType(), Entry,
-                   {PBuf, SigBuf, SigLen, MBuf, Mlen, Heap24});
-  StoreInst *SR = B.CreateStore(Ret, RetAnchor);
-  SR->setVolatile(true);
-  SR->setAlignment(Align(4));
+  CallInst *Ret = B.CreateCall(Entry->getFunctionType(), Entry, Args);
+  if (Ret->getType()->isIntegerTy()) {
+    GlobalVariable *RetAnchor =
+        getExternInt(M, "__mbc_ret_anchor_" + EN, Ret->getType());
+    StoreInst *SR = B.CreateStore(Ret, RetAnchor);
+    SR->setVolatile(true);
+  }
   B.CreateRet(B.getInt32(0));
 
   errs() << "main: synthesised, calling " << EN
@@ -406,7 +417,7 @@ int main(int argc, char **argv) {
            << vs.str() << "(inspect output manually)\n";
 
   SmallString<256> outDir(sys::path::parent_path(fnFile));
-  sys::path::append(outDir, "full_mayo_gated");
+  sys::path::append(outDir, "full_qruov_gated");
   if (std::error_code EC = sys::fs::create_directories(outDir)) {
     errs() << "Failed to create output dir: " << EC.message() << "\n";
     return 1;

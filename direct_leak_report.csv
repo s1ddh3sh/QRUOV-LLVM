@@ -1,0 +1,13 @@
+scheme,function,fault,source,test,detected,detail
+qruov,Fq_sub,binOpFault/Fq_sub_line2_opA,direct_leak_result.txt,direct_leak,yes,secret-buf: faulty output 'ret' equals input 'X' in all 16 trace(s) where the fault changed it
+qruov,Fq_sub,binOpFault/Fq_sub_line2_opB,direct_leak_result.txt,direct_leak,no,secret-buf: no faulty output equals input 'X'
+qruov,Fq_sub,binOpFault/Fq_sub_line2_undef,direct_leak_result.txt,direct_leak,no,secret-buf: no faulty output equals input 'X'
+qruov,Fq_sub,binOpFault/Fq_sub_line2_zero,direct_leak_result.txt,direct_leak,no,secret-buf: no faulty output equals input 'X'
+qruov,Fq_sub,binOpFault/Fq_sub_line3_opA,direct_leak_result.txt,direct_leak,no,secret-buf: no faulty output equals input 'X'
+qruov,Fq_sub,binOpFault/Fq_sub_line3_opB,direct_leak_result.txt,direct_leak,no,secret-buf: no faulty output equals input 'X'
+qruov,Fq_sub,binOpFault/Fq_sub_line3_undef,direct_leak_result.txt,direct_leak,no,secret-buf: no faulty output equals input 'X'
+qruov,Fq_sub,binOpFault/Fq_sub_line3_zero,direct_leak_result.txt,direct_leak,no,secret-buf: no faulty output equals input 'X'
+qruov,Fq_sub,binOpFault/Fq_sub_line4_opA,direct_leak_result.txt,direct_leak,no,secret-buf: no faulty output equals input 'X'
+qruov,Fq_sub,binOpFault/Fq_sub_line4_opB,direct_leak_result.txt,direct_leak,no,secret-buf: no faulty output equals input 'X'
+qruov,Fq_sub,binOpFault/Fq_sub_line4_undef,direct_leak_result.txt,direct_leak,no,secret-buf: no faulty output equals input 'X'
+qruov,Fq_sub,binOpFault/Fq_sub_line4_zero,direct_leak_result.txt,direct_leak,no,secret-buf: no faulty output equals input 'X'

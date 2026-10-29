@@ -11,9 +11,9 @@
 #   - type == "BinOp"/"StoreInst"/"LoadInst" -> ./binOp_load_store_Fault <ir_file> <fn> <line_no>
 #   - anything else                       -> skipped (with a warning)
 #
-# Every run writes the correct trace ../test_mayo/<fn>/<fn>.ll and the faulty
-# variant(s) under ../test_mayo/<fn>/{loopOrFuncSkip,binOpFault,loadStoreSkip}/.
-# Function inputs default to zero; mayo.json (repo root) says which arguments
+# Every run writes the correct trace ../test_qruov/<fn>/<fn>.ll and the faulty
+# variant(s) under ../test_qruov/<fn>/{loopOrFuncSkip,binOpFault,loadStoreSkip}/.
+# Function inputs default to zero; qruov.json (repo root) says which arguments
 # are secret / outputs.
 #
 # Requires: jq
@@ -28,7 +28,7 @@ fi
 cd "$(dirname "$0")"
 
 # Relative to build/, where the generators run.
-IR_FILE="../../llvmgen_and_taintProp/no_struct/mayo1.ll"
+IR_FILE="../../llvmgen_and_taintProp/no_struct/qruov1.ll"
 DEFAULT_DIR="../llvmgen_and_taintProp/taintResults"
 
 if [ ! -f "${IR_FILE#../}" ]; then
