@@ -1,0 +1,27 @@
+{
+  "13": {
+    "instr": "  %arrayidx8 = getelementptr inbounds [3 x [18 x i8]], ptr %A, i32 %i.0, i32 %k.0, i32 %j.0, !dbg !198",
+    "type": "GetElementPtrInst"
+  },
+  "14": {
+    "instr": "  %0 = load i8, ptr %arrayidx8, align 1, !dbg !198",
+    "type": "LoadInst"
+  },
+  "15": {
+    "instr": "  %arrayidx11 = getelementptr inbounds [3 x [52 x i8]], ptr %C, i32 %j.0, i32 %k.0, i32 %i.0, !dbg !200",
+    "type": "GetElementPtrInst"
+  },
+  "16": {
+    "instr": "  store i8 %0, ptr %arrayidx11, align 1, !dbg !201",
+    "type": "StoreInst"
+  },
+  "26": {
+    "instr": "  %arrayidx22 = getelementptr inbounds nuw [3 x [52 x i8]], ptr %C, i32 %j18.0, !dbg !220",
+    "type": "GetElementPtrInst"
+  },
+  "27": {
+    "instr": "  call fastcc void @VECTOR_V_CLEAR_TAIL.35(ptr noundef %arrayidx22) #4, !dbg !221",
+    "type": "CallInst",
+    "callee": "VECTOR_V_CLEAR_TAIL.35"
+  }
+}

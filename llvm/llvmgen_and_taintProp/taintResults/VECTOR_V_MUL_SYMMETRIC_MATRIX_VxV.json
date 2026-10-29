@@ -1,0 +1,24 @@
+{
+  "6": {
+    "instr": "  call void @VECTOR_V_dot_VECTOR_V(ptr noundef %A, ptr noundef %arrayidx, ptr noundef nonnull %tmp) #4, !dbg !187",
+    "type": "CallInst",
+    "callee": "VECTOR_V_dot_VECTOR_V"
+  },
+  "12": {
+    "instr": "  %0 = load i8, ptr %arrayidx5, align 1, !dbg !196",
+    "type": "LoadInst"
+  },
+  "13": {
+    "instr": "  %arrayidx7 = getelementptr inbounds nuw [52 x i8], ptr %C, i32 %k.0, i32 %i.0, !dbg !197",
+    "type": "GetElementPtrInst"
+  },
+  "14": {
+    "instr": "  store i8 %0, ptr %arrayidx7, align 1, !dbg !198",
+    "type": "StoreInst"
+  },
+  "19": {
+    "instr": "  call fastcc void @VECTOR_V_CLEAR_TAIL.35(ptr noundef %C) #4, !dbg !208",
+    "type": "CallInst",
+    "callee": "VECTOR_V_CLEAR_TAIL.35"
+  }
+}

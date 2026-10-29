@@ -1,0 +1,74 @@
+{
+  "1": {
+    "instr": "  %aux.addr.0 = phi ptr [ %aux, %entry ], [ %incdec.ptr, %while.body ]",
+    "type": "PHINode"
+  },
+  "2": {
+    "instr": "  %0 = load i8, ptr %aux.addr.0, align 1, !dbg !166",
+    "type": "LoadInst"
+  },
+  "3": {
+    "instr": "  %cmp = icmp eq i8 %0, 127, !dbg !167",
+    "type": "CmpInst"
+  },
+  "5": {
+    "instr": "  %aux.addr.0.lcssa = phi ptr [ %aux.addr.0, %while.cond ]",
+    "type": "PHINode"
+  },
+  "7": {
+    "instr": "  %incdec.ptr = getelementptr inbounds nuw i8, ptr %aux.addr.0, i32 1, !dbg !170",
+    "type": "GetElementPtrInst"
+  },
+  "9": {
+    "instr": "  %dst.addr.0 = phi ptr [ %incdec.ptr15, %for.inc ], [ %dst, %for.cond.preheader ]",
+    "type": "PHINode"
+  },
+  "10": {
+    "instr": "  %aux.addr.1 = phi ptr [ %aux.addr.3, %for.inc ], [ %aux.addr.0.lcssa, %for.cond.preheader ]",
+    "type": "PHINode"
+  },
+  "14": {
+    "instr": "  %1 = load i8, ptr %dst.addr.0, align 1, !dbg !178",
+    "type": "LoadInst"
+  },
+  "15": {
+    "instr": "  %cmp5 = icmp eq i8 %1, 127, !dbg !181",
+    "type": "CmpInst"
+  },
+  "17": {
+    "instr": "  %2 = load i8, ptr %aux.addr.1, align 1, !dbg !182",
+    "type": "LoadInst"
+  },
+  "18": {
+    "instr": "  store i8 %2, ptr %dst.addr.0, align 1, !dbg !184",
+    "type": "StoreInst"
+  },
+  "20": {
+    "instr": "  %aux.addr.1.pn = phi ptr [ %aux.addr.1, %if.then ], [ %aux.addr.2, %while.cond8 ]",
+    "type": "PHINode"
+  },
+  "21": {
+    "instr": "  %aux.addr.2 = getelementptr inbounds nuw i8, ptr %aux.addr.1.pn, i32 1, !dbg !186",
+    "type": "GetElementPtrInst"
+  },
+  "22": {
+    "instr": "  %3 = load i8, ptr %aux.addr.2, align 1, !dbg !187",
+    "type": "LoadInst"
+  },
+  "23": {
+    "instr": "  %cmp10 = icmp eq i8 %3, 127, !dbg !188",
+    "type": "CmpInst"
+  },
+  "25": {
+    "instr": "  %aux.addr.2.lcssa = phi ptr [ %aux.addr.2, %while.cond8 ], !dbg !186",
+    "type": "PHINode"
+  },
+  "27": {
+    "instr": "  %aux.addr.3 = phi ptr [ %aux.addr.1, %for.body ], [ %aux.addr.2.lcssa, %for.inc.loopexit ]",
+    "type": "PHINode"
+  },
+  "28": {
+    "instr": "  %incdec.ptr15 = getelementptr inbounds nuw i8, ptr %dst.addr.0, i32 1, !dbg !191",
+    "type": "GetElementPtrInst"
+  }
+}

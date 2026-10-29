@@ -1,0 +1,29 @@
+{
+  "2": {
+    "instr": "  call void @MATRIX_TRANSPOSE_VxM(ptr noundef %B, ptr noundef nonnull %BT) #4, !dbg !179",
+    "type": "CallInst",
+    "callee": "MATRIX_TRANSPOSE_VxM"
+  },
+  "8": {
+    "instr": "  call void @VECTOR_V_dot_VECTOR_V(ptr noundef %A, ptr noundef nonnull %arrayidx, ptr noundef nonnull %tmp) #4, !dbg !192",
+    "type": "CallInst",
+    "callee": "VECTOR_V_dot_VECTOR_V"
+  },
+  "14": {
+    "instr": "  %0 = load i8, ptr %arrayidx6, align 1, !dbg !201",
+    "type": "LoadInst"
+  },
+  "15": {
+    "instr": "  %arrayidx8 = getelementptr inbounds nuw [18 x i8], ptr %C, i32 %k.0, i32 %i.0, !dbg !202",
+    "type": "GetElementPtrInst"
+  },
+  "16": {
+    "instr": "  store i8 %0, ptr %arrayidx8, align 1, !dbg !203",
+    "type": "StoreInst"
+  },
+  "21": {
+    "instr": "  call fastcc void @VECTOR_M_CLEAR_TAIL.40(ptr noundef %C) #4, !dbg !213",
+    "type": "CallInst",
+    "callee": "VECTOR_M_CLEAR_TAIL.40"
+  }
+}

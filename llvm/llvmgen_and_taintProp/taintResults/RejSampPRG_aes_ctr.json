@@ -1,0 +1,22 @@
+{
+  "4": {
+    "instr": "  %call = call i32 @EVP_EncryptInit_ex(ptr noundef %ctx, ptr noundef null, ptr noundef null, ptr noundef null, ptr noundef nonnull %iv) #4, !dbg !174",
+    "type": "CallInst",
+    "callee": "EVP_EncryptInit_ex"
+  },
+  "5": {
+    "instr": "  %call2 = call ptr @memset(ptr noundef nonnull %dst, i32 noundef 0, i32 noundef %tau) #5, !dbg !175",
+    "type": "CallInst",
+    "callee": "memset"
+  },
+  "6": {
+    "instr": "  %call3 = call i32 @EVP_EncryptUpdate(ptr noundef %ctx, ptr noundef nonnull %dst, ptr noundef nonnull %out_len, ptr noundef nonnull %dst, i32 noundef %tau) #4, !dbg !177",
+    "type": "CallInst",
+    "callee": "EVP_EncryptUpdate"
+  },
+  "7": {
+    "instr": "  call fastcc void @RejSamp(i32 noundef %length, i32 noundef %tau, ptr noundef %dst) #4, !dbg !178",
+    "type": "CallInst",
+    "callee": "RejSamp"
+  }
+}

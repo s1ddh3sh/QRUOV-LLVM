@@ -1,0 +1,88 @@
+{
+  "2": {
+    "instr": "  %call = call ptr @memcpy(ptr noundef nonnull %w, ptr noundef nonnull %ivw, i32 noundef 64) #4, !dbg !176",
+    "type": "CallInst",
+    "callee": "memcpy"
+  },
+  "12": {
+    "instr": "  call fastcc void @br_aes_ct64_interleave_in(ptr noundef nonnull %arrayidx, ptr noundef nonnull %arrayidx1, ptr noundef nonnull %add.ptr) #5, !dbg !189",
+    "type": "CallInst",
+    "callee": "br_aes_ct64_interleave_in"
+  },
+  "15": {
+    "instr": "  call fastcc void @br_aes_ct64_ortho(ptr noundef nonnull %q) #5, !dbg !195",
+    "type": "CallInst",
+    "callee": "br_aes_ct64_ortho"
+  },
+  "16": {
+    "instr": "  call fastcc void @add_round_key(ptr noundef nonnull %q, ptr noundef %sk_exp) #5, !dbg !196",
+    "type": "CallInst",
+    "callee": "add_round_key"
+  },
+  "21": {
+    "instr": "  call fastcc void @br_aes_ct64_bitslice_Sbox(ptr noundef nonnull %q) #5, !dbg !203",
+    "type": "CallInst",
+    "callee": "br_aes_ct64_bitslice_Sbox"
+  },
+  "22": {
+    "instr": "  call fastcc void @shift_rows(ptr noundef nonnull %q) #5, !dbg !205",
+    "type": "CallInst",
+    "callee": "shift_rows"
+  },
+  "23": {
+    "instr": "  call fastcc void @mix_columns(ptr noundef nonnull %q) #5, !dbg !206",
+    "type": "CallInst",
+    "callee": "mix_columns"
+  },
+  "25": {
+    "instr": "  %add.ptr13 = getelementptr inbounds nuw i8, ptr %sk_exp, i32 %add.ptr13.idx, !dbg !207",
+    "type": "GetElementPtrInst"
+  },
+  "26": {
+    "instr": "  call fastcc void @add_round_key(ptr noundef nonnull %q, ptr noundef nonnull %add.ptr13) #5, !dbg !208",
+    "type": "CallInst",
+    "callee": "add_round_key"
+  },
+  "29": {
+    "instr": "  call fastcc void @br_aes_ct64_bitslice_Sbox(ptr noundef nonnull %q) #5, !dbg !213",
+    "type": "CallInst",
+    "callee": "br_aes_ct64_bitslice_Sbox"
+  },
+  "30": {
+    "instr": "  call fastcc void @shift_rows(ptr noundef nonnull %q) #5, !dbg !214",
+    "type": "CallInst",
+    "callee": "shift_rows"
+  },
+  "32": {
+    "instr": "  %add.ptr20 = getelementptr inbounds nuw i8, ptr %sk_exp, i32 %add.ptr20.idx, !dbg !215",
+    "type": "GetElementPtrInst"
+  },
+  "33": {
+    "instr": "  call fastcc void @add_round_key(ptr noundef nonnull %q, ptr noundef nonnull %add.ptr20) #5, !dbg !216",
+    "type": "CallInst",
+    "callee": "add_round_key"
+  },
+  "34": {
+    "instr": "  call fastcc void @br_aes_ct64_ortho(ptr noundef nonnull %q) #5, !dbg !217",
+    "type": "CallInst",
+    "callee": "br_aes_ct64_ortho"
+  },
+  "42": {
+    "instr": "  %0 = load i64, ptr %arrayidx28, align 8, !dbg !226",
+    "type": "LoadInst"
+  },
+  "45": {
+    "instr": "  %1 = load i64, ptr %arrayidx30, align 8, !dbg !228",
+    "type": "LoadInst"
+  },
+  "46": {
+    "instr": "  call fastcc void @br_aes_ct64_interleave_out(ptr noundef nonnull %add.ptr27, i64 noundef %0, i64 noundef %1) #5, !dbg !229",
+    "type": "CallInst",
+    "callee": "br_aes_ct64_interleave_out"
+  },
+  "49": {
+    "instr": "  call fastcc void @br_range_enc32le(ptr noundef %out, ptr noundef nonnull %w, i32 noundef 16) #5, !dbg !234",
+    "type": "CallInst",
+    "callee": "br_range_enc32le"
+  }
+}

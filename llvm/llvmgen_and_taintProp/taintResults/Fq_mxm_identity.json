@@ -1,0 +1,15 @@
+{
+  "0": {
+    "instr": "  %call = call ptr @memset(ptr noundef nonnull %A, i32 noundef 0, i32 noundef 2916) #4, !dbg !165",
+    "type": "CallInst",
+    "callee": "memset"
+  },
+  "5": {
+    "instr": "  %arrayidx1 = getelementptr inbounds nuw [54 x i8], ptr %A, i32 %i.0, i32 %i.0, !dbg !174",
+    "type": "GetElementPtrInst"
+  },
+  "6": {
+    "instr": "  store i8 1, ptr %arrayidx1, align 1, !dbg !175",
+    "type": "StoreInst"
+  }
+}

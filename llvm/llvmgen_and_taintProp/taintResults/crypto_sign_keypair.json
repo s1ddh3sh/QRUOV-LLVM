@@ -1,0 +1,26 @@
+{
+  "0": {
+    "instr": "  %seed_sk = alloca [16 x i8], align 1",
+    "type": "AllocaInst"
+  },
+  "4": {
+    "instr": "  %call = call i32 @randombytes(ptr noundef nonnull %seed_sk, i64 noundef 16) #4, !dbg !165",
+    "type": "CallInst",
+    "callee": "randombytes"
+  },
+  "6": {
+    "instr": "  call void @QRUOV_KeyGen(ptr noundef nonnull %seed_sk, ptr noundef nonnull %seed_pk, ptr noundef nonnull @crypto_sign_keypair.P3) #4, !dbg !169",
+    "type": "CallInst",
+    "callee": "QRUOV_KeyGen"
+  },
+  "8": {
+    "instr": "  call fastcc void @store_QRUOV_SEED(ptr noundef nonnull %seed_sk, ptr noundef %sk, ptr noundef nonnull %sk_pool_bits) #4, !dbg !172",
+    "type": "CallInst",
+    "callee": "store_QRUOV_SEED"
+  },
+  "9": {
+    "instr": "  call fastcc void @store_QRUOV_SEED(ptr noundef nonnull %seed_pk, ptr noundef %sk, ptr noundef nonnull %sk_pool_bits) #4, !dbg !173",
+    "type": "CallInst",
+    "callee": "store_QRUOV_SEED"
+  }
+}

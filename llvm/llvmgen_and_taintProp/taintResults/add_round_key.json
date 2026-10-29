@@ -1,0 +1,186 @@
+{
+  "0": {
+    "instr": "  %0 = load i64, ptr %sk, align 8, !dbg !165",
+    "type": "LoadInst"
+  },
+  "1": {
+    "instr": "  %1 = load i64, ptr %q, align 8, !dbg !166",
+    "type": "LoadInst"
+  },
+  "2": {
+    "instr": "  %xor = xor i64 %1, %0, !dbg !166",
+    "type": "BinOp"
+  },
+  "3": {
+    "instr": "  store i64 %xor, ptr %q, align 8, !dbg !166",
+    "type": "StoreInst"
+  },
+  "4": {
+    "instr": "  %arrayidx2 = getelementptr inbounds nuw i8, ptr %sk, i32 8, !dbg !167",
+    "type": "GetElementPtrInst"
+  },
+  "5": {
+    "instr": "  %2 = load i64, ptr %arrayidx2, align 8, !dbg !167",
+    "type": "LoadInst"
+  },
+  "6": {
+    "instr": "  %arrayidx3 = getelementptr inbounds nuw i8, ptr %q, i32 8, !dbg !168",
+    "type": "GetElementPtrInst"
+  },
+  "7": {
+    "instr": "  %3 = load i64, ptr %arrayidx3, align 8, !dbg !169",
+    "type": "LoadInst"
+  },
+  "8": {
+    "instr": "  %xor4 = xor i64 %3, %2, !dbg !169",
+    "type": "BinOp"
+  },
+  "9": {
+    "instr": "  store i64 %xor4, ptr %arrayidx3, align 8, !dbg !169",
+    "type": "StoreInst"
+  },
+  "10": {
+    "instr": "  %arrayidx5 = getelementptr inbounds nuw i8, ptr %sk, i32 16, !dbg !170",
+    "type": "GetElementPtrInst"
+  },
+  "11": {
+    "instr": "  %4 = load i64, ptr %arrayidx5, align 8, !dbg !170",
+    "type": "LoadInst"
+  },
+  "12": {
+    "instr": "  %arrayidx6 = getelementptr inbounds nuw i8, ptr %q, i32 16, !dbg !171",
+    "type": "GetElementPtrInst"
+  },
+  "13": {
+    "instr": "  %5 = load i64, ptr %arrayidx6, align 8, !dbg !172",
+    "type": "LoadInst"
+  },
+  "14": {
+    "instr": "  %xor7 = xor i64 %5, %4, !dbg !172",
+    "type": "BinOp"
+  },
+  "15": {
+    "instr": "  store i64 %xor7, ptr %arrayidx6, align 8, !dbg !172",
+    "type": "StoreInst"
+  },
+  "16": {
+    "instr": "  %arrayidx8 = getelementptr inbounds nuw i8, ptr %sk, i32 24, !dbg !173",
+    "type": "GetElementPtrInst"
+  },
+  "17": {
+    "instr": "  %6 = load i64, ptr %arrayidx8, align 8, !dbg !173",
+    "type": "LoadInst"
+  },
+  "18": {
+    "instr": "  %arrayidx9 = getelementptr inbounds nuw i8, ptr %q, i32 24, !dbg !174",
+    "type": "GetElementPtrInst"
+  },
+  "19": {
+    "instr": "  %7 = load i64, ptr %arrayidx9, align 8, !dbg !175",
+    "type": "LoadInst"
+  },
+  "20": {
+    "instr": "  %xor10 = xor i64 %7, %6, !dbg !175",
+    "type": "BinOp"
+  },
+  "21": {
+    "instr": "  store i64 %xor10, ptr %arrayidx9, align 8, !dbg !175",
+    "type": "StoreInst"
+  },
+  "22": {
+    "instr": "  %arrayidx11 = getelementptr inbounds nuw i8, ptr %sk, i32 32, !dbg !176",
+    "type": "GetElementPtrInst"
+  },
+  "23": {
+    "instr": "  %8 = load i64, ptr %arrayidx11, align 8, !dbg !176",
+    "type": "LoadInst"
+  },
+  "24": {
+    "instr": "  %arrayidx12 = getelementptr inbounds nuw i8, ptr %q, i32 32, !dbg !177",
+    "type": "GetElementPtrInst"
+  },
+  "25": {
+    "instr": "  %9 = load i64, ptr %arrayidx12, align 8, !dbg !178",
+    "type": "LoadInst"
+  },
+  "26": {
+    "instr": "  %xor13 = xor i64 %9, %8, !dbg !178",
+    "type": "BinOp"
+  },
+  "27": {
+    "instr": "  store i64 %xor13, ptr %arrayidx12, align 8, !dbg !178",
+    "type": "StoreInst"
+  },
+  "28": {
+    "instr": "  %arrayidx14 = getelementptr inbounds nuw i8, ptr %sk, i32 40, !dbg !179",
+    "type": "GetElementPtrInst"
+  },
+  "29": {
+    "instr": "  %10 = load i64, ptr %arrayidx14, align 8, !dbg !179",
+    "type": "LoadInst"
+  },
+  "30": {
+    "instr": "  %arrayidx15 = getelementptr inbounds nuw i8, ptr %q, i32 40, !dbg !180",
+    "type": "GetElementPtrInst"
+  },
+  "31": {
+    "instr": "  %11 = load i64, ptr %arrayidx15, align 8, !dbg !181",
+    "type": "LoadInst"
+  },
+  "32": {
+    "instr": "  %xor16 = xor i64 %11, %10, !dbg !181",
+    "type": "BinOp"
+  },
+  "33": {
+    "instr": "  store i64 %xor16, ptr %arrayidx15, align 8, !dbg !181",
+    "type": "StoreInst"
+  },
+  "34": {
+    "instr": "  %arrayidx17 = getelementptr inbounds nuw i8, ptr %sk, i32 48, !dbg !182",
+    "type": "GetElementPtrInst"
+  },
+  "35": {
+    "instr": "  %12 = load i64, ptr %arrayidx17, align 8, !dbg !182",
+    "type": "LoadInst"
+  },
+  "36": {
+    "instr": "  %arrayidx18 = getelementptr inbounds nuw i8, ptr %q, i32 48, !dbg !183",
+    "type": "GetElementPtrInst"
+  },
+  "37": {
+    "instr": "  %13 = load i64, ptr %arrayidx18, align 8, !dbg !184",
+    "type": "LoadInst"
+  },
+  "38": {
+    "instr": "  %xor19 = xor i64 %13, %12, !dbg !184",
+    "type": "BinOp"
+  },
+  "39": {
+    "instr": "  store i64 %xor19, ptr %arrayidx18, align 8, !dbg !184",
+    "type": "StoreInst"
+  },
+  "40": {
+    "instr": "  %arrayidx20 = getelementptr inbounds nuw i8, ptr %sk, i32 56, !dbg !185",
+    "type": "GetElementPtrInst"
+  },
+  "41": {
+    "instr": "  %14 = load i64, ptr %arrayidx20, align 8, !dbg !185",
+    "type": "LoadInst"
+  },
+  "42": {
+    "instr": "  %arrayidx21 = getelementptr inbounds nuw i8, ptr %q, i32 56, !dbg !186",
+    "type": "GetElementPtrInst"
+  },
+  "43": {
+    "instr": "  %15 = load i64, ptr %arrayidx21, align 8, !dbg !187",
+    "type": "LoadInst"
+  },
+  "44": {
+    "instr": "  %xor22 = xor i64 %15, %14, !dbg !187",
+    "type": "BinOp"
+  },
+  "45": {
+    "instr": "  store i64 %xor22, ptr %arrayidx21, align 8, !dbg !187",
+    "type": "StoreInst"
+  }
+}

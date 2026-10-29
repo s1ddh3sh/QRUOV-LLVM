@@ -1,0 +1,11 @@
+{
+  "0": {
+    "instr": "  %0 = load ptr, ptr %ctx, align 4, !dbg !172",
+    "type": "LoadInst"
+  },
+  "1": {
+    "instr": "  call fastcc void @aes_ecb(ptr noundef %out, ptr noundef %in, i32 noundef %nblocks, ptr noundef %0, i32 noundef 14) #4, !dbg !173",
+    "type": "CallInst",
+    "callee": "aes_ecb"
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "1": {
+    "instr": "  %a.0 = phi ptr [ %A, %entry ], [ %incdec.ptr, %for.body ], !dbg !164",
+    "type": "PHINode"
+  },
+  "2": {
+    "instr": "  %b.0 = phi ptr [ %B, %entry ], [ %incdec.ptr1, %for.body ], !dbg !164",
+    "type": "PHINode"
+  },
+  "3": {
+    "instr": "  %c.0 = phi ptr [ %C, %entry ], [ %incdec.ptr2, %for.body ], !dbg !164",
+    "type": "PHINode"
+  },
+  "7": {
+    "instr": "  %0 = load i8, ptr %a.0, align 1, !dbg !178",
+    "type": "LoadInst"
+  },
+  "8": {
+    "instr": "  %1 = load i8, ptr %b.0, align 1, !dbg !179",
+    "type": "LoadInst"
+  },
+  "9": {
+    "instr": "  %call = call fastcc zeroext i8 @Fq_vec_add(i8 noundef zeroext %0, i8 noundef zeroext %1) #4, !dbg !180",
+    "type": "CallInst",
+    "callee": "Fq_vec_add"
+  },
+  "10": {
+    "instr": "  store i8 %call, ptr %c.0, align 1, !dbg !181",
+    "type": "StoreInst"
+  },
+  "11": {
+    "instr": "  %incdec.ptr2 = getelementptr inbounds nuw i8, ptr %c.0, i32 1, !dbg !182",
+    "type": "GetElementPtrInst"
+  },
+  "12": {
+    "instr": "  %incdec.ptr1 = getelementptr inbounds nuw i8, ptr %b.0, i32 1, !dbg !183",
+    "type": "GetElementPtrInst"
+  },
+  "13": {
+    "instr": "  %incdec.ptr = getelementptr inbounds nuw i8, ptr %a.0, i32 1, !dbg !184",
+    "type": "GetElementPtrInst"
+  }
+}

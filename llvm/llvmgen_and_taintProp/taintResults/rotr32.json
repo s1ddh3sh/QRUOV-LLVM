@@ -1,0 +1,14 @@
+{
+  "0": {
+    "instr": "  %0 = shl i64 %x, 32, !dbg !162",
+    "type": "BinOp"
+  },
+  "1": {
+    "instr": "  %1 = lshr i64 %x, 32, !dbg !162",
+    "type": "BinOp"
+  },
+  "2": {
+    "instr": "  %2 = or i64 %0, %1, !dbg !162",
+    "type": "BinOp"
+  }
+}

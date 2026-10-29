@@ -1,0 +1,22 @@
+{
+  "4": {
+    "instr": "  %arrayidx = getelementptr inbounds nuw i8, ptr %ctr, i32 %i.0, !dbg !170",
+    "type": "GetElementPtrInst"
+  },
+  "5": {
+    "instr": "  %0 = load i8, ptr %arrayidx, align 1, !dbg !172",
+    "type": "LoadInst"
+  },
+  "6": {
+    "instr": "  %inc = add i8 %0, 1, !dbg !172",
+    "type": "BinOp"
+  },
+  "7": {
+    "instr": "  store i8 %inc, ptr %arrayidx, align 1, !dbg !172",
+    "type": "StoreInst"
+  },
+  "8": {
+    "instr": "  %cmp1.not = icmp eq i8 %inc, 0, !dbg !173",
+    "type": "CmpInst"
+  }
+}

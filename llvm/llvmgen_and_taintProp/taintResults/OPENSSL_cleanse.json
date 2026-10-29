@@ -1,0 +1,26 @@
+{
+  "1": {
+    "instr": "  %len.addr.0 = phi i32 [ %len, %entry ], [ %dec, %while.body ]",
+    "type": "PHINode"
+  },
+  "2": {
+    "instr": "  %p.0 = phi ptr [ %ptr, %entry ], [ %incdec.ptr, %while.body ], !dbg !161",
+    "type": "PHINode"
+  },
+  "3": {
+    "instr": "  %tobool.not = icmp eq i32 %len.addr.0, 0, !dbg !164",
+    "type": "CmpInst"
+  },
+  "5": {
+    "instr": "  %dec = add i32 %len.addr.0, -1, !dbg !165",
+    "type": "BinOp"
+  },
+  "6": {
+    "instr": "  %incdec.ptr = getelementptr inbounds nuw i8, ptr %p.0, i32 1, !dbg !166",
+    "type": "GetElementPtrInst"
+  },
+  "7": {
+    "instr": "  store volatile i8 0, ptr %p.0, align 1, !dbg !167",
+    "type": "StoreInst"
+  }
+}

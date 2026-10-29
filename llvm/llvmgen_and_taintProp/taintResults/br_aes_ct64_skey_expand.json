@@ -1,0 +1,86 @@
+{
+  "7": {
+    "instr": "  %arrayidx = getelementptr inbounds nuw i64, ptr %comp_skey, i32 %u.0, !dbg !176",
+    "type": "GetElementPtrInst"
+  },
+  "8": {
+    "instr": "  %0 = load i64, ptr %arrayidx, align 8, !dbg !176",
+    "type": "LoadInst"
+  },
+  "9": {
+    "instr": "  %and = and i64 %0, 1229782938247303441, !dbg !183",
+    "type": "BinOp"
+  },
+  "10": {
+    "instr": "  %and1 = lshr i64 %0, 1, !dbg !184",
+    "type": "BinOp"
+  },
+  "11": {
+    "instr": "  %shr = and i64 %and1, 1229782938247303441, !dbg !184",
+    "type": "BinOp"
+  },
+  "12": {
+    "instr": "  %and2 = lshr i64 %0, 2, !dbg !185",
+    "type": "BinOp"
+  },
+  "13": {
+    "instr": "  %shr4 = and i64 %and2, 1229782938247303441, !dbg !185",
+    "type": "BinOp"
+  },
+  "14": {
+    "instr": "  %and3 = lshr i64 %0, 3, !dbg !186",
+    "type": "BinOp"
+  },
+  "15": {
+    "instr": "  %shr5 = and i64 %and3, 1229782938247303441, !dbg !186",
+    "type": "BinOp"
+  },
+  "16": {
+    "instr": "  %sub = mul nuw i64 %and, 15, !dbg !187",
+    "type": "BinOp"
+  },
+  "17": {
+    "instr": "  %arrayidx8 = getelementptr inbounds nuw i64, ptr %skey, i32 %v.0, !dbg !188",
+    "type": "GetElementPtrInst"
+  },
+  "18": {
+    "instr": "  store i64 %sub, ptr %arrayidx8, align 8, !dbg !189",
+    "type": "StoreInst"
+  },
+  "19": {
+    "instr": "  %sub10 = mul nuw i64 %shr, 15, !dbg !190",
+    "type": "BinOp"
+  },
+  "21": {
+    "instr": "  %arrayidx12 = getelementptr inbounds nuw i64, ptr %skey, i32 %add11, !dbg !192",
+    "type": "GetElementPtrInst"
+  },
+  "22": {
+    "instr": "  store i64 %sub10, ptr %arrayidx12, align 8, !dbg !193",
+    "type": "StoreInst"
+  },
+  "23": {
+    "instr": "  %sub14 = mul nuw i64 %shr4, 15, !dbg !194",
+    "type": "BinOp"
+  },
+  "25": {
+    "instr": "  %arrayidx16 = getelementptr inbounds nuw i64, ptr %skey, i32 %add15, !dbg !196",
+    "type": "GetElementPtrInst"
+  },
+  "26": {
+    "instr": "  store i64 %sub14, ptr %arrayidx16, align 8, !dbg !197",
+    "type": "StoreInst"
+  },
+  "27": {
+    "instr": "  %sub18 = mul nuw i64 %shr5, 15, !dbg !198",
+    "type": "BinOp"
+  },
+  "29": {
+    "instr": "  %arrayidx20 = getelementptr inbounds nuw i64, ptr %skey, i32 %add19, !dbg !200",
+    "type": "GetElementPtrInst"
+  },
+  "30": {
+    "instr": "  store i64 %sub18, ptr %arrayidx20, align 8, !dbg !201",
+    "type": "StoreInst"
+  }
+}

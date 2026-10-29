@@ -1,0 +1,19 @@
+{
+  "4": {
+    "instr": "  %arrayidx = getelementptr inbounds nuw [3 x [18 x i8]], ptr %A, i32 %i.0, !dbg !175",
+    "type": "GetElementPtrInst"
+  },
+  "5": {
+    "instr": "  %arrayidx1 = getelementptr inbounds nuw [3 x [18 x i8]], ptr %B, i32 %i.0, !dbg !177",
+    "type": "GetElementPtrInst"
+  },
+  "6": {
+    "instr": "  %arrayidx3 = getelementptr inbounds nuw [3 x [18 x i8]], ptr %C, i32 %i.0, !dbg !178",
+    "type": "GetElementPtrInst"
+  },
+  "7": {
+    "instr": "  call void @VECTOR_M_ADD(ptr noundef %arrayidx, ptr noundef %arrayidx1, ptr noundef %arrayidx3) #4, !dbg !179",
+    "type": "CallInst",
+    "callee": "VECTOR_M_ADD"
+  }
+}

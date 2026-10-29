@@ -1,0 +1,32 @@
+{
+  "1": {
+    "instr": "  %call = call fastcc ptr @PRG_init_aes_ctr(ptr noundef %seed_sk) #4, !dbg !180",
+    "type": "CallInst",
+    "callee": "PRG_init_aes_ctr"
+  },
+  "2": {
+    "instr": "  call fastcc void @RejSampPRG_aes_ctr(ptr noundef %call, i64 noundef 0, i32 noundef 2808, i32 noundef 2916, ptr noundef nonnull %r2) #4, !dbg !185",
+    "type": "CallInst",
+    "callee": "RejSampPRG_aes_ctr"
+  },
+  "3": {
+    "instr": "  call fastcc void @ExpandMatrixVxM(ptr noundef nonnull %r2, ptr noundef %Sd) #4, !dbg !186",
+    "type": "CallInst",
+    "callee": "ExpandMatrixVxM"
+  },
+  "4": {
+    "instr": "  call void @MATRIX_TRANSPOSE_VxM(ptr noundef nonnull %Sd, ptr noundef nonnull %SdT) #4, !dbg !187",
+    "type": "CallInst",
+    "callee": "MATRIX_TRANSPOSE_VxM"
+  },
+  "5": {
+    "instr": "  call fastcc void @PRG_final_aes_ctr(ptr noundef %call) #4, !dbg !188",
+    "type": "CallInst",
+    "callee": "PRG_final_aes_ctr"
+  },
+  "6": {
+    "instr": "  call void @OPENSSL_cleanse(ptr noundef nonnull %r2, i32 noundef 2916) #4, !dbg !189",
+    "type": "CallInst",
+    "callee": "OPENSSL_cleanse"
+  }
+}

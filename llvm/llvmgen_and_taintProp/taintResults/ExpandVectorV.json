@@ -1,0 +1,35 @@
+{
+  "1": {
+    "instr": "  %s.0 = phi ptr [ %src, %entry ], [ %s.1.lcssa, %for.inc5 ], !dbg !174",
+    "type": "PHINode"
+  },
+  "6": {
+    "instr": "  %s.1 = phi ptr [ %incdec.ptr, %for.body3 ], [ %s.0, %for.cond1.preheader ], !dbg !167",
+    "type": "PHINode"
+  },
+  "10": {
+    "instr": "  %0 = load i8, ptr %s.1, align 1, !dbg !186",
+    "type": "LoadInst"
+  },
+  "11": {
+    "instr": "  %arrayidx4 = getelementptr inbounds [52 x i8], ptr %A, i32 %k.0, i32 %i.0, !dbg !187",
+    "type": "GetElementPtrInst"
+  },
+  "12": {
+    "instr": "  store i8 %0, ptr %arrayidx4, align 1, !dbg !188",
+    "type": "StoreInst"
+  },
+  "13": {
+    "instr": "  %incdec.ptr = getelementptr inbounds nuw i8, ptr %s.1, i32 1, !dbg !189",
+    "type": "GetElementPtrInst"
+  },
+  "16": {
+    "instr": "  %s.1.lcssa = phi ptr [ %s.1, %for.cond1 ], !dbg !167",
+    "type": "PHINode"
+  },
+  "19": {
+    "instr": "  call fastcc void @VECTOR_V_CLEAR_TAIL(ptr noundef %A) #4, !dbg !199",
+    "type": "CallInst",
+    "callee": "VECTOR_V_CLEAR_TAIL"
+  }
+}

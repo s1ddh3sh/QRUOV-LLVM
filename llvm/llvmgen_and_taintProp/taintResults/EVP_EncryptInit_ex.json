@@ -1,0 +1,62 @@
+{
+  "0": {
+    "instr": "  %tobool.not = icmp eq ptr %type, null, !dbg !180",
+    "type": "CmpInst"
+  },
+  "2": {
+    "instr": "  call fastcc void @aes_release(ptr noundef %ctx) #4, !dbg !182",
+    "type": "CallInst",
+    "callee": "aes_release"
+  },
+  "3": {
+    "instr": "  store ptr %type, ptr %ctx, align 4, !dbg !184",
+    "type": "StoreInst"
+  },
+  "5": {
+    "instr": "  %0 = load ptr, ptr %ctx, align 4, !dbg !186",
+    "type": "LoadInst"
+  },
+  "6": {
+    "instr": "  %tobool2.not = icmp eq ptr %0, null, !dbg !188",
+    "type": "CmpInst"
+  },
+  "8": {
+    "instr": "  %tobool5.not = icmp eq ptr %key, null, !dbg !190",
+    "type": "CmpInst"
+  },
+  "10": {
+    "instr": "  call fastcc void @aes_release(ptr noundef nonnull %ctx) #4, !dbg !192",
+    "type": "CallInst",
+    "callee": "aes_release"
+  },
+  "11": {
+    "instr": "  call fastcc void @aes_keyexp(ptr noundef nonnull %ctx, ptr noundef nonnull %key) #4, !dbg !194",
+    "type": "CallInst",
+    "callee": "aes_keyexp"
+  },
+  "12": {
+    "instr": "  %num = getelementptr inbounds nuw i8, ptr %ctx, i32 40, !dbg !195",
+    "type": "GetElementPtrInst"
+  },
+  "13": {
+    "instr": "  store i32 0, ptr %num, align 4, !dbg !196",
+    "type": "StoreInst"
+  },
+  "17": {
+    "instr": "  %ctr = getelementptr inbounds nuw i8, ptr %ctx, i32 8, !dbg !200",
+    "type": "GetElementPtrInst"
+  },
+  "18": {
+    "instr": "  %call = call ptr @memcpy(ptr noundef nonnull %ctr, ptr noundef nonnull %iv, i32 noundef 16) #5, !dbg !202",
+    "type": "CallInst",
+    "callee": "memcpy"
+  },
+  "19": {
+    "instr": "  %num10 = getelementptr inbounds nuw i8, ptr %ctx, i32 40, !dbg !203",
+    "type": "GetElementPtrInst"
+  },
+  "20": {
+    "instr": "  store i32 0, ptr %num10, align 4, !dbg !204",
+    "type": "StoreInst"
+  }
+}

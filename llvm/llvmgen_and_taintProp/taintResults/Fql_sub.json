@@ -1,0 +1,31 @@
+{
+  "4": {
+    "instr": "  %arrayidx = getelementptr inbounds nuw i8, ptr %X, i32 %i.0, !dbg !175",
+    "type": "GetElementPtrInst"
+  },
+  "5": {
+    "instr": "  %0 = load i8, ptr %arrayidx, align 1, !dbg !175",
+    "type": "LoadInst"
+  },
+  "6": {
+    "instr": "  %arrayidx1 = getelementptr inbounds nuw i8, ptr %Y, i32 %i.0, !dbg !176",
+    "type": "GetElementPtrInst"
+  },
+  "7": {
+    "instr": "  %1 = load i8, ptr %arrayidx1, align 1, !dbg !176",
+    "type": "LoadInst"
+  },
+  "8": {
+    "instr": "  %call = call fastcc zeroext i8 @Fq_sub(i8 noundef zeroext %0, i8 noundef zeroext %1) #4, !dbg !177",
+    "type": "CallInst",
+    "callee": "Fq_sub"
+  },
+  "9": {
+    "instr": "  %arrayidx2 = getelementptr inbounds nuw i8, ptr %Z, i32 %i.0, !dbg !178",
+    "type": "GetElementPtrInst"
+  },
+  "10": {
+    "instr": "  store i8 %call, ptr %arrayidx2, align 1, !dbg !179",
+    "type": "StoreInst"
+  }
+}

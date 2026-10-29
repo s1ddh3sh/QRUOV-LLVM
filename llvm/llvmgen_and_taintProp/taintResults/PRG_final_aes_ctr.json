@@ -1,0 +1,7 @@
+{
+  "0": {
+    "instr": "  call void @EVP_CIPHER_CTX_free(ptr noundef %ctx) #4, !dbg !166",
+    "type": "CallInst",
+    "callee": "EVP_CIPHER_CTX_free"
+  }
+}

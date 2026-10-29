@@ -1,0 +1,158 @@
+{
+  "14": {
+    "instr": "  %t.0 = phi i64 [ %add, %for.inc ], [ 0, %for.cond3.preheader ], !dbg !196",
+    "type": "PHINode"
+  },
+  "19": {
+    "instr": "  %arrayidx7 = getelementptr inbounds [54 x i8], ptr %A, i32 %2, i32 %j.0, !dbg !201",
+    "type": "GetElementPtrInst"
+  },
+  "20": {
+    "instr": "  %3 = load i8, ptr %arrayidx7, align 1, !dbg !201",
+    "type": "LoadInst"
+  },
+  "21": {
+    "instr": "  %conv = zext i8 %3 to i64, !dbg !203",
+    "type": "CastInst"
+  },
+  "22": {
+    "instr": "  %arrayidx8 = getelementptr inbounds nuw i8, ptr %b2, i32 %j.0, !dbg !204",
+    "type": "GetElementPtrInst"
+  },
+  "23": {
+    "instr": "  %4 = load i8, ptr %arrayidx8, align 1, !dbg !204",
+    "type": "LoadInst"
+  },
+  "24": {
+    "instr": "  %conv9 = zext i8 %4 to i64, !dbg !205",
+    "type": "CastInst"
+  },
+  "25": {
+    "instr": "  %mul = mul nuw nsw i64 %conv, %conv9, !dbg !206",
+    "type": "BinOp"
+  },
+  "26": {
+    "instr": "  %add = add i64 %t.0, %mul, !dbg !207",
+    "type": "BinOp"
+  },
+  "29": {
+    "instr": "  %t.0.lcssa = phi i64 [ %t.0, %for.cond3 ], !dbg !196",
+    "type": "PHINode"
+  },
+  "30": {
+    "instr": "  %rem = urem i64 %t.0.lcssa, 127, !dbg !213",
+    "type": "BinOp"
+  },
+  "31": {
+    "instr": "  %conv10 = trunc nuw nsw i64 %rem to i8, !dbg !214",
+    "type": "CastInst"
+  },
+  "34": {
+    "instr": "  %arrayidx12 = getelementptr inbounds i8, ptr %b, i32 %5, !dbg !218",
+    "type": "GetElementPtrInst"
+  },
+  "35": {
+    "instr": "  %6 = load i8, ptr %arrayidx12, align 1, !dbg !218",
+    "type": "LoadInst"
+  },
+  "36": {
+    "instr": "  %call = call fastcc zeroext i8 @Fq_sub(i8 noundef zeroext %6, i8 noundef zeroext %conv10) #4, !dbg !219",
+    "type": "CallInst",
+    "callee": "Fq_sub"
+  },
+  "39": {
+    "instr": "  %arrayidx15 = getelementptr inbounds [54 x i8], ptr %A, i32 %7, i32 %i.0, !dbg !220",
+    "type": "GetElementPtrInst"
+  },
+  "40": {
+    "instr": "  %8 = load i8, ptr %arrayidx15, align 1, !dbg !220",
+    "type": "LoadInst"
+  },
+  "41": {
+    "instr": "  %call16 = call fastcc zeroext i8 @Fq_inv(i8 noundef zeroext %8) #4, !dbg !221",
+    "type": "CallInst",
+    "callee": "Fq_inv"
+  },
+  "42": {
+    "instr": "  %call17 = call fastcc zeroext i8 @Fq_mul(i8 noundef zeroext %call, i8 noundef zeroext %call16) #4, !dbg !222",
+    "type": "CallInst",
+    "callee": "Fq_mul"
+  },
+  "43": {
+    "instr": "  %arrayidx18 = getelementptr inbounds i8, ptr %b2, i32 %i.0, !dbg !223",
+    "type": "GetElementPtrInst"
+  },
+  "44": {
+    "instr": "  store i8 %call17, ptr %arrayidx18, align 1, !dbg !224",
+    "type": "StoreInst"
+  },
+  "68": {
+    "instr": "  store i8 %10, ptr %arrayidx31, align 1, !dbg !246",
+    "type": "StoreInst"
+  },
+  "73": {
+    "instr": "  %t34.0 = phi i64 [ %add47, %for.inc48 ], [ 0, %for.cond36.preheader ], !dbg !252",
+    "type": "PHINode"
+  },
+  "79": {
+    "instr": "  %arrayidx42 = getelementptr inbounds [54 x i8], ptr %A, i32 %11, i32 %k.0, !dbg !257",
+    "type": "GetElementPtrInst"
+  },
+  "80": {
+    "instr": "  %12 = load i8, ptr %arrayidx42, align 1, !dbg !257",
+    "type": "LoadInst"
+  },
+  "81": {
+    "instr": "  %conv43 = zext i8 %12 to i64, !dbg !259",
+    "type": "CastInst"
+  },
+  "83": {
+    "instr": "  %13 = load i8, ptr %arrayidx44, align 1, !dbg !260",
+    "type": "LoadInst"
+  },
+  "84": {
+    "instr": "  %conv45 = zext i8 %13 to i64, !dbg !261",
+    "type": "CastInst"
+  },
+  "85": {
+    "instr": "  %mul46 = mul nuw nsw i64 %conv43, %conv45, !dbg !262",
+    "type": "BinOp"
+  },
+  "86": {
+    "instr": "  %add47 = add i64 %t34.0, %mul46, !dbg !263",
+    "type": "BinOp"
+  },
+  "88": {
+    "instr": "  %t34.0.lcssa = phi i64 [ %t34.0, %for.cond36 ], !dbg !252",
+    "type": "PHINode"
+  },
+  "89": {
+    "instr": "  %arrayidx51 = getelementptr inbounds nuw i8, ptr %b2, i32 %j.1, !dbg !267",
+    "type": "GetElementPtrInst"
+  },
+  "90": {
+    "instr": "  %14 = load i8, ptr %arrayidx51, align 1, !dbg !267",
+    "type": "LoadInst"
+  },
+  "91": {
+    "instr": "  %rem52 = urem i64 %t34.0.lcssa, 127, !dbg !268",
+    "type": "BinOp"
+  },
+  "92": {
+    "instr": "  %conv53 = trunc nuw nsw i64 %rem52 to i8, !dbg !269",
+    "type": "CastInst"
+  },
+  "93": {
+    "instr": "  %call54 = call fastcc zeroext i8 @Fq_sub(i8 noundef zeroext %14, i8 noundef zeroext %conv53) #4, !dbg !270",
+    "type": "CallInst",
+    "callee": "Fq_sub"
+  },
+  "95": {
+    "instr": "  store i8 %call54, ptr %arrayidx55, align 1, !dbg !272",
+    "type": "StoreInst"
+  },
+  "104": {
+    "instr": "  store i8 %15, ptr %arrayidx65, align 1, !dbg !281",
+    "type": "StoreInst"
+  }
+}

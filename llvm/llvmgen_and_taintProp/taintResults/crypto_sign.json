@@ -1,0 +1,30 @@
+{
+  "1": {
+    "instr": "  %seed_sk = alloca [16 x i8], align 1",
+    "type": "AllocaInst"
+  },
+  "3": {
+    "instr": "  %seed_y = alloca [16 x i8], align 1",
+    "type": "AllocaInst"
+  },
+  "9": {
+    "instr": "  call fastcc void @restore_QRUOV_SEED(ptr noundef %sk, ptr noundef nonnull %sk_pool_bits, ptr noundef nonnull %seed_sk) #4, !dbg !171",
+    "type": "CallInst",
+    "callee": "restore_QRUOV_SEED"
+  },
+  "10": {
+    "instr": "  call fastcc void @restore_QRUOV_SEED(ptr noundef %sk, ptr noundef nonnull %sk_pool_bits, ptr noundef nonnull %seed_pk) #4, !dbg !174",
+    "type": "CallInst",
+    "callee": "restore_QRUOV_SEED"
+  },
+  "11": {
+    "instr": "  %call = call i32 @randombytes(ptr noundef nonnull %seed_y, i64 noundef 16) #4, !dbg !177",
+    "type": "CallInst",
+    "callee": "randombytes"
+  },
+  "15": {
+    "instr": "  call void @QRUOV_Sign(ptr noundef nonnull %seed_sk, ptr noundef nonnull %seed_pk, ptr noundef nonnull %seed_y, ptr noundef nonnull %seed_r, ptr noundef nonnull %seed_sol, ptr noundef %m, i32 noundef %conv, ptr noundef nonnull %sig) #4, !dbg !191",
+    "type": "CallInst",
+    "callee": "QRUOV_Sign"
+  }
+}

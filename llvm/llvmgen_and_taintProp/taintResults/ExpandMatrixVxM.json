@@ -1,0 +1,47 @@
+{
+  "2": {
+    "instr": "  %s.0 = phi ptr [ %src, %entry ], [ %s.1.lcssa, %for.end11 ], !dbg !171",
+    "type": "PHINode"
+  },
+  "6": {
+    "instr": "  %s.1 = phi ptr [ %s.2.lcssa, %for.inc9 ], [ %s.0, %for.cond1.preheader ], !dbg !171",
+    "type": "PHINode"
+  },
+  "11": {
+    "instr": "  %s.2 = phi ptr [ %incdec.ptr, %for.body6 ], [ %s.1, %for.cond4.preheader ], !dbg !163",
+    "type": "PHINode"
+  },
+  "15": {
+    "instr": "  %0 = load i8, ptr %s.2, align 1, !dbg !191",
+    "type": "LoadInst"
+  },
+  "16": {
+    "instr": "  %arrayidx8 = getelementptr inbounds [3 x [18 x i8]], ptr %A, i32 %i.0, i32 %k.0, i32 %j.0, !dbg !193",
+    "type": "GetElementPtrInst"
+  },
+  "17": {
+    "instr": "  store i8 %0, ptr %arrayidx8, align 1, !dbg !194",
+    "type": "StoreInst"
+  },
+  "18": {
+    "instr": "  %incdec.ptr = getelementptr inbounds nuw i8, ptr %s.2, i32 1, !dbg !195",
+    "type": "GetElementPtrInst"
+  },
+  "21": {
+    "instr": "  %s.2.lcssa = phi ptr [ %s.2, %for.cond4 ], !dbg !163",
+    "type": "PHINode"
+  },
+  "24": {
+    "instr": "  %s.1.lcssa = phi ptr [ %s.1, %for.cond1 ], !dbg !171",
+    "type": "PHINode"
+  },
+  "25": {
+    "instr": "  %arrayidx12 = getelementptr inbounds [3 x [18 x i8]], ptr %A, i32 %i.0, !dbg !205",
+    "type": "GetElementPtrInst"
+  },
+  "26": {
+    "instr": "  call fastcc void @VECTOR_M_CLEAR_TAIL(ptr noundef %arrayidx12) #4, !dbg !206",
+    "type": "CallInst",
+    "callee": "VECTOR_M_CLEAR_TAIL"
+  }
+}

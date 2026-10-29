@@ -1,0 +1,15 @@
+{
+  "4": {
+    "instr": "  %arrayidx = getelementptr inbounds nuw [18 x i8], ptr %C, i32 %k.0, !dbg !171",
+    "type": "GetElementPtrInst"
+  },
+  "5": {
+    "instr": "  %add.ptr = getelementptr inbounds nuw i8, ptr %arrayidx, i32 18, !dbg !172",
+    "type": "GetElementPtrInst"
+  },
+  "6": {
+    "instr": "  %call = call ptr @memset(ptr noundef nonnull %add.ptr, i32 noundef 0, i32 noundef 0) #4, !dbg !173",
+    "type": "CallInst",
+    "callee": "memset"
+  }
+}

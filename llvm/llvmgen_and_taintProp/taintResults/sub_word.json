@@ -1,0 +1,38 @@
+{
+  "1": {
+    "instr": "  %call = call ptr @memset(ptr noundef nonnull %q, i32 noundef 0, i32 noundef 64) #4, !dbg !167",
+    "type": "CallInst",
+    "callee": "memset"
+  },
+  "2": {
+    "instr": "  %conv = zext i32 %x to i64, !dbg !168",
+    "type": "CastInst"
+  },
+  "3": {
+    "instr": "  store i64 %conv, ptr %q, align 8, !dbg !169",
+    "type": "StoreInst"
+  },
+  "4": {
+    "instr": "  call fastcc void @br_aes_ct64_ortho(ptr noundef nonnull %q) #5, !dbg !170",
+    "type": "CallInst",
+    "callee": "br_aes_ct64_ortho"
+  },
+  "5": {
+    "instr": "  call fastcc void @br_aes_ct64_bitslice_Sbox(ptr noundef nonnull %q) #5, !dbg !171",
+    "type": "CallInst",
+    "callee": "br_aes_ct64_bitslice_Sbox"
+  },
+  "6": {
+    "instr": "  call fastcc void @br_aes_ct64_ortho(ptr noundef nonnull %q) #5, !dbg !172",
+    "type": "CallInst",
+    "callee": "br_aes_ct64_ortho"
+  },
+  "7": {
+    "instr": "  %0 = load i64, ptr %q, align 8, !dbg !173",
+    "type": "LoadInst"
+  },
+  "8": {
+    "instr": "  %conv5 = trunc i64 %0 to i32, !dbg !174",
+    "type": "CastInst"
+  }
+}

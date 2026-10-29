@@ -1,0 +1,99 @@
+{
+  "1": {
+    "instr": "  %call = call ptr @memset(ptr noundef nonnull %T, i32 noundef 0, i32 noundef 20) #4, !dbg !172",
+    "type": "CallInst",
+    "callee": "memset"
+  },
+  "11": {
+    "instr": "  %arrayidx = getelementptr inbounds nuw i8, ptr %X, i32 %i.0, !dbg !191",
+    "type": "GetElementPtrInst"
+  },
+  "12": {
+    "instr": "  %0 = load i8, ptr %arrayidx, align 1, !dbg !191",
+    "type": "LoadInst"
+  },
+  "13": {
+    "instr": "  %conv = zext i8 %0 to i32, !dbg !193",
+    "type": "CastInst"
+  },
+  "14": {
+    "instr": "  %arrayidx4 = getelementptr inbounds nuw i8, ptr %Y, i32 %j.0, !dbg !194",
+    "type": "GetElementPtrInst"
+  },
+  "15": {
+    "instr": "  %1 = load i8, ptr %arrayidx4, align 1, !dbg !194",
+    "type": "LoadInst"
+  },
+  "16": {
+    "instr": "  %conv5 = zext i8 %1 to i32, !dbg !195",
+    "type": "CastInst"
+  },
+  "17": {
+    "instr": "  %mul = mul nuw nsw i32 %conv, %conv5, !dbg !196",
+    "type": "BinOp"
+  },
+  "20": {
+    "instr": "  %2 = load i32, ptr %arrayidx6, align 4, !dbg !199",
+    "type": "LoadInst"
+  },
+  "21": {
+    "instr": "  %add7 = add i32 %2, %mul, !dbg !199",
+    "type": "BinOp"
+  },
+  "22": {
+    "instr": "  store i32 %add7, ptr %arrayidx6, align 4, !dbg !199",
+    "type": "StoreInst"
+  },
+  "32": {
+    "instr": "  %3 = load i32, ptr %arrayidx16, align 4, !dbg !216",
+    "type": "LoadInst"
+  },
+  "35": {
+    "instr": "  %4 = load i32, ptr %arrayidx18, align 4, !dbg !220",
+    "type": "LoadInst"
+  },
+  "36": {
+    "instr": "  %add19 = add i32 %4, %3, !dbg !220",
+    "type": "BinOp"
+  },
+  "37": {
+    "instr": "  store i32 %add19, ptr %arrayidx18, align 4, !dbg !220",
+    "type": "StoreInst"
+  },
+  "39": {
+    "instr": "  %5 = load i32, ptr %arrayidx20, align 4, !dbg !221",
+    "type": "LoadInst"
+  },
+  "42": {
+    "instr": "  %6 = load i32, ptr %arrayidx24, align 4, !dbg !224",
+    "type": "LoadInst"
+  },
+  "43": {
+    "instr": "  %add25 = add i32 %6, %5, !dbg !224",
+    "type": "BinOp"
+  },
+  "44": {
+    "instr": "  store i32 %add25, ptr %arrayidx24, align 4, !dbg !224",
+    "type": "StoreInst"
+  },
+  "51": {
+    "instr": "  %7 = load i32, ptr %arrayidx33, align 4, !dbg !234",
+    "type": "LoadInst"
+  },
+  "52": {
+    "instr": "  %rem = srem i32 %7, 127, !dbg !235",
+    "type": "BinOp"
+  },
+  "53": {
+    "instr": "  %conv34 = trunc nsw i32 %rem to i8, !dbg !236",
+    "type": "CastInst"
+  },
+  "54": {
+    "instr": "  %arrayidx35 = getelementptr inbounds nuw i8, ptr %Z, i32 %i28.0, !dbg !237",
+    "type": "GetElementPtrInst"
+  },
+  "55": {
+    "instr": "  store i8 %conv34, ptr %arrayidx35, align 1, !dbg !238",
+    "type": "StoreInst"
+  }
+}

@@ -1,0 +1,70 @@
+{
+  "0": {
+    "instr": "  %0 = load i8, ptr %src, align 1, !dbg !162",
+    "type": "LoadInst"
+  },
+  "1": {
+    "instr": "  %conv = zext i8 %0 to i32, !dbg !163",
+    "type": "CastInst"
+  },
+  "2": {
+    "instr": "  %arrayidx1 = getelementptr inbounds nuw i8, ptr %src, i32 1, !dbg !164",
+    "type": "GetElementPtrInst"
+  },
+  "3": {
+    "instr": "  %1 = load i8, ptr %arrayidx1, align 1, !dbg !164",
+    "type": "LoadInst"
+  },
+  "4": {
+    "instr": "  %conv2 = zext i8 %1 to i32, !dbg !165",
+    "type": "CastInst"
+  },
+  "5": {
+    "instr": "  %shl = shl nuw nsw i32 %conv2, 8, !dbg !166",
+    "type": "BinOp"
+  },
+  "6": {
+    "instr": "  %or = or disjoint i32 %shl, %conv, !dbg !167",
+    "type": "BinOp"
+  },
+  "7": {
+    "instr": "  %arrayidx3 = getelementptr inbounds nuw i8, ptr %src, i32 2, !dbg !168",
+    "type": "GetElementPtrInst"
+  },
+  "8": {
+    "instr": "  %2 = load i8, ptr %arrayidx3, align 1, !dbg !168",
+    "type": "LoadInst"
+  },
+  "9": {
+    "instr": "  %conv4 = zext i8 %2 to i32, !dbg !169",
+    "type": "CastInst"
+  },
+  "10": {
+    "instr": "  %shl5 = shl nuw nsw i32 %conv4, 16, !dbg !170",
+    "type": "BinOp"
+  },
+  "11": {
+    "instr": "  %or6 = or disjoint i32 %or, %shl5, !dbg !171",
+    "type": "BinOp"
+  },
+  "12": {
+    "instr": "  %arrayidx7 = getelementptr inbounds nuw i8, ptr %src, i32 3, !dbg !172",
+    "type": "GetElementPtrInst"
+  },
+  "13": {
+    "instr": "  %3 = load i8, ptr %arrayidx7, align 1, !dbg !172",
+    "type": "LoadInst"
+  },
+  "14": {
+    "instr": "  %conv8 = zext i8 %3 to i32, !dbg !173",
+    "type": "CastInst"
+  },
+  "15": {
+    "instr": "  %shl9 = shl nuw i32 %conv8, 24, !dbg !174",
+    "type": "BinOp"
+  },
+  "16": {
+    "instr": "  %or10 = or disjoint i32 %or6, %shl9, !dbg !175",
+    "type": "BinOp"
+  }
+}

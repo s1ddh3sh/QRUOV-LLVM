@@ -1,0 +1,61 @@
+{
+  "0": {
+    "instr": "  %rk = getelementptr inbounds nuw i8, ptr %ctx, i32 4, !dbg !174",
+    "type": "GetElementPtrInst"
+  },
+  "1": {
+    "instr": "  %0 = load ptr, ptr %rk, align 4, !dbg !174",
+    "type": "LoadInst"
+  },
+  "2": {
+    "instr": "  %tobool.not = icmp eq ptr %0, null, !dbg !176",
+    "type": "CmpInst"
+  },
+  "4": {
+    "instr": "  %rk1 = getelementptr inbounds nuw i8, ptr %ctx, i32 4, !dbg !177",
+    "type": "GetElementPtrInst"
+  },
+  "5": {
+    "instr": "  %1 = load ptr, ptr %rk1, align 4, !dbg !177",
+    "type": "LoadInst"
+  },
+  "6": {
+    "instr": "  %2 = load ptr, ptr %ctx, align 4, !dbg !179",
+    "type": "LoadInst"
+  },
+  "7": {
+    "instr": "  %call = call fastcc i32 @aes_rk_words(ptr noundef %2) #4, !dbg !180",
+    "type": "CallInst",
+    "callee": "aes_rk_words"
+  },
+  "8": {
+    "instr": "  %mul = shl nuw nsw i32 %call, 3, !dbg !181",
+    "type": "BinOp"
+  },
+  "9": {
+    "instr": "  call void @OPENSSL_cleanse(ptr noundef %1, i32 noundef %mul) #4, !dbg !182",
+    "type": "CallInst",
+    "callee": "OPENSSL_cleanse"
+  },
+  "10": {
+    "instr": "  %rk2 = getelementptr inbounds nuw i8, ptr %ctx, i32 4, !dbg !183",
+    "type": "GetElementPtrInst"
+  },
+  "11": {
+    "instr": "  %3 = load ptr, ptr %rk2, align 4, !dbg !183",
+    "type": "LoadInst"
+  },
+  "12": {
+    "instr": "  call void @free(ptr noundef %3) #5, !dbg !184",
+    "type": "CallInst",
+    "callee": "free"
+  },
+  "13": {
+    "instr": "  %rk3 = getelementptr inbounds nuw i8, ptr %ctx, i32 4, !dbg !185",
+    "type": "GetElementPtrInst"
+  },
+  "14": {
+    "instr": "  store ptr null, ptr %rk3, align 4, !dbg !186",
+    "type": "StoreInst"
+  }
+}

@@ -1,0 +1,137 @@
+{
+  "0": {
+    "instr": "  %rk = getelementptr inbounds nuw i8, ptr %ctx, i32 4, !dbg !179",
+    "type": "GetElementPtrInst"
+  },
+  "1": {
+    "instr": "  %0 = load ptr, ptr %rk, align 4, !dbg !179",
+    "type": "LoadInst"
+  },
+  "2": {
+    "instr": "  %tobool.not = icmp eq ptr %0, null, !dbg !181",
+    "type": "CmpInst"
+  },
+  "4": {
+    "instr": "  %or.cond = or i1 %tobool.not, %cmp, !dbg !182",
+    "type": "BinOp"
+  },
+  "6": {
+    "instr": "  %1 = load ptr, ptr %ctx, align 4, !dbg !183",
+    "type": "LoadInst"
+  },
+  "7": {
+    "instr": "  %mode = getelementptr inbounds nuw i8, ptr %1, i32 4, !dbg !185",
+    "type": "GetElementPtrInst"
+  },
+  "8": {
+    "instr": "  %2 = load i32, ptr %mode, align 4, !dbg !185",
+    "type": "LoadInst"
+  },
+  "9": {
+    "instr": "  %cmp1 = icmp eq i32 %2, 1, !dbg !186",
+    "type": "CmpInst"
+  },
+  "16": {
+    "instr": "  call fastcc void @aes_encrypt_blocks(ptr noundef nonnull %ctx, ptr noundef %out, ptr noundef %in, i32 noundef %div3) #4, !dbg !193",
+    "type": "CallInst",
+    "callee": "aes_encrypt_blocks"
+  },
+  "22": {
+    "instr": "  %num = getelementptr inbounds nuw i8, ptr %ctx, i32 40, !dbg !201",
+    "type": "GetElementPtrInst"
+  },
+  "23": {
+    "instr": "  %3 = load i32, ptr %num, align 4, !dbg !201",
+    "type": "LoadInst"
+  },
+  "24": {
+    "instr": "  %cmp8 = icmp eq i32 %3, 0, !dbg !204",
+    "type": "CmpInst"
+  },
+  "26": {
+    "instr": "  %ks = getelementptr inbounds nuw i8, ptr %ctx, i32 24, !dbg !205",
+    "type": "GetElementPtrInst"
+  },
+  "27": {
+    "instr": "  %ctr = getelementptr inbounds nuw i8, ptr %ctx, i32 8, !dbg !207",
+    "type": "GetElementPtrInst"
+  },
+  "28": {
+    "instr": "  call fastcc void @aes_encrypt_blocks(ptr noundef nonnull %ctx, ptr noundef nonnull %ks, ptr noundef nonnull %ctr, i32 noundef 1) #4, !dbg !208",
+    "type": "CallInst",
+    "callee": "aes_encrypt_blocks"
+  },
+  "29": {
+    "instr": "  %ctr11 = getelementptr inbounds nuw i8, ptr %ctx, i32 8, !dbg !209",
+    "type": "GetElementPtrInst"
+  },
+  "30": {
+    "instr": "  call fastcc void @ctr128_inc(ptr noundef nonnull %ctr11) #4, !dbg !210",
+    "type": "CallInst",
+    "callee": "ctr128_inc"
+  },
+  "32": {
+    "instr": "  %arrayidx = getelementptr inbounds nuw i8, ptr %in, i32 %i.0, !dbg !212",
+    "type": "GetElementPtrInst"
+  },
+  "33": {
+    "instr": "  %4 = load i8, ptr %arrayidx, align 1, !dbg !212",
+    "type": "LoadInst"
+  },
+  "34": {
+    "instr": "  %ks14 = getelementptr inbounds nuw i8, ptr %ctx, i32 24, !dbg !213",
+    "type": "GetElementPtrInst"
+  },
+  "35": {
+    "instr": "  %num15 = getelementptr inbounds nuw i8, ptr %ctx, i32 40, !dbg !214",
+    "type": "GetElementPtrInst"
+  },
+  "36": {
+    "instr": "  %5 = load i32, ptr %num15, align 4, !dbg !214",
+    "type": "LoadInst"
+  },
+  "37": {
+    "instr": "  %arrayidx16 = getelementptr inbounds nuw [16 x i8], ptr %ks14, i32 0, i32 %5, !dbg !215",
+    "type": "GetElementPtrInst"
+  },
+  "38": {
+    "instr": "  %6 = load i8, ptr %arrayidx16, align 1, !dbg !215",
+    "type": "LoadInst"
+  },
+  "39": {
+    "instr": "  %xor2 = xor i8 %4, %6, !dbg !216",
+    "type": "BinOp"
+  },
+  "40": {
+    "instr": "  %arrayidx19 = getelementptr inbounds nuw i8, ptr %out, i32 %i.0, !dbg !217",
+    "type": "GetElementPtrInst"
+  },
+  "41": {
+    "instr": "  store i8 %xor2, ptr %arrayidx19, align 1, !dbg !218",
+    "type": "StoreInst"
+  },
+  "42": {
+    "instr": "  %num20 = getelementptr inbounds nuw i8, ptr %ctx, i32 40, !dbg !219",
+    "type": "GetElementPtrInst"
+  },
+  "43": {
+    "instr": "  %7 = load i32, ptr %num20, align 4, !dbg !219",
+    "type": "LoadInst"
+  },
+  "44": {
+    "instr": "  %add = add i32 %7, 1, !dbg !220",
+    "type": "BinOp"
+  },
+  "45": {
+    "instr": "  %and = and i32 %add, 15, !dbg !221",
+    "type": "BinOp"
+  },
+  "46": {
+    "instr": "  %num21 = getelementptr inbounds nuw i8, ptr %ctx, i32 40, !dbg !222",
+    "type": "GetElementPtrInst"
+  },
+  "47": {
+    "instr": "  store i32 %and, ptr %num21, align 4, !dbg !223",
+    "type": "StoreInst"
+  }
+}

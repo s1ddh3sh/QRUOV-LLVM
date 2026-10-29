@@ -1,0 +1,15 @@
+{
+  "4": {
+    "instr": "  %arrayidx = getelementptr inbounds nuw [3 x [52 x i8]], ptr %A, i32 %i.0, !dbg !181",
+    "type": "GetElementPtrInst"
+  },
+  "5": {
+    "instr": "  %arrayidx1 = getelementptr inbounds nuw [3 x [52 x i8]], ptr %C, i32 %i.0, !dbg !183",
+    "type": "GetElementPtrInst"
+  },
+  "6": {
+    "instr": "  call void @VECTOR_V_MUL_SYMMETRIC_MATRIX_VxV(ptr noundef %arrayidx, ptr noundef %B, ptr noundef %arrayidx1) #4, !dbg !184",
+    "type": "CallInst",
+    "callee": "VECTOR_V_MUL_SYMMETRIC_MATRIX_VxV"
+  }
+}

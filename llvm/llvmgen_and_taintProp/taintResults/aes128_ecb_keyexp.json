@@ -1,0 +1,20 @@
+{
+  "2": {
+    "instr": "  store ptr %call, ptr %r, align 4, !dbg !175",
+    "type": "StoreInst"
+  },
+  "7": {
+    "instr": "  call fastcc void @br_aes_ct64_keysched(ptr noundef nonnull %skey, ptr noundef %key, i32 noundef 16) #6, !dbg !181",
+    "type": "CallInst",
+    "callee": "br_aes_ct64_keysched"
+  },
+  "8": {
+    "instr": "  %0 = load ptr, ptr %r, align 4, !dbg !182",
+    "type": "LoadInst"
+  },
+  "9": {
+    "instr": "  call fastcc void @br_aes_ct64_skey_expand(ptr noundef %0, ptr noundef nonnull %skey, i32 noundef 10) #6, !dbg !183",
+    "type": "CallInst",
+    "callee": "br_aes_ct64_skey_expand"
+  }
+}

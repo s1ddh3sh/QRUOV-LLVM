@@ -1,0 +1,22 @@
+{
+  "0": {
+    "instr": "  %conv = zext i8 %X to i16, !dbg !163",
+    "type": "CastInst"
+  },
+  "1": {
+    "instr": "  %conv1 = zext i8 %Y to i16, !dbg !164",
+    "type": "CastInst"
+  },
+  "2": {
+    "instr": "  %add = add nuw nsw i16 %conv, %conv1, !dbg !165",
+    "type": "BinOp"
+  },
+  "3": {
+    "instr": "  %rem1 = urem i16 %add, 127, !dbg !166",
+    "type": "BinOp"
+  },
+  "4": {
+    "instr": "  %conv2 = trunc nuw nsw i16 %rem1 to i8, !dbg !167",
+    "type": "CastInst"
+  }
+}

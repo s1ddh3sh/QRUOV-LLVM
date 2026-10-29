@@ -1,0 +1,61 @@
+{
+  "3": {
+    "instr": "  %0 = load ptr, ptr %ctx, align 4, !dbg !178",
+    "type": "LoadInst"
+  },
+  "4": {
+    "instr": "  %1 = load i32, ptr %0, align 4, !dbg !179",
+    "type": "LoadInst"
+  },
+  "6": {
+    "instr": "  %rk = getelementptr inbounds nuw i8, ptr %ctx, i32 4, !dbg !189",
+    "type": "GetElementPtrInst"
+  },
+  "7": {
+    "instr": "  %2 = load ptr, ptr %rk, align 4, !dbg !189",
+    "type": "LoadInst"
+  },
+  "8": {
+    "instr": "  store ptr %2, ptr %a, align 4, !dbg !190",
+    "type": "StoreInst"
+  },
+  "9": {
+    "instr": "  call void @aes128_ecb(ptr noundef %out, ptr noundef %in, i32 noundef %nblocks, ptr noundef nonnull %a) #4, !dbg !191",
+    "type": "CallInst",
+    "callee": "aes128_ecb"
+  },
+  "11": {
+    "instr": "  %rk4 = getelementptr inbounds nuw i8, ptr %ctx, i32 4, !dbg !200",
+    "type": "GetElementPtrInst"
+  },
+  "12": {
+    "instr": "  %3 = load ptr, ptr %rk4, align 4, !dbg !200",
+    "type": "LoadInst"
+  },
+  "13": {
+    "instr": "  store ptr %3, ptr %a2, align 4, !dbg !201",
+    "type": "StoreInst"
+  },
+  "14": {
+    "instr": "  call void @aes192_ecb(ptr noundef %out, ptr noundef %in, i32 noundef %nblocks, ptr noundef nonnull %a2) #4, !dbg !202",
+    "type": "CallInst",
+    "callee": "aes192_ecb"
+  },
+  "16": {
+    "instr": "  %rk7 = getelementptr inbounds nuw i8, ptr %ctx, i32 4, !dbg !211",
+    "type": "GetElementPtrInst"
+  },
+  "17": {
+    "instr": "  %4 = load ptr, ptr %rk7, align 4, !dbg !211",
+    "type": "LoadInst"
+  },
+  "18": {
+    "instr": "  store ptr %4, ptr %a5, align 4, !dbg !212",
+    "type": "StoreInst"
+  },
+  "19": {
+    "instr": "  call void @aes256_ecb(ptr noundef %out, ptr noundef %in, i32 noundef %nblocks, ptr noundef nonnull %a5) #4, !dbg !213",
+    "type": "CallInst",
+    "callee": "aes256_ecb"
+  }
+}

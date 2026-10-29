@@ -1,0 +1,203 @@
+{
+  "6": {
+    "instr": "  call fastcc void @br_range_dec32le(ptr noundef nonnull %skey, i32 noundef %shr3, ptr noundef %key) #4, !dbg !176",
+    "type": "CallInst",
+    "callee": "br_range_dec32le"
+  },
+  "10": {
+    "instr": "  %1 = load i32, ptr %arrayidx, align 4, !dbg !179",
+    "type": "LoadInst"
+  },
+  "15": {
+    "instr": "  %tmp.0 = phi i32 [ %1, %entry ], [ %xor19, %if.end16 ], !dbg !162",
+    "type": "PHINode"
+  },
+  "21": {
+    "instr": "  %2 = shl i32 %tmp.0, 24, !dbg !196",
+    "type": "BinOp"
+  },
+  "22": {
+    "instr": "  %3 = lshr i32 %tmp.0, 8, !dbg !196",
+    "type": "BinOp"
+  },
+  "23": {
+    "instr": "  %4 = or i32 %2, %3, !dbg !196",
+    "type": "BinOp"
+  },
+  "24": {
+    "instr": "  %call = call fastcc i32 @sub_word(i32 noundef %4) #4, !dbg !198",
+    "type": "CallInst",
+    "callee": "sub_word"
+  },
+  "28": {
+    "instr": "  %xor = xor i32 %call, %conv, !dbg !200",
+    "type": "BinOp"
+  },
+  "34": {
+    "instr": "  %call15 = call fastcc i32 @sub_word(i32 noundef %tmp.0) #4, !dbg !205",
+    "type": "CallInst",
+    "callee": "sub_word"
+  },
+  "36": {
+    "instr": "  %tmp.2 = phi i32 [ %xor, %if.then ], [ %call15, %if.then14 ], [ %tmp.0, %if.else ], !dbg !208",
+    "type": "PHINode"
+  },
+  "39": {
+    "instr": "  %6 = load i32, ptr %arrayidx18, align 4, !dbg !210",
+    "type": "LoadInst"
+  },
+  "40": {
+    "instr": "  %xor19 = xor i32 %tmp.2, %6, !dbg !211",
+    "type": "BinOp"
+  },
+  "42": {
+    "instr": "  store i32 %xor19, ptr %arrayidx20, align 4, !dbg !213",
+    "type": "StoreInst"
+  },
+  "56": {
+    "instr": "  call fastcc void @br_aes_ct64_interleave_in(ptr noundef nonnull %q, ptr noundef nonnull %arrayidx32, ptr noundef nonnull %add.ptr) #4, !dbg !233",
+    "type": "CallInst",
+    "callee": "br_aes_ct64_interleave_in"
+  },
+  "57": {
+    "instr": "  %7 = load i64, ptr %q, align 8, !dbg !234",
+    "type": "LoadInst"
+  },
+  "59": {
+    "instr": "  store i64 %7, ptr %arrayidx35, align 8, !dbg !236",
+    "type": "StoreInst"
+  },
+  "61": {
+    "instr": "  store i64 %7, ptr %arrayidx37, align 8, !dbg !238",
+    "type": "StoreInst"
+  },
+  "63": {
+    "instr": "  store i64 %7, ptr %arrayidx39, align 8, !dbg !240",
+    "type": "StoreInst"
+  },
+  "65": {
+    "instr": "  %8 = load i64, ptr %arrayidx40, align 8, !dbg !241",
+    "type": "LoadInst"
+  },
+  "67": {
+    "instr": "  store i64 %8, ptr %arrayidx41, align 8, !dbg !243",
+    "type": "StoreInst"
+  },
+  "69": {
+    "instr": "  store i64 %8, ptr %arrayidx43, align 8, !dbg !245",
+    "type": "StoreInst"
+  },
+  "71": {
+    "instr": "  store i64 %8, ptr %arrayidx45, align 8, !dbg !247",
+    "type": "StoreInst"
+  },
+  "72": {
+    "instr": "  call fastcc void @br_aes_ct64_ortho(ptr noundef nonnull %q) #4, !dbg !248",
+    "type": "CallInst",
+    "callee": "br_aes_ct64_ortho"
+  },
+  "73": {
+    "instr": "  %9 = load i64, ptr %q, align 8, !dbg !249",
+    "type": "LoadInst"
+  },
+  "74": {
+    "instr": "  %and = and i64 %9, 1229782938247303441, !dbg !250",
+    "type": "BinOp"
+  },
+  "76": {
+    "instr": "  %10 = load i64, ptr %arrayidx48, align 8, !dbg !251",
+    "type": "LoadInst"
+  },
+  "77": {
+    "instr": "  %and49 = and i64 %10, 2459565876494606882, !dbg !252",
+    "type": "BinOp"
+  },
+  "78": {
+    "instr": "  %or50 = or disjoint i64 %and, %and49, !dbg !253",
+    "type": "BinOp"
+  },
+  "80": {
+    "instr": "  %11 = load i64, ptr %arrayidx51, align 8, !dbg !254",
+    "type": "LoadInst"
+  },
+  "81": {
+    "instr": "  %and52 = and i64 %11, 4919131752989213764, !dbg !255",
+    "type": "BinOp"
+  },
+  "82": {
+    "instr": "  %or53 = or disjoint i64 %or50, %and52, !dbg !256",
+    "type": "BinOp"
+  },
+  "84": {
+    "instr": "  %12 = load i64, ptr %arrayidx54, align 8, !dbg !257",
+    "type": "LoadInst"
+  },
+  "85": {
+    "instr": "  %and55 = and i64 %12, -8608480567731124088, !dbg !258",
+    "type": "BinOp"
+  },
+  "86": {
+    "instr": "  %or56 = or disjoint i64 %or53, %and55, !dbg !259",
+    "type": "BinOp"
+  },
+  "87": {
+    "instr": "  %arrayidx58 = getelementptr inbounds nuw i64, ptr %comp_skey, i32 %j.2, !dbg !260",
+    "type": "GetElementPtrInst"
+  },
+  "88": {
+    "instr": "  store i64 %or56, ptr %arrayidx58, align 8, !dbg !261",
+    "type": "StoreInst"
+  },
+  "90": {
+    "instr": "  %13 = load i64, ptr %arrayidx59, align 8, !dbg !262",
+    "type": "LoadInst"
+  },
+  "91": {
+    "instr": "  %and60 = and i64 %13, 1229782938247303441, !dbg !263",
+    "type": "BinOp"
+  },
+  "93": {
+    "instr": "  %14 = load i64, ptr %arrayidx61, align 8, !dbg !264",
+    "type": "LoadInst"
+  },
+  "94": {
+    "instr": "  %and62 = and i64 %14, 2459565876494606882, !dbg !265",
+    "type": "BinOp"
+  },
+  "95": {
+    "instr": "  %or63 = or disjoint i64 %and60, %and62, !dbg !266",
+    "type": "BinOp"
+  },
+  "97": {
+    "instr": "  %15 = load i64, ptr %arrayidx64, align 8, !dbg !267",
+    "type": "LoadInst"
+  },
+  "98": {
+    "instr": "  %and65 = and i64 %15, 4919131752989213764, !dbg !268",
+    "type": "BinOp"
+  },
+  "99": {
+    "instr": "  %or66 = or disjoint i64 %or63, %and65, !dbg !269",
+    "type": "BinOp"
+  },
+  "101": {
+    "instr": "  %16 = load i64, ptr %arrayidx67, align 8, !dbg !270",
+    "type": "LoadInst"
+  },
+  "102": {
+    "instr": "  %and68 = and i64 %16, -8608480567731124088, !dbg !271",
+    "type": "BinOp"
+  },
+  "103": {
+    "instr": "  %or69 = or disjoint i64 %or66, %and68, !dbg !272",
+    "type": "BinOp"
+  },
+  "105": {
+    "instr": "  %arrayidx71 = getelementptr inbounds nuw i64, ptr %comp_skey, i32 %add70, !dbg !274",
+    "type": "GetElementPtrInst"
+  },
+  "106": {
+    "instr": "  store i64 %or69, ptr %arrayidx71, align 8, !dbg !275",
+    "type": "StoreInst"
+  }
+}

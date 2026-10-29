@@ -1,0 +1,27 @@
+{
+  "7": {
+    "instr": "  %call1 = call dereferenceable_or_null(32) ptr @calloc(i32 noundef 32, i32 noundef 1) #4, !dbg !169",
+    "type": "CallInst",
+    "callee": "calloc"
+  },
+  "21": {
+    "instr": "  %call8 = call i32 @crypto_sign_keypair(ptr noundef %call, ptr noundef %call1) #5, !dbg !199",
+    "type": "CallInst",
+    "callee": "crypto_sign_keypair"
+  },
+  "22": {
+    "instr": "  %call12 = call i32 @crypto_sign(ptr noundef %call2, ptr noundef nonnull %smlen, ptr noundef nonnull %m, i64 noundef 32, ptr noundef %call1) #5, !dbg !201",
+    "type": "CallInst",
+    "callee": "crypto_sign"
+  },
+  "36": {
+    "instr": "  call void @OPENSSL_cleanse(ptr noundef %call1, i32 noundef 32) #5, !dbg !212",
+    "type": "CallInst",
+    "callee": "OPENSSL_cleanse"
+  },
+  "37": {
+    "instr": "  call void @free(ptr noundef %call1) #6, !dbg !213",
+    "type": "CallInst",
+    "callee": "free"
+  }
+}

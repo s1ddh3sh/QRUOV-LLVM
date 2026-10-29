@@ -1,0 +1,27 @@
+{
+  "2": {
+    "instr": "  %v.addr.0 = phi ptr [ %v, %entry ], [ %incdec.ptr, %while.body ]",
+    "type": "PHINode"
+  },
+  "3": {
+    "instr": "  %dst.addr.0 = phi ptr [ %dst, %entry ], [ %add.ptr, %while.body ]",
+    "type": "PHINode"
+  },
+  "7": {
+    "instr": "  %incdec.ptr = getelementptr inbounds nuw i8, ptr %v.addr.0, i32 4, !dbg !169",
+    "type": "GetElementPtrInst"
+  },
+  "8": {
+    "instr": "  %0 = load i32, ptr %v.addr.0, align 4, !dbg !171",
+    "type": "LoadInst"
+  },
+  "9": {
+    "instr": "  call fastcc void @br_enc32le(ptr noundef %dst.addr.0, i32 noundef %0) #4, !dbg !172",
+    "type": "CallInst",
+    "callee": "br_enc32le"
+  },
+  "10": {
+    "instr": "  %add.ptr = getelementptr inbounds nuw i8, ptr %dst.addr.0, i32 4, !dbg !173",
+    "type": "GetElementPtrInst"
+  }
+}

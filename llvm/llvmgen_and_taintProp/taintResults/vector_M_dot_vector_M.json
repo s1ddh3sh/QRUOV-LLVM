@@ -1,0 +1,32 @@
+{
+  "1": {
+    "instr": "  %b.0 = phi ptr [ %B, %entry ], [ %incdec.ptr1, %for.body ], !dbg !163",
+    "type": "PHINode"
+  },
+  "3": {
+    "instr": "  %c.0 = phi i64 [ 0, %entry ], [ %call, %for.body ], !dbg !163",
+    "type": "PHINode"
+  },
+  "8": {
+    "instr": "  %1 = load i8, ptr %b.0, align 1, !dbg !177",
+    "type": "LoadInst"
+  },
+  "9": {
+    "instr": "  %call = call fastcc i64 @Fq_vec_dot_accumulate(i8 noundef zeroext %0, i8 noundef zeroext %1, i64 noundef %c.0) #4, !dbg !178",
+    "type": "CallInst",
+    "callee": "Fq_vec_dot_accumulate"
+  },
+  "10": {
+    "instr": "  %incdec.ptr1 = getelementptr inbounds nuw i8, ptr %b.0, i32 1, !dbg !179",
+    "type": "GetElementPtrInst"
+  },
+  "14": {
+    "instr": "  %c.0.lcssa = phi i64 [ %c.0, %for.cond ], !dbg !163",
+    "type": "PHINode"
+  },
+  "15": {
+    "instr": "  %call2 = call fastcc i64 @Fq_vec_dot_accumulate_final(i64 noundef %c.0.lcssa) #4, !dbg !186",
+    "type": "CallInst",
+    "callee": "Fq_vec_dot_accumulate_final"
+  }
+}

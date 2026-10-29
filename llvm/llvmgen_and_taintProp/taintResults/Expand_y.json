@@ -1,0 +1,22 @@
+{
+  "1": {
+    "instr": "  %call = call fastcc ptr @PRG_init_aes_ctr(ptr noundef %seed_y) #4, !dbg !176",
+    "type": "CallInst",
+    "callee": "PRG_init_aes_ctr"
+  },
+  "2": {
+    "instr": "  call fastcc void @RejSampPRG_aes_ctr(ptr noundef %call, i64 noundef 0, i32 noundef 156, i32 noundef 192, ptr noundef nonnull %r3) #4, !dbg !181",
+    "type": "CallInst",
+    "callee": "RejSampPRG_aes_ctr"
+  },
+  "3": {
+    "instr": "  call fastcc void @ExpandVectorV(ptr noundef nonnull %r3, ptr noundef %y) #4, !dbg !182",
+    "type": "CallInst",
+    "callee": "ExpandVectorV"
+  },
+  "4": {
+    "instr": "  call fastcc void @PRG_final_aes_ctr(ptr noundef %call) #4, !dbg !183",
+    "type": "CallInst",
+    "callee": "PRG_final_aes_ctr"
+  }
+}

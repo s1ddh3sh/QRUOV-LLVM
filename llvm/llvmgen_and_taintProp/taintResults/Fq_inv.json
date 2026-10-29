@@ -1,0 +1,6 @@
+{
+  "0": {
+    "instr": "  %idxprom = zext i8 %X to i32, !dbg !162",
+    "type": "CastInst"
+  }
+}

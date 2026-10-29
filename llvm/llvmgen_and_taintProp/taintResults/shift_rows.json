@@ -1,0 +1,94 @@
+{
+  "4": {
+    "instr": "  %arrayidx = getelementptr inbounds nuw i64, ptr %q, i32 %i.0, !dbg !170",
+    "type": "GetElementPtrInst"
+  },
+  "5": {
+    "instr": "  %0 = load i64, ptr %arrayidx, align 8, !dbg !170",
+    "type": "LoadInst"
+  },
+  "6": {
+    "instr": "  %and = and i64 %0, 65535, !dbg !174",
+    "type": "BinOp"
+  },
+  "7": {
+    "instr": "  %and1 = lshr i64 %0, 4, !dbg !175",
+    "type": "BinOp"
+  },
+  "8": {
+    "instr": "  %shr = and i64 %and1, 268369920, !dbg !175",
+    "type": "BinOp"
+  },
+  "9": {
+    "instr": "  %or = or disjoint i64 %and, %shr, !dbg !176",
+    "type": "BinOp"
+  },
+  "10": {
+    "instr": "  %and2 = shl i64 %0, 12, !dbg !177",
+    "type": "BinOp"
+  },
+  "11": {
+    "instr": "  %shl = and i64 %and2, 4026531840, !dbg !177",
+    "type": "BinOp"
+  },
+  "12": {
+    "instr": "  %or3 = or disjoint i64 %or, %shl, !dbg !178",
+    "type": "BinOp"
+  },
+  "13": {
+    "instr": "  %and4 = lshr i64 %0, 8, !dbg !179",
+    "type": "BinOp"
+  },
+  "14": {
+    "instr": "  %shr5 = and i64 %and4, 1095216660480, !dbg !179",
+    "type": "BinOp"
+  },
+  "15": {
+    "instr": "  %or6 = or disjoint i64 %or3, %shr5, !dbg !180",
+    "type": "BinOp"
+  },
+  "16": {
+    "instr": "  %and7 = shl i64 %0, 8, !dbg !181",
+    "type": "BinOp"
+  },
+  "17": {
+    "instr": "  %shl8 = and i64 %and7, 280375465082880, !dbg !181",
+    "type": "BinOp"
+  },
+  "18": {
+    "instr": "  %or9 = or disjoint i64 %or6, %shl8, !dbg !182",
+    "type": "BinOp"
+  },
+  "19": {
+    "instr": "  %and10 = lshr i64 %0, 12, !dbg !183",
+    "type": "BinOp"
+  },
+  "20": {
+    "instr": "  %shr11 = and i64 %and10, 4222124650659840, !dbg !183",
+    "type": "BinOp"
+  },
+  "21": {
+    "instr": "  %or12 = or disjoint i64 %or9, %shr11, !dbg !184",
+    "type": "BinOp"
+  },
+  "22": {
+    "instr": "  %and13 = shl i64 %0, 4, !dbg !185",
+    "type": "BinOp"
+  },
+  "23": {
+    "instr": "  %shl14 = and i64 %and13, -4503599627370496, !dbg !185",
+    "type": "BinOp"
+  },
+  "24": {
+    "instr": "  %or15 = or i64 %or12, %shl14, !dbg !186",
+    "type": "BinOp"
+  },
+  "25": {
+    "instr": "  %arrayidx16 = getelementptr inbounds nuw i64, ptr %q, i32 %i.0, !dbg !187",
+    "type": "GetElementPtrInst"
+  },
+  "26": {
+    "instr": "  store i64 %or15, ptr %arrayidx16, align 8, !dbg !188",
+    "type": "StoreInst"
+  }
+}

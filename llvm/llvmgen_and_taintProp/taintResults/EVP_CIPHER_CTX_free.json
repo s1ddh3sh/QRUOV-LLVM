@@ -1,0 +1,21 @@
+{
+  "0": {
+    "instr": "  %tobool.not = icmp eq ptr %ctx, null, !dbg !174",
+    "type": "CmpInst"
+  },
+  "2": {
+    "instr": "  call fastcc void @aes_release(ptr noundef nonnull %ctx) #4, !dbg !177",
+    "type": "CallInst",
+    "callee": "aes_release"
+  },
+  "3": {
+    "instr": "  call void @OPENSSL_cleanse(ptr noundef nonnull %ctx, i32 noundef 44) #4, !dbg !178",
+    "type": "CallInst",
+    "callee": "OPENSSL_cleanse"
+  },
+  "4": {
+    "instr": "  call void @free(ptr noundef nonnull %ctx) #5, !dbg !179",
+    "type": "CallInst",
+    "callee": "free"
+  }
+}

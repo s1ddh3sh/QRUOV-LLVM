@@ -1,0 +1,58 @@
+{
+  "0": {
+    "instr": "  %conv = trunc i32 %x to i8, !dbg !163",
+    "type": "CastInst"
+  },
+  "1": {
+    "instr": "  store i8 %conv, ptr %dst, align 1, !dbg !164",
+    "type": "StoreInst"
+  },
+  "2": {
+    "instr": "  %shr = lshr i32 %x, 8, !dbg !165",
+    "type": "BinOp"
+  },
+  "3": {
+    "instr": "  %conv1 = trunc i32 %shr to i8, !dbg !166",
+    "type": "CastInst"
+  },
+  "4": {
+    "instr": "  %arrayidx2 = getelementptr inbounds nuw i8, ptr %dst, i32 1, !dbg !167",
+    "type": "GetElementPtrInst"
+  },
+  "5": {
+    "instr": "  store i8 %conv1, ptr %arrayidx2, align 1, !dbg !168",
+    "type": "StoreInst"
+  },
+  "6": {
+    "instr": "  %shr3 = lshr i32 %x, 16, !dbg !169",
+    "type": "BinOp"
+  },
+  "7": {
+    "instr": "  %conv4 = trunc i32 %shr3 to i8, !dbg !170",
+    "type": "CastInst"
+  },
+  "8": {
+    "instr": "  %arrayidx5 = getelementptr inbounds nuw i8, ptr %dst, i32 2, !dbg !171",
+    "type": "GetElementPtrInst"
+  },
+  "9": {
+    "instr": "  store i8 %conv4, ptr %arrayidx5, align 1, !dbg !172",
+    "type": "StoreInst"
+  },
+  "10": {
+    "instr": "  %shr6 = lshr i32 %x, 24, !dbg !173",
+    "type": "BinOp"
+  },
+  "11": {
+    "instr": "  %conv7 = trunc nuw i32 %shr6 to i8, !dbg !174",
+    "type": "CastInst"
+  },
+  "12": {
+    "instr": "  %arrayidx8 = getelementptr inbounds nuw i8, ptr %dst, i32 3, !dbg !175",
+    "type": "GetElementPtrInst"
+  },
+  "13": {
+    "instr": "  store i8 %conv7, ptr %arrayidx8, align 1, !dbg !176",
+    "type": "StoreInst"
+  }
+}

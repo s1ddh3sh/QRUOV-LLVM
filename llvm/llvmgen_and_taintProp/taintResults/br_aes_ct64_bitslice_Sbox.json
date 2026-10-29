@@ -1,0 +1,598 @@
+{
+  "0": {
+    "instr": "  %arrayidx = getelementptr inbounds nuw i8, ptr %q, i32 56, !dbg !163",
+    "type": "GetElementPtrInst"
+  },
+  "1": {
+    "instr": "  %0 = load i64, ptr %arrayidx, align 8, !dbg !163",
+    "type": "LoadInst"
+  },
+  "2": {
+    "instr": "  %arrayidx1 = getelementptr inbounds nuw i8, ptr %q, i32 48, !dbg !165",
+    "type": "GetElementPtrInst"
+  },
+  "3": {
+    "instr": "  %1 = load i64, ptr %arrayidx1, align 8, !dbg !165",
+    "type": "LoadInst"
+  },
+  "4": {
+    "instr": "  %arrayidx2 = getelementptr inbounds nuw i8, ptr %q, i32 40, !dbg !167",
+    "type": "GetElementPtrInst"
+  },
+  "5": {
+    "instr": "  %2 = load i64, ptr %arrayidx2, align 8, !dbg !167",
+    "type": "LoadInst"
+  },
+  "6": {
+    "instr": "  %arrayidx3 = getelementptr inbounds nuw i8, ptr %q, i32 32, !dbg !169",
+    "type": "GetElementPtrInst"
+  },
+  "7": {
+    "instr": "  %3 = load i64, ptr %arrayidx3, align 8, !dbg !169",
+    "type": "LoadInst"
+  },
+  "8": {
+    "instr": "  %arrayidx4 = getelementptr inbounds nuw i8, ptr %q, i32 24, !dbg !171",
+    "type": "GetElementPtrInst"
+  },
+  "9": {
+    "instr": "  %4 = load i64, ptr %arrayidx4, align 8, !dbg !171",
+    "type": "LoadInst"
+  },
+  "10": {
+    "instr": "  %arrayidx5 = getelementptr inbounds nuw i8, ptr %q, i32 16, !dbg !173",
+    "type": "GetElementPtrInst"
+  },
+  "11": {
+    "instr": "  %5 = load i64, ptr %arrayidx5, align 8, !dbg !173",
+    "type": "LoadInst"
+  },
+  "12": {
+    "instr": "  %arrayidx6 = getelementptr inbounds nuw i8, ptr %q, i32 8, !dbg !175",
+    "type": "GetElementPtrInst"
+  },
+  "13": {
+    "instr": "  %6 = load i64, ptr %arrayidx6, align 8, !dbg !175",
+    "type": "LoadInst"
+  },
+  "14": {
+    "instr": "  %7 = load i64, ptr %q, align 8, !dbg !177",
+    "type": "LoadInst"
+  },
+  "15": {
+    "instr": "  %xor = xor i64 %3, %5, !dbg !179",
+    "type": "BinOp"
+  },
+  "16": {
+    "instr": "  %xor8 = xor i64 %0, %6, !dbg !181",
+    "type": "BinOp"
+  },
+  "17": {
+    "instr": "  %xor9 = xor i64 %0, %3, !dbg !183",
+    "type": "BinOp"
+  },
+  "18": {
+    "instr": "  %xor10 = xor i64 %0, %5, !dbg !185",
+    "type": "BinOp"
+  },
+  "19": {
+    "instr": "  %xor11 = xor i64 %1, %2, !dbg !187",
+    "type": "BinOp"
+  },
+  "20": {
+    "instr": "  %xor12 = xor i64 %xor11, %7, !dbg !189",
+    "type": "BinOp"
+  },
+  "21": {
+    "instr": "  %xor13 = xor i64 %xor12, %3, !dbg !191",
+    "type": "BinOp"
+  },
+  "22": {
+    "instr": "  %xor14 = xor i64 %xor8, %xor, !dbg !193",
+    "type": "BinOp"
+  },
+  "23": {
+    "instr": "  %xor15 = xor i64 %xor12, %0, !dbg !195",
+    "type": "BinOp"
+  },
+  "24": {
+    "instr": "  %xor16 = xor i64 %xor12, %6, !dbg !197",
+    "type": "BinOp"
+  },
+  "25": {
+    "instr": "  %xor17 = xor i64 %xor16, %xor10, !dbg !199",
+    "type": "BinOp"
+  },
+  "26": {
+    "instr": "  %xor18 = xor i64 %4, %xor14, !dbg !201",
+    "type": "BinOp"
+  },
+  "27": {
+    "instr": "  %xor19 = xor i64 %xor18, %5, !dbg !203",
+    "type": "BinOp"
+  },
+  "28": {
+    "instr": "  %xor20 = xor i64 %xor18, %1, !dbg !205",
+    "type": "BinOp"
+  },
+  "29": {
+    "instr": "  %xor21 = xor i64 %xor19, %7, !dbg !207",
+    "type": "BinOp"
+  },
+  "30": {
+    "instr": "  %xor22 = xor i64 %xor19, %xor11, !dbg !209",
+    "type": "BinOp"
+  },
+  "31": {
+    "instr": "  %xor23 = xor i64 %xor20, %xor9, !dbg !211",
+    "type": "BinOp"
+  },
+  "32": {
+    "instr": "  %xor24 = xor i64 %7, %xor23, !dbg !213",
+    "type": "BinOp"
+  },
+  "33": {
+    "instr": "  %xor25 = xor i64 %xor22, %xor23, !dbg !215",
+    "type": "BinOp"
+  },
+  "34": {
+    "instr": "  %xor27 = xor i64 %xor11, %xor23, !dbg !218",
+    "type": "BinOp"
+  },
+  "35": {
+    "instr": "  %and = and i64 %xor14, %xor19, !dbg !222",
+    "type": "BinOp"
+  },
+  "36": {
+    "instr": "  %and30 = and i64 %xor17, %xor21, !dbg !224",
+    "type": "BinOp"
+  },
+  "37": {
+    "instr": "  %xor31 = xor i64 %and30, %and, !dbg !226",
+    "type": "BinOp"
+  },
+  "38": {
+    "instr": "  %and32 = and i64 %xor13, %7, !dbg !228",
+    "type": "BinOp"
+  },
+  "39": {
+    "instr": "  %and34 = and i64 %xor8, %xor27, !dbg !231",
+    "type": "BinOp"
+  },
+  "40": {
+    "instr": "  %and35 = and i64 %xor16, %xor12, !dbg !233",
+    "type": "BinOp"
+  },
+  "41": {
+    "instr": "  %and37 = and i64 %xor15, %xor24, !dbg !236",
+    "type": "BinOp"
+  },
+  "42": {
+    "instr": "  %and39 = and i64 %xor9, %xor23, !dbg !239",
+    "type": "BinOp"
+  },
+  "43": {
+    "instr": "  %and40 = and i64 %xor, %xor25, !dbg !241",
+    "type": "BinOp"
+  },
+  "44": {
+    "instr": "  %xor41 = xor i64 %and40, %and39, !dbg !243",
+    "type": "BinOp"
+  },
+  "45": {
+    "instr": "  %and42 = and i64 %xor10, %xor22, !dbg !245",
+    "type": "BinOp"
+  },
+  "46": {
+    "instr": "  %xor43 = xor i64 %and42, %and39, !dbg !247",
+    "type": "BinOp"
+  },
+  "47": {
+    "instr": "  %xor44 = xor i64 %xor31, %xor41, !dbg !249",
+    "type": "BinOp"
+  },
+  "48": {
+    "instr": "  %xor48 = xor i64 %xor44, %xor20, !dbg !254",
+    "type": "BinOp"
+  },
+  "49": {
+    "instr": "  %8 = xor i64 %xor10, %and32, !dbg !256",
+    "type": "BinOp"
+  },
+  "50": {
+    "instr": "  %9 = xor i64 %8, %xor22, !dbg !256",
+    "type": "BinOp"
+  },
+  "51": {
+    "instr": "  %10 = xor i64 %9, %and, !dbg !256",
+    "type": "BinOp"
+  },
+  "52": {
+    "instr": "  %xor49 = xor i64 %10, %xor43, !dbg !256",
+    "type": "BinOp"
+  },
+  "53": {
+    "instr": "  %11 = xor i64 %xor27, %and35, !dbg !258",
+    "type": "BinOp"
+  },
+  "54": {
+    "instr": "  %12 = xor i64 %11, %xor8, !dbg !258",
+    "type": "BinOp"
+  },
+  "55": {
+    "instr": "  %13 = xor i64 %12, %and34, !dbg !258",
+    "type": "BinOp"
+  },
+  "56": {
+    "instr": "  %xor50 = xor i64 %13, %xor41, !dbg !258",
+    "type": "BinOp"
+  },
+  "57": {
+    "instr": "  %14 = xor i64 %xor27, %and37, !dbg !260",
+    "type": "BinOp"
+  },
+  "58": {
+    "instr": "  %15 = xor i64 %14, %0, !dbg !260",
+    "type": "BinOp"
+  },
+  "59": {
+    "instr": "  %16 = xor i64 %15, %and34, !dbg !260",
+    "type": "BinOp"
+  },
+  "60": {
+    "instr": "  %xor51 = xor i64 %16, %xor43, !dbg !260",
+    "type": "BinOp"
+  },
+  "61": {
+    "instr": "  %xor52 = xor i64 %xor48, %xor49, !dbg !262",
+    "type": "BinOp"
+  },
+  "62": {
+    "instr": "  %and53 = and i64 %xor48, %xor50, !dbg !264",
+    "type": "BinOp"
+  },
+  "63": {
+    "instr": "  %xor54 = xor i64 %xor51, %and53, !dbg !266",
+    "type": "BinOp"
+  },
+  "64": {
+    "instr": "  %and55 = and i64 %xor52, %xor54, !dbg !268",
+    "type": "BinOp"
+  },
+  "65": {
+    "instr": "  %xor56 = xor i64 %and55, %xor49, !dbg !270",
+    "type": "BinOp"
+  },
+  "66": {
+    "instr": "  %xor57 = xor i64 %xor50, %xor51, !dbg !272",
+    "type": "BinOp"
+  },
+  "67": {
+    "instr": "  %xor58 = xor i64 %xor49, %and53, !dbg !274",
+    "type": "BinOp"
+  },
+  "68": {
+    "instr": "  %and59 = and i64 %xor58, %xor57, !dbg !276",
+    "type": "BinOp"
+  },
+  "69": {
+    "instr": "  %xor60 = xor i64 %and59, %xor51, !dbg !278",
+    "type": "BinOp"
+  },
+  "70": {
+    "instr": "  %xor61 = xor i64 %xor50, %xor60, !dbg !280",
+    "type": "BinOp"
+  },
+  "71": {
+    "instr": "  %xor62 = xor i64 %and59, %and53, !dbg !282",
+    "type": "BinOp"
+  },
+  "72": {
+    "instr": "  %and63 = and i64 %xor51, %xor62, !dbg !284",
+    "type": "BinOp"
+  },
+  "73": {
+    "instr": "  %xor64 = xor i64 %and63, %xor61, !dbg !286",
+    "type": "BinOp"
+  },
+  "74": {
+    "instr": "  %xor65 = xor i64 %xor54, %and63, !dbg !288",
+    "type": "BinOp"
+  },
+  "75": {
+    "instr": "  %and66 = and i64 %xor56, %xor65, !dbg !290",
+    "type": "BinOp"
+  },
+  "76": {
+    "instr": "  %xor67 = xor i64 %xor52, %and66, !dbg !292",
+    "type": "BinOp"
+  },
+  "77": {
+    "instr": "  %xor68 = xor i64 %xor67, %xor64, !dbg !294",
+    "type": "BinOp"
+  },
+  "78": {
+    "instr": "  %xor69 = xor i64 %xor56, %xor60, !dbg !296",
+    "type": "BinOp"
+  },
+  "79": {
+    "instr": "  %xor70 = xor i64 %xor56, %xor67, !dbg !298",
+    "type": "BinOp"
+  },
+  "80": {
+    "instr": "  %xor71 = xor i64 %and63, %xor50, !dbg !300",
+    "type": "BinOp"
+  },
+  "81": {
+    "instr": "  %xor72 = xor i64 %xor69, %xor68, !dbg !302",
+    "type": "BinOp"
+  },
+  "82": {
+    "instr": "  %and73 = and i64 %xor71, %xor19, !dbg !304",
+    "type": "BinOp"
+  },
+  "83": {
+    "instr": "  %and74 = and i64 %xor64, %xor21, !dbg !306",
+    "type": "BinOp"
+  },
+  "84": {
+    "instr": "  %and75 = and i64 %xor60, %7, !dbg !308",
+    "type": "BinOp"
+  },
+  "85": {
+    "instr": "  %and76 = and i64 %xor70, %xor27, !dbg !310",
+    "type": "BinOp"
+  },
+  "86": {
+    "instr": "  %and77 = and i64 %xor67, %xor12, !dbg !312",
+    "type": "BinOp"
+  },
+  "87": {
+    "instr": "  %and78 = and i64 %xor56, %xor24, !dbg !314",
+    "type": "BinOp"
+  },
+  "88": {
+    "instr": "  %and79 = and i64 %xor69, %xor23, !dbg !316",
+    "type": "BinOp"
+  },
+  "89": {
+    "instr": "  %and80 = and i64 %xor72, %xor25, !dbg !318",
+    "type": "BinOp"
+  },
+  "90": {
+    "instr": "  %and81 = and i64 %xor68, %xor22, !dbg !320",
+    "type": "BinOp"
+  },
+  "91": {
+    "instr": "  %and82 = and i64 %xor71, %xor14, !dbg !322",
+    "type": "BinOp"
+  },
+  "92": {
+    "instr": "  %and83 = and i64 %xor64, %xor17, !dbg !324",
+    "type": "BinOp"
+  },
+  "93": {
+    "instr": "  %and84 = and i64 %xor60, %xor13, !dbg !326",
+    "type": "BinOp"
+  },
+  "94": {
+    "instr": "  %and85 = and i64 %xor70, %xor8, !dbg !328",
+    "type": "BinOp"
+  },
+  "95": {
+    "instr": "  %and86 = and i64 %xor67, %xor16, !dbg !330",
+    "type": "BinOp"
+  },
+  "96": {
+    "instr": "  %and87 = and i64 %xor56, %xor15, !dbg !332",
+    "type": "BinOp"
+  },
+  "97": {
+    "instr": "  %and88 = and i64 %xor69, %xor9, !dbg !334",
+    "type": "BinOp"
+  },
+  "98": {
+    "instr": "  %and89 = and i64 %xor72, %xor, !dbg !336",
+    "type": "BinOp"
+  },
+  "99": {
+    "instr": "  %and90 = and i64 %xor68, %xor10, !dbg !338",
+    "type": "BinOp"
+  },
+  "100": {
+    "instr": "  %xor91 = xor i64 %and88, %and89, !dbg !340",
+    "type": "BinOp"
+  },
+  "101": {
+    "instr": "  %xor92 = xor i64 %and83, %and84, !dbg !342",
+    "type": "BinOp"
+  },
+  "102": {
+    "instr": "  %xor93 = xor i64 %and78, %and86, !dbg !344",
+    "type": "BinOp"
+  },
+  "103": {
+    "instr": "  %xor94 = xor i64 %and82, %and83, !dbg !346",
+    "type": "BinOp"
+  },
+  "104": {
+    "instr": "  %xor95 = xor i64 %and75, %and85, !dbg !348",
+    "type": "BinOp"
+  },
+  "105": {
+    "instr": "  %xor96 = xor i64 %and75, %and78, !dbg !350",
+    "type": "BinOp"
+  },
+  "106": {
+    "instr": "  %xor97 = xor i64 %and80, %and81, !dbg !352",
+    "type": "BinOp"
+  },
+  "107": {
+    "instr": "  %xor98 = xor i64 %and73, %and76, !dbg !354",
+    "type": "BinOp"
+  },
+  "108": {
+    "instr": "  %xor99 = xor i64 %and79, %and80, !dbg !356",
+    "type": "BinOp"
+  },
+  "109": {
+    "instr": "  %xor100 = xor i64 %and89, %and90, !dbg !358",
+    "type": "BinOp"
+  },
+  "110": {
+    "instr": "  %xor101 = xor i64 %and85, %xor93, !dbg !360",
+    "type": "BinOp"
+  },
+  "111": {
+    "instr": "  %xor102 = xor i64 %xor95, %xor98, !dbg !362",
+    "type": "BinOp"
+  },
+  "112": {
+    "instr": "  %xor103 = xor i64 %and77, %xor91, !dbg !364",
+    "type": "BinOp"
+  },
+  "113": {
+    "instr": "  %xor104 = xor i64 %and76, %xor99, !dbg !366",
+    "type": "BinOp"
+  },
+  "114": {
+    "instr": "  %xor105 = xor i64 %xor91, %xor102, !dbg !368",
+    "type": "BinOp"
+  },
+  "115": {
+    "instr": "  %xor106 = xor i64 %and87, %xor102, !dbg !370",
+    "type": "BinOp"
+  },
+  "116": {
+    "instr": "  %xor107 = xor i64 %xor97, %xor103, !dbg !372",
+    "type": "BinOp"
+  },
+  "117": {
+    "instr": "  %xor108 = xor i64 %xor94, %xor103, !dbg !374",
+    "type": "BinOp"
+  },
+  "118": {
+    "instr": "  %xor109 = xor i64 %and77, %xor104, !dbg !376",
+    "type": "BinOp"
+  },
+  "119": {
+    "instr": "  %xor110 = xor i64 %xor106, %xor107, !dbg !378",
+    "type": "BinOp"
+  },
+  "120": {
+    "instr": "  %xor111 = xor i64 %and74, %xor108, !dbg !380",
+    "type": "BinOp"
+  },
+  "121": {
+    "instr": "  %xor112 = xor i64 %xor104, %xor108, !dbg !382",
+    "type": "BinOp"
+  },
+  "122": {
+    "instr": "  %17 = xor i64 %xor107, %xor101, !dbg !384",
+    "type": "BinOp"
+  },
+  "123": {
+    "instr": "  %xor113 = xor i64 %17, -1, !dbg !384",
+    "type": "BinOp"
+  },
+  "124": {
+    "instr": "  %18 = xor i64 %xor105, %xor93, !dbg !386",
+    "type": "BinOp"
+  },
+  "125": {
+    "instr": "  %xor115 = xor i64 %18, -1, !dbg !386",
+    "type": "BinOp"
+  },
+  "126": {
+    "instr": "  %xor117 = xor i64 %xor98, %xor111, !dbg !389",
+    "type": "BinOp"
+  },
+  "127": {
+    "instr": "  %xor118 = xor i64 %xor96, %xor111, !dbg !391",
+    "type": "BinOp"
+  },
+  "128": {
+    "instr": "  %xor119 = xor i64 %xor92, %xor110, !dbg !393",
+    "type": "BinOp"
+  },
+  "129": {
+    "instr": "  %19 = xor i64 %xor117, %xor109, !dbg !395",
+    "type": "BinOp"
+  },
+  "130": {
+    "instr": "  %xor121 = xor i64 %19, -1, !dbg !395",
+    "type": "BinOp"
+  },
+  "131": {
+    "instr": "  %20 = xor i64 %xor110, %xor100, !dbg !397",
+    "type": "BinOp"
+  },
+  "132": {
+    "instr": "  %21 = xor i64 %20, %xor109, !dbg !397",
+    "type": "BinOp"
+  },
+  "133": {
+    "instr": "  %xor123 = xor i64 %21, -1, !dbg !397",
+    "type": "BinOp"
+  },
+  "134": {
+    "instr": "  %arrayidx124 = getelementptr inbounds nuw i8, ptr %q, i32 56, !dbg !399",
+    "type": "GetElementPtrInst"
+  },
+  "135": {
+    "instr": "  store i64 %xor112, ptr %arrayidx124, align 8, !dbg !400",
+    "type": "StoreInst"
+  },
+  "136": {
+    "instr": "  %arrayidx125 = getelementptr inbounds nuw i8, ptr %q, i32 48, !dbg !401",
+    "type": "GetElementPtrInst"
+  },
+  "137": {
+    "instr": "  store i64 %xor121, ptr %arrayidx125, align 8, !dbg !402",
+    "type": "StoreInst"
+  },
+  "138": {
+    "instr": "  %arrayidx126 = getelementptr inbounds nuw i8, ptr %q, i32 40, !dbg !403",
+    "type": "GetElementPtrInst"
+  },
+  "139": {
+    "instr": "  store i64 %xor123, ptr %arrayidx126, align 8, !dbg !404",
+    "type": "StoreInst"
+  },
+  "140": {
+    "instr": "  %arrayidx127 = getelementptr inbounds nuw i8, ptr %q, i32 32, !dbg !405",
+    "type": "GetElementPtrInst"
+  },
+  "141": {
+    "instr": "  store i64 %xor117, ptr %arrayidx127, align 8, !dbg !406",
+    "type": "StoreInst"
+  },
+  "142": {
+    "instr": "  %arrayidx128 = getelementptr inbounds nuw i8, ptr %q, i32 24, !dbg !407",
+    "type": "GetElementPtrInst"
+  },
+  "143": {
+    "instr": "  store i64 %xor118, ptr %arrayidx128, align 8, !dbg !408",
+    "type": "StoreInst"
+  },
+  "144": {
+    "instr": "  %arrayidx129 = getelementptr inbounds nuw i8, ptr %q, i32 16, !dbg !409",
+    "type": "GetElementPtrInst"
+  },
+  "145": {
+    "instr": "  store i64 %xor119, ptr %arrayidx129, align 8, !dbg !410",
+    "type": "StoreInst"
+  },
+  "146": {
+    "instr": "  %arrayidx130 = getelementptr inbounds nuw i8, ptr %q, i32 8, !dbg !411",
+    "type": "GetElementPtrInst"
+  },
+  "147": {
+    "instr": "  store i64 %xor113, ptr %arrayidx130, align 8, !dbg !412",
+    "type": "StoreInst"
+  },
+  "148": {
+    "instr": "  store i64 %xor115, ptr %q, align 8, !dbg !413",
+    "type": "StoreInst"
+  }
+}

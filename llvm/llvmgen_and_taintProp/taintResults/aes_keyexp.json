@@ -1,0 +1,61 @@
+{
+  "3": {
+    "instr": "  %0 = load ptr, ptr %ctx, align 4, !dbg !175",
+    "type": "LoadInst"
+  },
+  "4": {
+    "instr": "  %1 = load i32, ptr %0, align 4, !dbg !176",
+    "type": "LoadInst"
+  },
+  "6": {
+    "instr": "  call void @aes128_ecb_keyexp(ptr noundef nonnull %a, ptr noundef nonnull %key) #4, !dbg !186",
+    "type": "CallInst",
+    "callee": "aes128_ecb_keyexp"
+  },
+  "7": {
+    "instr": "  %2 = load ptr, ptr %a, align 4, !dbg !187",
+    "type": "LoadInst"
+  },
+  "8": {
+    "instr": "  %rk = getelementptr inbounds nuw i8, ptr %ctx, i32 4, !dbg !188",
+    "type": "GetElementPtrInst"
+  },
+  "9": {
+    "instr": "  store ptr %2, ptr %rk, align 4, !dbg !189",
+    "type": "StoreInst"
+  },
+  "11": {
+    "instr": "  call void @aes192_ecb_keyexp(ptr noundef nonnull %a2, ptr noundef nonnull %key) #4, !dbg !198",
+    "type": "CallInst",
+    "callee": "aes192_ecb_keyexp"
+  },
+  "12": {
+    "instr": "  %3 = load ptr, ptr %a2, align 4, !dbg !199",
+    "type": "LoadInst"
+  },
+  "13": {
+    "instr": "  %rk4 = getelementptr inbounds nuw i8, ptr %ctx, i32 4, !dbg !200",
+    "type": "GetElementPtrInst"
+  },
+  "14": {
+    "instr": "  store ptr %3, ptr %rk4, align 4, !dbg !201",
+    "type": "StoreInst"
+  },
+  "16": {
+    "instr": "  call void @aes256_ecb_keyexp(ptr noundef nonnull %a5, ptr noundef nonnull %key) #4, !dbg !210",
+    "type": "CallInst",
+    "callee": "aes256_ecb_keyexp"
+  },
+  "17": {
+    "instr": "  %4 = load ptr, ptr %a5, align 4, !dbg !211",
+    "type": "LoadInst"
+  },
+  "18": {
+    "instr": "  %rk7 = getelementptr inbounds nuw i8, ptr %ctx, i32 4, !dbg !212",
+    "type": "GetElementPtrInst"
+  },
+  "19": {
+    "instr": "  store ptr %4, ptr %rk7, align 4, !dbg !213",
+    "type": "StoreInst"
+  }
+}

@@ -1,0 +1,87 @@
+{
+  "5": {
+    "instr": "  call fastcc void @L_inverse(ptr noundef %A, ptr noundef %perm, i32 noundef %rank, ptr noundef %R) #4, !dbg !177",
+    "type": "CallInst",
+    "callee": "L_inverse"
+  },
+  "17": {
+    "instr": "  %t.0 = phi i64 [ %add, %for.inc ], [ 0, %for.cond5.preheader ], !dbg !192",
+    "type": "PHINode"
+  },
+  "21": {
+    "instr": "  %arrayidx9 = getelementptr inbounds [54 x i8], ptr %R, i32 %i.0, i32 %j.0, !dbg !200",
+    "type": "GetElementPtrInst"
+  },
+  "22": {
+    "instr": "  %5 = load i8, ptr %arrayidx9, align 1, !dbg !200",
+    "type": "LoadInst"
+  },
+  "23": {
+    "instr": "  %conv = zext i8 %5 to i64, !dbg !202",
+    "type": "CastInst"
+  },
+  "26": {
+    "instr": "  %arrayidx10 = getelementptr inbounds i8, ptr %b, i32 %6, !dbg !204",
+    "type": "GetElementPtrInst"
+  },
+  "27": {
+    "instr": "  %7 = load i8, ptr %arrayidx10, align 1, !dbg !204",
+    "type": "LoadInst"
+  },
+  "28": {
+    "instr": "  %conv11 = zext i8 %7 to i64, !dbg !205",
+    "type": "CastInst"
+  },
+  "29": {
+    "instr": "  %mul = mul nuw nsw i64 %conv, %conv11, !dbg !206",
+    "type": "BinOp"
+  },
+  "30": {
+    "instr": "  %add = add i64 %t.0, %mul, !dbg !207",
+    "type": "BinOp"
+  },
+  "33": {
+    "instr": "  %t.0.lcssa = phi i64 [ %t.0, %for.cond5 ], !dbg !192",
+    "type": "PHINode"
+  },
+  "36": {
+    "instr": "  %arrayidx14 = getelementptr inbounds [54 x i8], ptr %R, i32 %i.0, i32 %i.0, !dbg !214",
+    "type": "GetElementPtrInst"
+  },
+  "37": {
+    "instr": "  %9 = load i8, ptr %arrayidx14, align 1, !dbg !214",
+    "type": "LoadInst"
+  },
+  "38": {
+    "instr": "  %conv15 = zext i8 %9 to i64, !dbg !215",
+    "type": "CastInst"
+  },
+  "39": {
+    "instr": "  %arrayidx16 = getelementptr inbounds i8, ptr %b, i32 %8, !dbg !216",
+    "type": "GetElementPtrInst"
+  },
+  "40": {
+    "instr": "  %10 = load i8, ptr %arrayidx16, align 1, !dbg !216",
+    "type": "LoadInst"
+  },
+  "41": {
+    "instr": "  %conv17 = zext i8 %10 to i64, !dbg !217",
+    "type": "CastInst"
+  },
+  "42": {
+    "instr": "  %mul18 = mul nuw nsw i64 %conv15, %conv17, !dbg !218",
+    "type": "BinOp"
+  },
+  "43": {
+    "instr": "  %add19 = add i64 %t.0.lcssa, %mul18, !dbg !219",
+    "type": "BinOp"
+  },
+  "44": {
+    "instr": "  %rem = urem i64 %add19, 127, !dbg !220",
+    "type": "BinOp"
+  },
+  "45": {
+    "instr": "  %tobool.not = icmp eq i64 %rem, 0, !dbg !221",
+    "type": "CmpInst"
+  }
+}

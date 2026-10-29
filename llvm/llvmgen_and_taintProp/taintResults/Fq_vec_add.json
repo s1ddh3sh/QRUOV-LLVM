@@ -1,0 +1,7 @@
+{
+  "0": {
+    "instr": "  %call = call fastcc zeroext i8 @Fq_add.25(i8 noundef zeroext %a, i8 noundef zeroext %b) #4, !dbg !163",
+    "type": "CallInst",
+    "callee": "Fq_add.25"
+  }
+}

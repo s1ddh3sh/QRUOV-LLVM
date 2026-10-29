@@ -1,0 +1,51 @@
+{
+  "4": {
+    "instr": "  %in.addr.0 = phi ptr [ %in, %entry ], [ %add.ptr, %while.body ]",
+    "type": "PHINode"
+  },
+  "5": {
+    "instr": "  %out.addr.0 = phi ptr [ %out, %entry ], [ %add.ptr2, %while.body ]",
+    "type": "PHINode"
+  },
+  "8": {
+    "instr": "  call fastcc void @br_range_dec32le(ptr noundef nonnull %blocks, i32 noundef 16, ptr noundef %in.addr.0) #4, !dbg !177",
+    "type": "CallInst",
+    "callee": "br_range_dec32le"
+  },
+  "9": {
+    "instr": "  call fastcc void @aes_ecb4x(ptr noundef %out.addr.0, ptr noundef nonnull %blocks, ptr noundef %rkeys, i32 noundef %nrounds) #4, !dbg !179",
+    "type": "CallInst",
+    "callee": "aes_ecb4x"
+  },
+  "11": {
+    "instr": "  %add.ptr = getelementptr inbounds nuw i8, ptr %in.addr.0, i32 64, !dbg !181",
+    "type": "GetElementPtrInst"
+  },
+  "12": {
+    "instr": "  %add.ptr2 = getelementptr inbounds nuw i8, ptr %out.addr.0, i32 64, !dbg !182",
+    "type": "GetElementPtrInst"
+  },
+  "15": {
+    "instr": "  %in.addr.0.lcssa = phi ptr [ %in.addr.0, %while.cond ]",
+    "type": "PHINode"
+  },
+  "16": {
+    "instr": "  %out.addr.0.lcssa = phi ptr [ %out.addr.0, %while.cond ]",
+    "type": "PHINode"
+  },
+  "20": {
+    "instr": "  call fastcc void @br_range_dec32le(ptr noundef nonnull %blocks, i32 noundef %mul, ptr noundef %in.addr.0.lcssa) #4, !dbg !190",
+    "type": "CallInst",
+    "callee": "br_range_dec32le"
+  },
+  "21": {
+    "instr": "  call fastcc void @aes_ecb4x(ptr noundef nonnull %t, ptr noundef nonnull %blocks, ptr noundef %rkeys, i32 noundef %nrounds) #4, !dbg !191",
+    "type": "CallInst",
+    "callee": "aes_ecb4x"
+  },
+  "23": {
+    "instr": "  %call = call ptr @memcpy(ptr noundef %out.addr.0.lcssa, ptr noundef nonnull %t, i32 noundef %mul7) #5, !dbg !193",
+    "type": "CallInst",
+    "callee": "memcpy"
+  }
+}

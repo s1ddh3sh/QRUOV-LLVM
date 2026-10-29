@@ -1,0 +1,50 @@
+{
+  "0": {
+    "instr": "  %Sd = alloca [52 x [3 x [18 x i8]]], align 1",
+    "type": "AllocaInst"
+  },
+  "1": {
+    "instr": "  %SdT = alloca [18 x [3 x [52 x i8]]], align 1",
+    "type": "AllocaInst"
+  },
+  "6": {
+    "instr": "  call fastcc void @Expand_sk(ptr noundef %seed_sk, ptr noundef nonnull %Sd, ptr noundef nonnull %SdT) #4, !dbg !190",
+    "type": "CallInst",
+    "callee": "Expand_sk"
+  },
+  "15": {
+    "instr": "  call void @MATRIX_MxV_MUL_SYMMETRIC_MATRIX_VxV(ptr noundef nonnull %SdT, ptr noundef nonnull %Pi1, ptr noundef nonnull %TMP) #4, !dbg !208",
+    "type": "CallInst",
+    "callee": "MATRIX_MxV_MUL_SYMMETRIC_MATRIX_VxV"
+  },
+  "16": {
+    "instr": "  call void @MATRIX_SUB_MxV(ptr noundef nonnull %Pi2T, ptr noundef nonnull %TMP, ptr noundef nonnull %TMP) #4, !dbg !209",
+    "type": "CallInst",
+    "callee": "MATRIX_SUB_MxV"
+  },
+  "18": {
+    "instr": "  call void @MATRIX_MUL_MxV_VxM(ptr noundef nonnull %TMP, ptr noundef nonnull %Sd, ptr noundef %arrayidx) #4, !dbg !211",
+    "type": "CallInst",
+    "callee": "MATRIX_MUL_MxV_VxM"
+  },
+  "20": {
+    "instr": "  call void @MATRIX_MUL_ADD_MxV_VxM(ptr noundef nonnull %SdT, ptr noundef nonnull %Pi2, ptr noundef %arrayidx17) #4, !dbg !213",
+    "type": "CallInst",
+    "callee": "MATRIX_MUL_ADD_MxV_VxM"
+  },
+  "24": {
+    "instr": "  call void @OPENSSL_cleanse(ptr noundef nonnull %TMP, i32 noundef 2808) #4, !dbg !220",
+    "type": "CallInst",
+    "callee": "OPENSSL_cleanse"
+  },
+  "25": {
+    "instr": "  call void @OPENSSL_cleanse(ptr noundef nonnull %Sd, i32 noundef 2808) #4, !dbg !221",
+    "type": "CallInst",
+    "callee": "OPENSSL_cleanse"
+  },
+  "26": {
+    "instr": "  call void @OPENSSL_cleanse(ptr noundef nonnull %SdT, i32 noundef 2808) #4, !dbg !222",
+    "type": "CallInst",
+    "callee": "OPENSSL_cleanse"
+  }
+}

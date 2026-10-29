@@ -1,0 +1,16 @@
+{
+  "0": {
+    "instr": "  call fastcc void @rejsamp_and_q(i32 noundef %tau, ptr noundef %dst) #4, !dbg !165",
+    "type": "CallInst",
+    "callee": "rejsamp_and_q"
+  },
+  "1": {
+    "instr": "  %add.ptr = getelementptr inbounds nuw i8, ptr %dst, i32 %length, !dbg !166",
+    "type": "GetElementPtrInst"
+  },
+  "2": {
+    "instr": "  call fastcc void @rejsamp_rejection_with_aux(i32 noundef %length, ptr noundef %add.ptr, ptr noundef %dst) #4, !dbg !167",
+    "type": "CallInst",
+    "callee": "rejsamp_rejection_with_aux"
+  }
+}

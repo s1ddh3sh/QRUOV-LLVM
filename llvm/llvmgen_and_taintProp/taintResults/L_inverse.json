@@ -1,0 +1,83 @@
+{
+  "0": {
+    "instr": "  call fastcc void @Fq_mxm_identity(ptr noundef %R) #4, !dbg !169",
+    "type": "CallInst",
+    "callee": "Fq_mxm_identity"
+  },
+  "10": {
+    "instr": "  %arrayidx2 = getelementptr inbounds [54 x i8], ptr %A, i32 %2, i32 %i.0, !dbg !178",
+    "type": "GetElementPtrInst"
+  },
+  "11": {
+    "instr": "  %3 = load i8, ptr %arrayidx2, align 1, !dbg !178",
+    "type": "LoadInst"
+  },
+  "12": {
+    "instr": "  %call = call fastcc zeroext i8 @Fq_inv(i8 noundef zeroext %3) #4, !dbg !182",
+    "type": "CallInst",
+    "callee": "Fq_inv"
+  },
+  "18": {
+    "instr": "  %arrayidx7 = getelementptr inbounds nuw [54 x i8], ptr %R, i32 %i.0, i32 %k.0, !dbg !194",
+    "type": "GetElementPtrInst"
+  },
+  "19": {
+    "instr": "  %4 = load i8, ptr %arrayidx7, align 1, !dbg !194",
+    "type": "LoadInst"
+  },
+  "20": {
+    "instr": "  %call8 = call fastcc zeroext i8 @Fq_mul(i8 noundef zeroext %4, i8 noundef zeroext %call) #4, !dbg !195",
+    "type": "CallInst",
+    "callee": "Fq_mul"
+  },
+  "21": {
+    "instr": "  %arrayidx10 = getelementptr inbounds nuw [54 x i8], ptr %R, i32 %i.0, i32 %k.0, !dbg !196",
+    "type": "GetElementPtrInst"
+  },
+  "22": {
+    "instr": "  store i8 %call8, ptr %arrayidx10, align 1, !dbg !197",
+    "type": "StoreInst"
+  },
+  "34": {
+    "instr": "  %arrayidx19 = getelementptr inbounds [54 x i8], ptr %R, i32 %j.0, i32 %k14.0, !dbg !218",
+    "type": "GetElementPtrInst"
+  },
+  "35": {
+    "instr": "  %5 = load i8, ptr %arrayidx19, align 1, !dbg !218",
+    "type": "LoadInst"
+  },
+  "38": {
+    "instr": "  %arrayidx22 = getelementptr inbounds [54 x i8], ptr %A, i32 %6, i32 %i.0, !dbg !220",
+    "type": "GetElementPtrInst"
+  },
+  "39": {
+    "instr": "  %7 = load i8, ptr %arrayidx22, align 1, !dbg !220",
+    "type": "LoadInst"
+  },
+  "40": {
+    "instr": "  %arrayidx24 = getelementptr inbounds nuw [54 x i8], ptr %R, i32 %i.0, i32 %k14.0, !dbg !221",
+    "type": "GetElementPtrInst"
+  },
+  "41": {
+    "instr": "  %8 = load i8, ptr %arrayidx24, align 1, !dbg !221",
+    "type": "LoadInst"
+  },
+  "42": {
+    "instr": "  %call25 = call fastcc zeroext i8 @Fq_mul(i8 noundef zeroext %7, i8 noundef zeroext %8) #4, !dbg !222",
+    "type": "CallInst",
+    "callee": "Fq_mul"
+  },
+  "43": {
+    "instr": "  %call26 = call fastcc zeroext i8 @Fq_sub(i8 noundef zeroext %5, i8 noundef zeroext %call25) #4, !dbg !223",
+    "type": "CallInst",
+    "callee": "Fq_sub"
+  },
+  "44": {
+    "instr": "  %arrayidx28 = getelementptr inbounds [54 x i8], ptr %R, i32 %j.0, i32 %k14.0, !dbg !224",
+    "type": "GetElementPtrInst"
+  },
+  "45": {
+    "instr": "  store i8 %call26, ptr %arrayidx28, align 1, !dbg !225",
+    "type": "StoreInst"
+  }
+}

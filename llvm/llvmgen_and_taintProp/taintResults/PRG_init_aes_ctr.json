@@ -1,0 +1,12 @@
+{
+  "0": {
+    "instr": "  %call = call ptr @EVP_CIPHER_CTX_new() #4, !dbg !166",
+    "type": "CallInst",
+    "callee": "EVP_CIPHER_CTX_new"
+  },
+  "2": {
+    "instr": "  %call2 = call i32 @EVP_EncryptInit_ex(ptr noundef %call, ptr noundef nonnull @aes_128_ctr, ptr noundef null, ptr noundef %seed, ptr noundef null) #4, !dbg !169",
+    "type": "CallInst",
+    "callee": "EVP_EncryptInit_ex"
+  }
+}

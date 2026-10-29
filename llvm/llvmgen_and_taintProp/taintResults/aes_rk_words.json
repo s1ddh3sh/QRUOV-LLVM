@@ -1,0 +1,26 @@
+{
+  "0": {
+    "instr": "  %0 = load i32, ptr %c, align 4, !dbg !163",
+    "type": "LoadInst"
+  },
+  "1": {
+    "instr": "  %cmp = icmp eq i32 %0, 16, !dbg !164",
+    "type": "CmpInst"
+  },
+  "3": {
+    "instr": "  %1 = load i32, ptr %c, align 4, !dbg !166",
+    "type": "LoadInst"
+  },
+  "4": {
+    "instr": "  %cmp2 = icmp eq i32 %1, 24, !dbg !167",
+    "type": "CmpInst"
+  },
+  "5": {
+    "instr": "  %cond = select i1 %cmp2, i32 104, i32 120, !dbg !168",
+    "type": "Other"
+  },
+  "7": {
+    "instr": "  %cond3 = phi i32 [ %cond, %cond.false ], [ 88, %entry ], !dbg !165",
+    "type": "PHINode"
+  }
+}

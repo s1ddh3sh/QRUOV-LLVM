@@ -1,0 +1,15 @@
+{
+  "5": {
+    "instr": "  %arrayidx1 = getelementptr inbounds nuw [52 x i8], ptr %B, i32 %i.0, !dbg !180",
+    "type": "GetElementPtrInst"
+  },
+  "6": {
+    "instr": "  %arrayidx3 = getelementptr inbounds nuw [52 x i8], ptr %C, i32 %i.0, !dbg !181",
+    "type": "GetElementPtrInst"
+  },
+  "7": {
+    "instr": "  call fastcc void @vector_V_sub(ptr noundef %arrayidx, ptr noundef %arrayidx1, ptr noundef %arrayidx3) #4, !dbg !182",
+    "type": "CallInst",
+    "callee": "vector_V_sub"
+  }
+}

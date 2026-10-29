@@ -1,0 +1,158 @@
+{
+  "12": {
+    "instr": "  %Sd = alloca [52 x [3 x [18 x i8]]], align 1",
+    "type": "AllocaInst"
+  },
+  "13": {
+    "instr": "  %SdT = alloca [18 x [3 x [52 x i8]]], align 1",
+    "type": "AllocaInst"
+  },
+  "16": {
+    "instr": "  %y = alloca [3 x [52 x i8]], align 1",
+    "type": "AllocaInst"
+  },
+  "26": {
+    "instr": "  call fastcc void @Expand_sk(ptr noundef %seed_sk, ptr noundef nonnull %Sd, ptr noundef nonnull %SdT) #4, !dbg !230",
+    "type": "CallInst",
+    "callee": "Expand_sk"
+  },
+  "27": {
+    "instr": "  call fastcc void @Expand_y(ptr noundef %seed_y, ptr noundef nonnull %y) #4, !dbg !231",
+    "type": "CallInst",
+    "callee": "Expand_y"
+  },
+  "35": {
+    "instr": "  call void @VECTOR_V_MUL_SYMMETRIC_MATRIX_VxV(ptr noundef nonnull %y, ptr noundef nonnull %Pi1, ptr noundef nonnull %yT_Pi1) #4, !dbg !248",
+    "type": "CallInst",
+    "callee": "VECTOR_V_MUL_SYMMETRIC_MATRIX_VxV"
+  },
+  "36": {
+    "instr": "  call void @VECTOR_V_MUL_MATRIX_VxM(ptr noundef nonnull %yT_Pi1, ptr noundef nonnull %Sd, ptr noundef nonnull %yT_Pi1_Sd) #4, !dbg !249",
+    "type": "CallInst",
+    "callee": "VECTOR_V_MUL_MATRIX_VxM"
+  },
+  "37": {
+    "instr": "  call void @VECTOR_V_MUL_MATRIX_VxM(ptr noundef nonnull %y, ptr noundef nonnull %Pi2, ptr noundef nonnull %yT_Pi2) #4, !dbg !250",
+    "type": "CallInst",
+    "callee": "VECTOR_V_MUL_MATRIX_VxM"
+  },
+  "38": {
+    "instr": "  call void @VECTOR_M_SUB(ptr noundef nonnull %yT_Pi2, ptr noundef nonnull %yT_Pi1_Sd, ptr noundef nonnull %yT_Fi2) #4, !dbg !251",
+    "type": "CallInst",
+    "callee": "VECTOR_M_SUB"
+  },
+  "52": {
+    "instr": "  %0 = load i8, ptr %arrayidx27, align 1, !dbg !273",
+    "type": "LoadInst"
+  },
+  "53": {
+    "instr": "  %call28 = call fastcc zeroext i8 @Fq_add(i8 noundef zeroext %0, i8 noundef zeroext %0) #4, !dbg !276",
+    "type": "CallInst",
+    "callee": "Fq_add"
+  },
+  "57": {
+    "instr": "  store i8 %call28, ptr %arrayidx30, align 1, !dbg !280",
+    "type": "StoreInst"
+  },
+  "62": {
+    "instr": "  %c_i.0 = phi i64 [ %add67, %for.end60 ], [ 0, %for.cond35.preheader ], !dbg !290",
+    "type": "PHINode"
+  },
+  "72": {
+    "instr": "  %1 = load i8, ptr %arrayidx45, align 1, !dbg !307",
+    "type": "LoadInst"
+  },
+  "74": {
+    "instr": "  store i8 %1, ptr %arrayidx46, align 1, !dbg !309",
+    "type": "StoreInst"
+  },
+  "80": {
+    "instr": "  %arrayidx56 = getelementptr inbounds [3 x [52 x i8]], ptr %y, i32 0, i32 %k50.0, i32 %j34.0, !dbg !319",
+    "type": "GetElementPtrInst"
+  },
+  "81": {
+    "instr": "  %2 = load i8, ptr %arrayidx56, align 1, !dbg !319",
+    "type": "LoadInst"
+  },
+  "83": {
+    "instr": "  store i8 %2, ptr %arrayidx57, align 1, !dbg !321",
+    "type": "StoreInst"
+  },
+  "86": {
+    "instr": "  call fastcc void @Fql_mul(ptr noundef nonnull %yT_Fi1_j, ptr noundef nonnull %y_j, ptr noundef nonnull %yT_Fi1_j_y_j) #4, !dbg !328",
+    "type": "CallInst",
+    "callee": "Fql_mul"
+  },
+  "87": {
+    "instr": "  %call65 = call fastcc zeroext i8 @Fql2Fq(ptr noundef nonnull %yT_Fi1_j_y_j, i32 noundef 0) #4, !dbg !329",
+    "type": "CallInst",
+    "callee": "Fql2Fq"
+  },
+  "88": {
+    "instr": "  %conv66 = zext i8 %call65 to i64, !dbg !330",
+    "type": "CastInst"
+  },
+  "89": {
+    "instr": "  %add67 = add i64 %c_i.0, %conv66, !dbg !331",
+    "type": "BinOp"
+  },
+  "92": {
+    "instr": "  %c_i.0.lcssa = phi i64 [ %c_i.0, %for.cond35 ], !dbg !290",
+    "type": "PHINode"
+  },
+  "93": {
+    "instr": "  %rem = urem i64 %c_i.0.lcssa, 127, !dbg !336",
+    "type": "BinOp"
+  },
+  "94": {
+    "instr": "  %conv71 = trunc nuw nsw i64 %rem to i8, !dbg !337",
+    "type": "CastInst"
+  },
+  "96": {
+    "instr": "  store i8 %conv71, ptr %arrayidx72, align 1, !dbg !339",
+    "type": "StoreInst"
+  },
+  "100": {
+    "instr": "  call fastcc void @LU_decompose(ptr noundef nonnull %eqn, ptr noundef nonnull %echelon_perm, ptr noundef nonnull %echelon_rank, ptr noundef nonnull %echelon_index) #4, !dbg !346",
+    "type": "CallInst",
+    "callee": "LU_decompose"
+  },
+  "113": {
+    "instr": "  %4 = load i8, ptr %arrayidx89, align 1, !dbg !368",
+    "type": "LoadInst"
+  },
+  "114": {
+    "instr": "  %call90 = call fastcc zeroext i8 @Fq_sub(i8 noundef zeroext %3, i8 noundef zeroext %4) #4, !dbg !369",
+    "type": "CallInst",
+    "callee": "Fq_sub"
+  },
+  "116": {
+    "instr": "  store i8 %call90, ptr %arrayidx91, align 1, !dbg !371",
+    "type": "StoreInst"
+  },
+  "120": {
+    "instr": "  %call99 = call fastcc i32 @consistent(ptr noundef nonnull %eqn, ptr noundef nonnull %echelon_perm, i32 noundef %5, ptr noundef nonnull %b, ptr noundef nonnull %cacheR, ptr noundef nonnull %R) #4, !dbg !377",
+    "type": "CallInst",
+    "callee": "consistent"
+  },
+  "125": {
+    "instr": "  call fastcc void @sample_a_solution(ptr noundef %seed_sol, ptr noundef nonnull %eqn, ptr noundef nonnull %echelon_perm, i32 noundef %6, ptr noundef nonnull %echelon_index, ptr noundef nonnull %b, ptr noundef nonnull %oil_u, ptr noundef nonnull %b2) #4, !dbg !384",
+    "type": "CallInst",
+    "callee": "sample_a_solution"
+  },
+  "127": {
+    "instr": "  call fastcc void @SIG_GEN(ptr noundef nonnull %oil, ptr noundef nonnull %Sd, ptr noundef nonnull %y, ptr noundef %sig) #4, !dbg !386",
+    "type": "CallInst",
+    "callee": "SIG_GEN"
+  },
+  "128": {
+    "instr": "  call void @OPENSSL_cleanse(ptr noundef nonnull %Sd, i32 noundef 2808) #4, !dbg !387",
+    "type": "CallInst",
+    "callee": "OPENSSL_cleanse"
+  },
+  "129": {
+    "instr": "  call void @OPENSSL_cleanse(ptr noundef nonnull %SdT, i32 noundef 2808) #4, !dbg !388",
+    "type": "CallInst",
+    "callee": "OPENSSL_cleanse"
+  }
+}

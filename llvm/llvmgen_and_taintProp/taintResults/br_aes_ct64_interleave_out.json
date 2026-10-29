@@ -1,0 +1,150 @@
+{
+  "0": {
+    "instr": "  %and = and i64 %q0, 71777214294589695, !dbg !165",
+    "type": "BinOp"
+  },
+  "1": {
+    "instr": "  %and1 = and i64 %q1, 71777214294589695, !dbg !167",
+    "type": "BinOp"
+  },
+  "2": {
+    "instr": "  %shr = lshr i64 %q0, 8, !dbg !169",
+    "type": "BinOp"
+  },
+  "3": {
+    "instr": "  %and2 = and i64 %shr, 71776119077928960, !dbg !170",
+    "type": "BinOp"
+  },
+  "4": {
+    "instr": "  %shr3 = lshr i64 %q1, 8, !dbg !172",
+    "type": "BinOp"
+  },
+  "5": {
+    "instr": "  %and4 = and i64 %shr3, 71776119077928960, !dbg !173",
+    "type": "BinOp"
+  },
+  "6": {
+    "instr": "  %shr5 = lshr i64 %and, 8, !dbg !175",
+    "type": "BinOp"
+  },
+  "7": {
+    "instr": "  %or = or disjoint i64 %and, %shr5, !dbg !176",
+    "type": "BinOp"
+  },
+  "8": {
+    "instr": "  %shr6 = lshr i64 %and1, 8, !dbg !177",
+    "type": "BinOp"
+  },
+  "9": {
+    "instr": "  %or7 = or disjoint i64 %and1, %shr6, !dbg !178",
+    "type": "BinOp"
+  },
+  "10": {
+    "instr": "  %0 = and i64 %q0, 280375465148160, !dbg !179",
+    "type": "BinOp"
+  },
+  "11": {
+    "instr": "  %1 = or disjoint i64 %and2, %0, !dbg !179",
+    "type": "BinOp"
+  },
+  "12": {
+    "instr": "  %or9 = lshr exact i64 %1, 8, !dbg !179",
+    "type": "BinOp"
+  },
+  "13": {
+    "instr": "  %2 = and i64 %q1, 280375465148160, !dbg !180",
+    "type": "BinOp"
+  },
+  "14": {
+    "instr": "  %3 = or disjoint i64 %and4, %2, !dbg !180",
+    "type": "BinOp"
+  },
+  "15": {
+    "instr": "  %or11 = lshr exact i64 %3, 8, !dbg !180",
+    "type": "BinOp"
+  },
+  "16": {
+    "instr": "  %and12 = and i64 %or, 281470681808895, !dbg !181",
+    "type": "BinOp"
+  },
+  "17": {
+    "instr": "  %and13 = and i64 %or7, 281470681808895, !dbg !182",
+    "type": "BinOp"
+  },
+  "18": {
+    "instr": "  %shr16 = lshr i64 %and12, 16, !dbg !183",
+    "type": "BinOp"
+  },
+  "19": {
+    "instr": "  %or181 = or disjoint i64 %and12, %shr16, !dbg !184",
+    "type": "BinOp"
+  },
+  "20": {
+    "instr": "  %or18 = trunc i64 %or181 to i32, !dbg !184",
+    "type": "CastInst"
+  },
+  "21": {
+    "instr": "  store i32 %or18, ptr %w, align 4, !dbg !185",
+    "type": "StoreInst"
+  },
+  "22": {
+    "instr": "  %shr20 = lshr i64 %and13, 16, !dbg !186",
+    "type": "BinOp"
+  },
+  "23": {
+    "instr": "  %or222 = or disjoint i64 %and13, %shr20, !dbg !187",
+    "type": "BinOp"
+  },
+  "24": {
+    "instr": "  %or22 = trunc i64 %or222 to i32, !dbg !187",
+    "type": "CastInst"
+  },
+  "25": {
+    "instr": "  %arrayidx23 = getelementptr inbounds nuw i8, ptr %w, i32 4, !dbg !188",
+    "type": "GetElementPtrInst"
+  },
+  "26": {
+    "instr": "  store i32 %or22, ptr %arrayidx23, align 4, !dbg !189",
+    "type": "StoreInst"
+  },
+  "27": {
+    "instr": "  %shr25 = lshr i64 %1, 24, !dbg !190",
+    "type": "BinOp"
+  },
+  "28": {
+    "instr": "  %or273 = or disjoint i64 %or9, %shr25, !dbg !191",
+    "type": "BinOp"
+  },
+  "29": {
+    "instr": "  %or27 = trunc i64 %or273 to i32, !dbg !191",
+    "type": "CastInst"
+  },
+  "30": {
+    "instr": "  %arrayidx28 = getelementptr inbounds nuw i8, ptr %w, i32 8, !dbg !192",
+    "type": "GetElementPtrInst"
+  },
+  "31": {
+    "instr": "  store i32 %or27, ptr %arrayidx28, align 4, !dbg !193",
+    "type": "StoreInst"
+  },
+  "32": {
+    "instr": "  %shr30 = lshr i64 %3, 24, !dbg !194",
+    "type": "BinOp"
+  },
+  "33": {
+    "instr": "  %or324 = or disjoint i64 %or11, %shr30, !dbg !195",
+    "type": "BinOp"
+  },
+  "34": {
+    "instr": "  %or32 = trunc i64 %or324 to i32, !dbg !195",
+    "type": "CastInst"
+  },
+  "35": {
+    "instr": "  %arrayidx33 = getelementptr inbounds nuw i8, ptr %w, i32 12, !dbg !196",
+    "type": "GetElementPtrInst"
+  },
+  "36": {
+    "instr": "  store i32 %or32, ptr %arrayidx33, align 4, !dbg !197",
+    "type": "StoreInst"
+  }
+}

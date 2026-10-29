@@ -1,0 +1,27 @@
+{
+  "1": {
+    "instr": "  %src.addr.0 = phi ptr [ %src, %entry ], [ %add.ptr, %while.body ]",
+    "type": "PHINode"
+  },
+  "3": {
+    "instr": "  %v.addr.0 = phi ptr [ %v, %entry ], [ %incdec.ptr, %while.body ]",
+    "type": "PHINode"
+  },
+  "7": {
+    "instr": "  %call = call fastcc i32 @br_dec32le(ptr noundef %src.addr.0) #4, !dbg !168",
+    "type": "CallInst",
+    "callee": "br_dec32le"
+  },
+  "8": {
+    "instr": "  %incdec.ptr = getelementptr inbounds nuw i8, ptr %v.addr.0, i32 4, !dbg !170",
+    "type": "GetElementPtrInst"
+  },
+  "9": {
+    "instr": "  store i32 %call, ptr %v.addr.0, align 4, !dbg !171",
+    "type": "StoreInst"
+  },
+  "10": {
+    "instr": "  %add.ptr = getelementptr inbounds nuw i8, ptr %src.addr.0, i32 4, !dbg !172",
+    "type": "GetElementPtrInst"
+  }
+}
