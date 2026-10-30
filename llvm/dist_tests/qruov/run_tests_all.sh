@@ -1,12 +1,14 @@
 #!/usr/bin/env bash
 #
-# run_tests_all.sh — build and run the full Unicorn paired-sweep pipeline
+# run_tests_all.sh — build and run the Unicorn early-stop pipeline
 # for EVERY QR-UOV function listed in qruov.json.
 #
 # For each function in qruov.json, in order:
 #   1. dist_tests/qruov/qruov_build.sh test_qruov/<function>
 #      (build the correct + faulty ELFs, extract the witness)
-#   2. dist_tests/qruov/run_combined_unicorn.sh <function> --seeds 0,1,2,3
+#   2. dist_tests/qruov/run_combined_unicorn.sh <function> --seeds 0,1,2,3 --fresh
+#      (calibrate, then the early-stop ineffective + correction sweep per
+#      faulty ELF; --fresh so a stale earlier collection is not replayed)
 #
 # Run from anywhere (the script cds to llvm/). Usage:
 #   ./dist_tests/qruov/run_tests_all.sh
@@ -77,9 +79,9 @@ for func in "${FUNCS[@]}"; do
     fi
 
     echo
-    echo "=== [test] ${RUN_UNICORN} ${func} --seeds ${SEEDS} ==="
+    echo "=== [test] ${RUN_UNICORN} ${func} --seeds ${SEEDS} --fresh ==="
     status=0
-    "$RUN_UNICORN" "$func" --seeds "$SEEDS" || status=$?
+    "$RUN_UNICORN" "$func" --seeds "$SEEDS" --fresh || status=$?
     if [[ $status -eq 3 ]]; then
         SKIPPED+=("${func}")
         continue

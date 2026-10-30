@@ -19,11 +19,17 @@ import sys
 
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..", "..")))
 
-from dist_tests.common.unicorn_runner import run_trial, TrialError
+from dist_tests.common.unicorn_runner import run_trial, TrialError, TrialTimeout
 from dist_tests.qruov.setup.distributions_unicorn import (
     sample_for_distribution,
     field_mod_for,
 )
+
+
+class RunTimeout(Exception):
+    """A trial exceeded the emulation wall-clock cap (likely an endless
+    loop in a faulty ELF). Deliberately NOT a RunFailed: callers must not
+    "skip this sv and continue" -- every other sv would hang too."""
 
 
 class RunFailed(Exception):
@@ -55,6 +61,11 @@ def run_one(elf_path, witness_path, active_lengths_path, func, field_mod,
             # so every public seed is run with every ephemeral draw.
             eph_seed=f"eph:{eph_index}",
         )
+    except TrialTimeout as e:
+        raise RunTimeout(
+            f"subprocess.TimeoutExpired: {variant} run for "
+            f"{secret_buf}[{secret_pos}]={secret_val} (seed={seed}): {e}"
+        ) from e
     except (TrialError, Exception) as e:
         raise RunFailed(
             f"{variant} run for {secret_buf}[{secret_pos}]={secret_val} "
@@ -88,7 +99,7 @@ def run_sweep(args):
                         args.field_mod, args.seed, variant, out_path, args.machine,
                         args.fixed_scalars, args.secret_buf, args.secret_pos, sval,
                         args.eph_secret, args.eph_index)
-            except RunFailed as e:
+            except (RunFailed, RunTimeout) as e:
                 print(f"[!] FAILED: {variant} sval={sval}\n{e}", flush=True)
                 failures.append((variant, sval, str(e)))
 

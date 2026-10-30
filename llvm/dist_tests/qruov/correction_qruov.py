@@ -103,7 +103,7 @@ def main():
     ap.add_argument("--active-len", type=int, required=True)
     ap.add_argument("--out-repr", default="fq:*",
                     help="output representation (output_repr.py; "
-                         "run_correction_paired.sh passes the function's)")
+                         "default: output_repr.py <func> <out_buf>)")
     ap.add_argument("--verbose", action="store_true")
     args = ap.parse_args()
 

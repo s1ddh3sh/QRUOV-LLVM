@@ -1,0 +1,56 @@
+scheme,function,fault,source,test,detected,detail
+qruov,ExpandMatrixVxM,loadStoreSkip/ExpandMatrixVxM_line15_mem,test_result.txt,correction,yes,"SATISFIED on 'A' pos 0 (s=1, alpha=1: y1 = y2 + alpha (mod q) for all 4 swept p x 1 ephemeral draw(s))"
+qruov,ExpandMatrixVxM,loadStoreSkip/ExpandMatrixVxM_line15_mem,test_result.txt,ineffective,yes,"DETECTED on 'A' pos 0 (s1=0 ineffective, s2=1 effective; pair on each of 4 public seeds, constant over 1 ephemeral draw(s))"
+qruov,ExpandMatrixVxM,loadStoreSkip/ExpandMatrixVxM_line17_mem,test_result.txt,correction,yes,"SATISFIED on 'A' pos 0 (s=1, alpha=1: y1 = y2 + alpha (mod q) for all 4 swept p x 1 ephemeral draw(s))"
+qruov,ExpandMatrixVxM,loadStoreSkip/ExpandMatrixVxM_line17_mem,test_result.txt,ineffective,yes,"DETECTED on 'A' pos 0 (s1=0 ineffective, s2=1 effective; pair on each of 4 public seeds, constant over 1 ephemeral draw(s))"
+qruov,ExpandMatrixVxM,loopOrFuncSkip/ExpandMatrixVxM_fnSkip_VECTOR_M_CLEAR_TAIL_line26,test_result.txt,correction,no,"no (s, alpha) with constant Delta across (p, r) found in range swept"
+qruov,ExpandMatrixVxM,loopOrFuncSkip/ExpandMatrixVxM_fnSkip_VECTOR_M_CLEAR_TAIL_line26,test_result.txt,ineffective,no,no disagreement found in range swept
+qruov,Expand_sk,loopOrFuncSkip/Expand_sk_fnSkip_ExpandMatrixVxM_line3,test_result.txt,ineffective,yes,"[+] INEFFECTIVE hit on 'Sd' pos 615: a pair on each of 4 public seeds [0, 1, 2, 3], constant over 1 ephemeral draw(s): p=0: s1=5 (ineffective) vs s2=0 (effective), p=1: s1=17 (ineffective) vs s2=0 (effective), p=2: s1=16 (ineffective) vs s2=0 (effective), p=3: s1=14 (ineffective) vs s2=0 (effective)"
+qruov,Fq_sub,binOpFault/Fq_sub_line2_opA,test_result.txt,correction,no,"no (s, alpha) with constant Delta across (p, r) found in range swept"
+qruov,Fq_sub,binOpFault/Fq_sub_line2_opA,direct_leak_result.txt,direct_leak,yes,secret-buf: faulty output 'ret' equals input 'X' in all 16 trace(s) where the fault changed it
+qruov,Fq_sub,binOpFault/Fq_sub_line2_opA,test_result.txt,ineffective,no,no disagreement found in range swept
+qruov,Fq_sub,binOpFault/Fq_sub_line2_opB,test_result.txt,correction,yes,"SATISFIED on 'ret' pos 0 (s=1, alpha=1: y1 = y2 + alpha (mod q) for all 4 swept p x 1 ephemeral draw(s))"
+qruov,Fq_sub,binOpFault/Fq_sub_line2_opB,direct_leak_result.txt,direct_leak,no,secret-buf: no faulty output equals input 'X'
+qruov,Fq_sub,binOpFault/Fq_sub_line2_opB,test_result.txt,ineffective,yes,"DETECTED on 'ret' pos 0 (s1=0 ineffective, s2=1 effective; pair on each of 4 public seeds, constant over 1 ephemeral draw(s))"
+qruov,Fq_sub,binOpFault/Fq_sub_line2_undef,test_result.txt,correction,no,"no (s, alpha) with constant Delta across (p, r) found in range swept"
+qruov,Fq_sub,binOpFault/Fq_sub_line2_undef,direct_leak_result.txt,direct_leak,no,secret-buf: no faulty output equals input 'X'
+qruov,Fq_sub,binOpFault/Fq_sub_line2_undef,test_result.txt,ineffective,yes,"DETECTED on 'ret' pos 0 (s1=49 ineffective, s2=0 effective; pair on each of 4 public seeds, constant over 1 ephemeral draw(s))"
+qruov,Fq_sub,binOpFault/Fq_sub_line2_zero,test_result.txt,correction,no,"no (s, alpha) with constant Delta across (p, r) found in range swept"
+qruov,Fq_sub,binOpFault/Fq_sub_line2_zero,direct_leak_result.txt,direct_leak,no,secret-buf: no faulty output equals input 'X'
+qruov,Fq_sub,binOpFault/Fq_sub_line2_zero,test_result.txt,ineffective,yes,"DETECTED on 'ret' pos 0 (s1=49 ineffective, s2=0 effective; pair on each of 4 public seeds, constant over 1 ephemeral draw(s))"
+qruov,Fq_sub,binOpFault/Fq_sub_line3_opA,test_result.txt,correction,yes,"SATISFIED on 'ret' pos 0 (s=0, alpha=125: y1 = y2 + alpha (mod q) for all 4 swept p x 1 ephemeral draw(s))"
+qruov,Fq_sub,binOpFault/Fq_sub_line3_opA,direct_leak_result.txt,direct_leak,no,secret-buf: no faulty output equals input 'X'
+qruov,Fq_sub,binOpFault/Fq_sub_line3_opA,test_result.txt,ineffective,yes,"DETECTED on 'ret' pos 0 (s1=49 ineffective, s2=0 effective; pair on each of 4 public seeds, constant over 1 ephemeral draw(s))"
+qruov,Fq_sub,binOpFault/Fq_sub_line3_opB,test_result.txt,correction,no,"no (s, alpha) with constant Delta across (p, r) found in range swept"
+qruov,Fq_sub,binOpFault/Fq_sub_line3_opB,direct_leak_result.txt,direct_leak,no,secret-buf: no faulty output equals input 'X'
+qruov,Fq_sub,binOpFault/Fq_sub_line3_opB,test_result.txt,ineffective,yes,"DETECTED on 'ret' pos 0 (s1=49 ineffective, s2=0 effective; pair on each of 4 public seeds, constant over 1 ephemeral draw(s))"
+qruov,Fq_sub,binOpFault/Fq_sub_line3_undef,test_result.txt,correction,no,"no (s, alpha) with constant Delta across (p, r) found in range swept"
+qruov,Fq_sub,binOpFault/Fq_sub_line3_undef,direct_leak_result.txt,direct_leak,no,secret-buf: no faulty output equals input 'X'
+qruov,Fq_sub,binOpFault/Fq_sub_line3_undef,test_result.txt,ineffective,yes,"DETECTED on 'ret' pos 0 (s1=49 ineffective, s2=0 effective; pair on each of 4 public seeds, constant over 1 ephemeral draw(s))"
+qruov,Fq_sub,binOpFault/Fq_sub_line3_zero,test_result.txt,correction,no,"no (s, alpha) with constant Delta across (p, r) found in range swept"
+qruov,Fq_sub,binOpFault/Fq_sub_line3_zero,direct_leak_result.txt,direct_leak,no,secret-buf: no faulty output equals input 'X'
+qruov,Fq_sub,binOpFault/Fq_sub_line3_zero,test_result.txt,ineffective,yes,"DETECTED on 'ret' pos 0 (s1=49 ineffective, s2=0 effective; pair on each of 4 public seeds, constant over 1 ephemeral draw(s))"
+qruov,Fq_sub,binOpFault/Fq_sub_line4_opA,test_result.txt,correction,no,"no (s, alpha) with constant Delta across (p, r) found in range swept"
+qruov,Fq_sub,binOpFault/Fq_sub_line4_opA,direct_leak_result.txt,direct_leak,no,secret-buf: no faulty output equals input 'X'
+qruov,Fq_sub,binOpFault/Fq_sub_line4_opA,test_result.txt,ineffective,yes,"DETECTED on 'ret' pos 0 (s1=49 ineffective, s2=0 effective; pair on each of 4 public seeds, constant over 1 ephemeral draw(s))"
+qruov,Fq_sub,binOpFault/Fq_sub_line4_opB,test_result.txt,correction,no,"no (s, alpha) with constant Delta across (p, r) found in range swept"
+qruov,Fq_sub,binOpFault/Fq_sub_line4_opB,direct_leak_result.txt,direct_leak,no,secret-buf: no faulty output equals input 'X'
+qruov,Fq_sub,binOpFault/Fq_sub_line4_opB,test_result.txt,ineffective,yes,"DETECTED on 'ret' pos 0 (s1=49 ineffective, s2=0 effective; pair on each of 4 public seeds, constant over 1 ephemeral draw(s))"
+qruov,Fq_sub,binOpFault/Fq_sub_line4_undef,test_result.txt,correction,no,"no (s, alpha) with constant Delta across (p, r) found in range swept"
+qruov,Fq_sub,binOpFault/Fq_sub_line4_undef,direct_leak_result.txt,direct_leak,no,secret-buf: no faulty output equals input 'X'
+qruov,Fq_sub,binOpFault/Fq_sub_line4_undef,test_result.txt,ineffective,yes,"DETECTED on 'ret' pos 0 (s1=49 ineffective, s2=0 effective; pair on each of 4 public seeds, constant over 1 ephemeral draw(s))"
+qruov,Fq_sub,binOpFault/Fq_sub_line4_zero,test_result.txt,correction,no,"no (s, alpha) with constant Delta across (p, r) found in range swept"
+qruov,Fq_sub,binOpFault/Fq_sub_line4_zero,direct_leak_result.txt,direct_leak,no,secret-buf: no faulty output equals input 'X'
+qruov,Fq_sub,binOpFault/Fq_sub_line4_zero,test_result.txt,ineffective,yes,"DETECTED on 'ret' pos 0 (s1=49 ineffective, s2=0 effective; pair on each of 4 public seeds, constant over 1 ephemeral draw(s))"
+qruov,rejsamp_and_q,binOpFault/rejsamp_and_q_line6_opA,test_result.txt,correction,yes,"SATISFIED on 'dst' pos 0 (s=1, alpha=1: y1 = y2 xor alpha for all 4 swept p x 1 ephemeral draw(s))"
+qruov,rejsamp_and_q,binOpFault/rejsamp_and_q_line6_opA,test_result.txt,ineffective,yes,"DETECTED on 'dst' pos 0 (s1=0 ineffective, s2=1 effective; pair on each of 4 public seeds, constant over 1 ephemeral draw(s))"
+qruov,rejsamp_and_q,binOpFault/rejsamp_and_q_line6_opB,test_result.txt,correction,yes,"SATISFIED on 'dst' pos 0 (s=1, alpha=1: y1 = y2 xor alpha for all 4 swept p x 1 ephemeral draw(s))"
+qruov,rejsamp_and_q,binOpFault/rejsamp_and_q_line6_opB,test_result.txt,ineffective,yes,"DETECTED on 'dst' pos 0 (s1=0 ineffective, s2=1 effective; pair on each of 4 public seeds, constant over 1 ephemeral draw(s))"
+qruov,rejsamp_and_q,binOpFault/rejsamp_and_q_line6_undef,test_result.txt,correction,yes,"SATISFIED on 'dst' pos 6 (s=0, alpha=128: y1 = y2 xor alpha for all 4 swept p x 1 ephemeral draw(s))"
+qruov,rejsamp_and_q,binOpFault/rejsamp_and_q_line6_undef,test_result.txt,ineffective,yes,"DETECTED on 'dst' pos 0 (s1=0 ineffective, s2=128 effective; pair on each of 4 public seeds, constant over 1 ephemeral draw(s))"
+qruov,rejsamp_and_q,binOpFault/rejsamp_and_q_line6_zero,test_result.txt,correction,yes,"SATISFIED on 'dst' pos 0 (s=1, alpha=1: y1 = y2 xor alpha for all 4 swept p x 1 ephemeral draw(s))"
+qruov,rejsamp_and_q,binOpFault/rejsamp_and_q_line6_zero,test_result.txt,ineffective,yes,"DETECTED on 'dst' pos 0 (s1=0 ineffective, s2=1 effective; pair on each of 4 public seeds, constant over 1 ephemeral draw(s))"
+qruov,rejsamp_and_q,loadStoreSkip/rejsamp_and_q_line5_mem,test_result.txt,correction,yes,"SATISFIED on 'dst' pos 0 (s=1, alpha=1: y1 = y2 xor alpha for all 4 swept p x 1 ephemeral draw(s))"
+qruov,rejsamp_and_q,loadStoreSkip/rejsamp_and_q_line5_mem,test_result.txt,ineffective,yes,"DETECTED on 'dst' pos 0 (s1=0 ineffective, s2=1 effective; pair on each of 4 public seeds, constant over 1 ephemeral draw(s))"
+qruov,rejsamp_and_q,loadStoreSkip/rejsamp_and_q_line7_mem,test_result.txt,correction,yes,"SATISFIED on 'dst' pos 6 (s=0, alpha=128: y1 = y2 xor alpha for all 4 swept p x 1 ephemeral draw(s))"
+qruov,rejsamp_and_q,loadStoreSkip/rejsamp_and_q_line7_mem,test_result.txt,ineffective,yes,"DETECTED on 'dst' pos 0 (s1=0 ineffective, s2=128 effective; pair on each of 4 public seeds, constant over 1 ephemeral draw(s))"

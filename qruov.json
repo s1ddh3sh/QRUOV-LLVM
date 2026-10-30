@@ -370,10 +370,6 @@
         "secret-buf": "ctr",
         "output": "ctr"
     },
-    "example_qruov": {
-        "secret-buf": "sk",
-        "output": "ret"
-    },
     "mix_columns": {
         "secret-buf": "q",
         "output": "q"

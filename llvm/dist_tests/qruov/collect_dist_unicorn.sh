@@ -129,7 +129,9 @@ elif [[ "$STATUS" -ne 0 ]]; then
 fi
 
 echo "=== done: ${FUNC_NAME} / $(basename "$FAULTY_ELF") ==="
-echo "[i] next: python3 dist_tests/qruov/ineffective_paired_test.py \\"
-echo "         --dist-dir ${DIST_PAIRED_DIR} --out-buf <OUT_BUF> --active-len <ACTIVE_LEN>"
+echo "[i] full sweep in ${DIST_PAIRED_DIR}; analyse offline with"
+echo "    dist_tests/qruov/{ineffective,correction}_qruov.py --dist-dir ... --out-buf <OUT_BUF>"
+echo "    --active-len <N> --out-repr \"\$(dist_tests/qruov/output_repr.py ${FUNC_NAME} <OUT_BUF>)\""
+echo "    or replay it with early_stop_sweep_unicorn.py (same directory layout)"
 
 exit 0
