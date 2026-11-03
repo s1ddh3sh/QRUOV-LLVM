@@ -53,7 +53,10 @@ OVERSIZE_RATIO = 5
 # `%siglen = alloca i32, ...` for a `size_t *siglen` out-param) -- is
 # parsed separately below, since a single regex can't handle both an
 # arbitrary nesting depth and the "no brackets at all" scalar case.
-ALLOCA_START_RE = re.compile(r'%(?P<name>\w+)\s*=\s*alloca\s+')
+# LLVM local names may contain '.', '$', '-' (e.g. %crypto_sign_keypair.P3,
+# a driver buffer named after the caller's variable).
+LLVM_NAME = r'[-\w.$]+'
+ALLOCA_START_RE = re.compile(r'%(?P<name>' + LLVM_NAME + r')\s*=\s*alloca\s+')
 
 
 def _find_matching_bracket(text: str, open_idx: int) -> int:
@@ -194,7 +197,7 @@ def find_fut_call(main_body: str, fn_name: str) -> List[Tuple[str, str]]:
             continue
 
         # Updated regex to match optional parameter attributes like `nonnull`, `nocapture`
-        pm = re.search(r'ptr\s+(?:[\w\s]+\s+)?%(?P<ptr>\w+)', raw)
+        pm = re.search(r'ptr\s+(?:[\w\s]+\s+)?%(?P<ptr>' + LLVM_NAME + r')', raw)
         if pm:
             args.append(("ptr", pm.group("ptr")))
             continue
@@ -203,7 +206,7 @@ def find_fut_call(main_body: str, fn_name: str) -> List[Tuple[str, str]]:
         if im:
             args.append(("imm", im.group("imm")))
             continue
-        rm = re.search(r'i(?P<bits>\d+)\s+%(?P<reg>\w+)', raw)
+        rm = re.search(r'i(?P<bits>\d+)\s+%(?P<reg>' + LLVM_NAME + r')', raw)
         if rm:
             args.append(("reg", rm.group("reg")))
             continue

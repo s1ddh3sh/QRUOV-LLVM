@@ -41,10 +41,6 @@
         "secret-buf": "X",
         "output": "ret"
     },
-    "Fq_add.25": {
-        "secret-buf": "X",
-        "output": "ret"
-    },
     "Fq_inv": {
         "secret-buf": "X",
         "output": "ret"
@@ -59,11 +55,6 @@
     },
     "Fq_sub": {
         "secret-buf": "X",
-        "output": "ret"
-    },
-    "Fq_sub.28": {
-        "secret-buf": "Y",
-        "eph_secret": "X",
         "output": "ret"
     },
     "Fq_vec_add": {
@@ -150,20 +141,6 @@
         "secret-buf": "seed",
         "output": "ret"
     },
-    "QRUOV_KeyGen": {
-        "secret-buf": "seed_sk",
-        "output": "P3",
-        "output-repr": "fq:*"
-    },
-    "QRUOV_Sign": {
-        "secret-buf": "seed_sk",
-        "eph_secret": "seed_y",
-        "fixed-scalars": "message_length",
-        "output": "sig",
-        "output-repr": {
-            "sig": "bytes:16,fq:*"
-        }
-    },
     "RejSamp": {
         "secret-buf": "dst",
         "fixed-scalars": "length,tau",
@@ -194,10 +171,6 @@
         "secret-buf": "C",
         "output": "C"
     },
-    "VECTOR_M_CLEAR_TAIL.40": {
-        "secret-buf": "C",
-        "output": "C"
-    },
     "VECTOR_M_SUB": {
         "secret-buf": "B",
         "eph_secret": "A",
@@ -209,10 +182,6 @@
     },
     "VECTOR_V_CLEAR_TAIL": {
         "eph_secret": "C",
-        "output": "C"
-    },
-    "VECTOR_V_CLEAR_TAIL.35": {
-        "secret-buf": "C",
         "output": "C"
     },
     "VECTOR_V_MUL_MATRIX_VxM": {
