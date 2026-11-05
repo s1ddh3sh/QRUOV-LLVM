@@ -43,11 +43,14 @@ QRUOV_BUILD="${SCRIPT_DIR}/qruov_build.sh"
 RUN_UNICORN="${SCRIPT_DIR}/run_combined_unicorn.sh"
 SEEDS="0,1,2,3"
 
-# Max concurrent per-function pipelines. Default: all cores, capped at 16
-# so a very large machine does not oversubscribe on I/O; override with -j
-# or the JOBS env var.
+# Max concurrent per-function pipelines (the OUTER pool). Default: all cores.
+# The core budget is split with the inner per-faulty-ELF pool below as
+# INNER_JOBS = max(1, nproc / JOBS), so outer x inner <= nproc (no
+# oversubscription). The default -j nproc therefore gives inner 1 -- each
+# function runs its sweeps sequentially, exactly today's behaviour; lower
+# -j (e.g. -j 4) to feed the freed cores into each function's ELF sweep.
+# Override with -j or the JOBS env var.
 DEFAULT_JOBS=$(nproc 2>/dev/null || echo 4)
-if (( DEFAULT_JOBS > 16 )); then DEFAULT_JOBS=16; fi
 JOBS="${JOBS:-$DEFAULT_JOBS}"
 
 # Where the per-function timing results are written as CSV (relative to llvm/).
@@ -130,7 +133,15 @@ fi
 # Do not spawn more workers than there is work.
 if (( JOBS > ${#FUNCS[@]} )); then JOBS=${#FUNCS[@]}; fi
 
-echo "[i] testing ${#FUNCS[@]} function(s) from ${CONFIG_JSON}, up to ${JOBS} in parallel"
+# run_combined_unicorn.sh now parallelises the per-faulty-ELF sweeps too, so
+# divide the core budget: each of the JOBS function workers is given an inner
+# -j so that (function workers) x (ELF sweeps per worker) <= nproc, instead
+# of nproc x nproc processes fighting over the cores.
+TOTAL_CORES=$(nproc 2>/dev/null || echo 1)
+INNER_JOBS=$(( TOTAL_CORES / JOBS ))
+(( INNER_JOBS < 1 )) && INNER_JOBS=1
+
+echo "[i] testing ${#FUNCS[@]} function(s) from ${CONFIG_JSON}, up to ${JOBS} in parallel (${INNER_JOBS} ELF sweep(s) each)"
 
 # ---- per-function worker: runs the whole pipeline, captures log + status ----
 # Exit code written to the status file: 0 ok, 3 skipped (unsupported),
@@ -160,9 +171,9 @@ run_one_func() {
         fi
 
         echo
-        echo "=== [test] ${RUN_UNICORN} ${func} --seeds ${SEEDS} --fresh ==="
+        echo "=== [test] ${RUN_UNICORN} ${func} --seeds ${SEEDS} -j ${INNER_JOBS} --fresh ==="
         local status=0
-        "$RUN_UNICORN" "$func" --seeds "$SEEDS" --fresh || status=$?
+        "$RUN_UNICORN" "$func" --seeds "$SEEDS" -j "$INNER_JOBS" --fresh || status=$?
         if [[ $status -eq 3 ]]; then
             echo "[skip] ${func}: not testable by the argument sweep"
             exit 3
