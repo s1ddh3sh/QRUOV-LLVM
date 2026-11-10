@@ -1,0 +1,5 @@
+function,outcome,time_seconds
+Fq_sub,ok,16.40
+vector_M_dot_vector_M,ok,79.06
+__average_per_function__,,47.73
+__total_wall_clock__,,79.07

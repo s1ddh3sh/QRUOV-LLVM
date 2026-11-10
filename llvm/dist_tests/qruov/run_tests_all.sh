@@ -54,8 +54,10 @@ DEFAULT_JOBS=$(nproc 2>/dev/null || echo 4)
 JOBS="${JOBS:-$DEFAULT_JOBS}"
 
 # Where the per-function timing results are written as CSV (relative to llvm/).
-# Override with --timing-csv PATH.
-TIMING_CSV="test_qruov/timing_report.csv"
+# Each function appends its own row the moment it finishes, so a run that is
+# cancelled partway through still leaves the timings of every function that
+# had completed. Override with --timing-csv PATH.
+TIMING_CSV="dist_tests/qruov/timing_report.csv"
 
 # ---- parse args: -j/--jobs N set the pool size; bare words select funcs ----
 SUBSET=()
@@ -149,9 +151,21 @@ echo "[i] testing ${#FUNCS[@]} function(s) from ${CONFIG_JSON}, up to ${JOBS} in
 WORK_DIR="$(mktemp -d)"
 trap 'rm -rf "$WORK_DIR"' EXIT
 
+# Append one CSV row atomically. Workers run concurrently, so serialise the
+# appends with flock on the file itself (a single short line under O_APPEND is
+# already atomic, but flock also guards against a torn header/row interleave);
+# fall back to a plain append if flock is unavailable.
+append_timing_row() {
+    if command -v flock >/dev/null 2>&1; then
+        flock "$TIMING_CSV" -c "printf '%s\n' \"$1\" >> \"$TIMING_CSV\""
+    else
+        printf '%s\n' "$1" >> "$TIMING_CSV"
+    fi
+}
+
 run_one_func() {
     local func="$1" log="$2" statusfile="$3" timefile="$4"
-    local rc=0 t0 t1
+    local rc=0 t0 t1 dur outcome
     t0=$(date +%s.%N)
     (
         echo "############################################"
@@ -187,11 +201,26 @@ run_one_func() {
     ) >"$log" 2>&1 || rc=$?
     t1=$(date +%s.%N)
     echo "$rc" >"$statusfile"
-    awk "BEGIN{printf \"%.2f\", ${t1} - ${t0}}" >"$timefile"
+    dur="$(awk "BEGIN{printf \"%.2f\", ${t1} - ${t0}}")"
+    echo "$dur" >"$timefile"
+    # Record this function's timing right now, so an interrupted run keeps
+    # every finished function's row (instead of losing them all at the end).
+    case "$rc" in
+        0)  outcome="ok" ;;
+        3)  outcome="skipped" ;;
+        10) outcome="build-failed" ;;
+        11) outcome="test-failed" ;;
+        *)  outcome="status-${rc}" ;;
+    esac
+    append_timing_row "${func},${outcome},${dur}"
 }
 
 # ---- launch the pool, throttled to JOBS concurrent workers ----
 declare -A LOG_OF STATUS_OF TIME_OF
+# Start the CSV with its header now, before any worker runs, so each worker
+# can append its own row the instant it finishes.
+mkdir -p "$(dirname "$TIMING_CSV")"
+echo "function,outcome,time_seconds" > "$TIMING_CSV"
 WALL_START=$(date +%s.%N)
 for func in "${FUNCS[@]}"; do
     # Wait for a free slot before launching the next worker.
@@ -241,19 +270,14 @@ echo "---"
 echo "[time] average per function : ${avg}s  (over ${#FUNCS[@]} function(s))"
 echo "[time] total wall clock      : ${wall}s  (up to ${JOBS} in parallel)"
 
-# ---- persist the timing results to CSV ----
-# One row per function, then two summary rows: __average_per_function__
-# (mean of the per-function times) and __total_wall_clock__ (real elapsed
-# time for the whole parallel run).
-mkdir -p "$(dirname "$TIMING_CSV")"
-{
-    echo "function,outcome,time_seconds"
-    for func in "${FUNCS[@]}"; do
-        echo "${func},${OUTCOME_OF[$func]},${DUR_OF[$func]}"
-    done
-    echo "__average_per_function__,,${avg}"
-    echo "__total_wall_clock__,,${wall}"
-} > "$TIMING_CSV"
+# ---- finalise the timing CSV ----
+# The per-function rows were already appended live, as each function finished
+# (in completion order), so the file is complete even if the run is cancelled
+# before this point. Only the two summary rows are added here, on a clean
+# finish: __average_per_function__ (mean of the per-function times) and
+# __total_wall_clock__ (real elapsed time for the whole parallel run).
+append_timing_row "__average_per_function__,,${avg}"
+append_timing_row "__total_wall_clock__,,${wall}"
 echo "[i] timing results -> ${TIMING_CSV}"
 
 echo
