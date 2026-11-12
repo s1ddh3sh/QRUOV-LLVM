@@ -109,6 +109,74 @@ qruov,Fq_vec_dot_accumulate,binOpFault/Fq_vec_dot_accumulate_line3_zero,test_res
 qruov,Fq_vec_dot_accumulate,binOpFault/Fq_vec_dot_accumulate_line3_zero,test_result.txt,ineffective,no,no disagreement found in range swept
 qruov,Fq_vec_sub,loopOrFuncSkip/Fq_vec_sub_fnSkip_Fq_sub.28_line0,test_result.txt,correction,yes,"SATISFIED on 'ret' pos 0 (s=1, alpha=126: y1 = y2 + alpha (mod q) for all 4 swept p x 4 ephemeral draw(s))"
 qruov,Fq_vec_sub,loopOrFuncSkip/Fq_vec_sub_fnSkip_Fq_sub.28_line0,test_result.txt,ineffective,yes,"DETECTED on 'ret' pos 0 (s1=0 ineffective, s2=1 effective; pair on each of 4 public seeds, constant over 4 ephemeral draw(s))"
+qruov,Fql2Fq,loadStoreSkip/Fql2Fq_line1_mem,test_result.txt,correction,yes,"SATISFIED on 'ret' pos 0 (s=1, alpha=1: y1 = y2 + alpha (mod q) for all 4 swept p x 1 ephemeral draw(s))"
+qruov,Fql2Fq,loadStoreSkip/Fql2Fq_line1_mem,test_result.txt,ineffective,yes,"DETECTED on 'ret' pos 0 (s1=0 ineffective, s2=1 effective; pair on each of 4 public seeds, constant over 1 ephemeral draw(s))"
+qruov,Fql_mul,binOpFault/Fql_mul_line17_opA,test_result.txt,correction,no,"no (s, alpha) with constant Delta across (p, r) found in range swept"
+qruov,Fql_mul,binOpFault/Fql_mul_line17_opA,test_result.txt,ineffective,yes,"DETECTED on 'Z' pos 0 (s1=0 ineffective, s2=1 effective; pair on each of 4 public seeds, constant over 4 ephemeral draw(s))"
+qruov,Fql_mul,binOpFault/Fql_mul_line17_opB,test_result.txt,correction,no,"no (s, alpha) with constant Delta across (p, r) found in range swept"
+qruov,Fql_mul,binOpFault/Fql_mul_line17_opB,test_result.txt,ineffective,yes,"DETECTED on 'Z' pos 0 (s1=0 ineffective, s2=1 effective; pair on each of 4 public seeds, constant over 4 ephemeral draw(s))"
+qruov,Fql_mul,binOpFault/Fql_mul_line17_undef,test_result.txt,correction,no,"no (s, alpha) with constant Delta across (p, r) found in range swept"
+qruov,Fql_mul,binOpFault/Fql_mul_line17_undef,test_result.txt,ineffective,yes,"DETECTED on 'Z' pos 0 (s1=0 ineffective, s2=1 effective; pair on each of 4 public seeds, constant over 4 ephemeral draw(s))"
+qruov,Fql_mul,binOpFault/Fql_mul_line17_zero,test_result.txt,correction,no,"no (s, alpha) with constant Delta across (p, r) found in range swept"
+qruov,Fql_mul,binOpFault/Fql_mul_line17_zero,test_result.txt,ineffective,yes,"DETECTED on 'Z' pos 0 (s1=0 ineffective, s2=1 effective; pair on each of 4 public seeds, constant over 4 ephemeral draw(s))"
+qruov,Fql_mul,binOpFault/Fql_mul_line21_opA,test_result.txt,correction,no,"no (s, alpha) with constant Delta across (p, r) found in range swept"
+qruov,Fql_mul,binOpFault/Fql_mul_line21_opA,test_result.txt,ineffective,yes,"DETECTED on 'Z' pos 0 (s1=0 ineffective, s2=1 effective; pair on each of 4 public seeds, constant over 4 ephemeral draw(s))"
+qruov,Fql_mul,binOpFault/Fql_mul_line21_opB,test_result.txt,correction,no,"no (s, alpha) with constant Delta across (p, r) found in range swept"
+qruov,Fql_mul,binOpFault/Fql_mul_line21_opB,test_result.txt,ineffective,no,no disagreement found in range swept
+qruov,Fql_mul,binOpFault/Fql_mul_line21_undef,test_result.txt,correction,no,"no (s, alpha) with constant Delta across (p, r) found in range swept"
+qruov,Fql_mul,binOpFault/Fql_mul_line21_undef,test_result.txt,ineffective,yes,"DETECTED on 'Z' pos 0 (s1=0 ineffective, s2=1 effective; pair on each of 4 public seeds, constant over 4 ephemeral draw(s))"
+qruov,Fql_mul,binOpFault/Fql_mul_line21_zero,test_result.txt,correction,no,"no (s, alpha) with constant Delta across (p, r) found in range swept"
+qruov,Fql_mul,binOpFault/Fql_mul_line21_zero,test_result.txt,ineffective,yes,"DETECTED on 'Z' pos 0 (s1=0 ineffective, s2=1 effective; pair on each of 4 public seeds, constant over 4 ephemeral draw(s))"
+qruov,Fql_mul,binOpFault/Fql_mul_line36_opA,test_result.txt,correction,no,"no (s, alpha) with constant Delta across (p, r) found in range swept"
+qruov,Fql_mul,binOpFault/Fql_mul_line36_opA,test_result.txt,ineffective,no,no disagreement found in range swept
+qruov,Fql_mul,binOpFault/Fql_mul_line36_opB,test_result.txt,correction,no,"no (s, alpha) with constant Delta across (p, r) found in range swept"
+qruov,Fql_mul,binOpFault/Fql_mul_line36_opB,test_result.txt,ineffective,no,no disagreement found in range swept
+qruov,Fql_mul,binOpFault/Fql_mul_line36_undef,test_result.txt,correction,no,"no (s, alpha) with constant Delta across (p, r) found in range swept"
+qruov,Fql_mul,binOpFault/Fql_mul_line36_undef,test_result.txt,ineffective,no,no disagreement found in range swept
+qruov,Fql_mul,binOpFault/Fql_mul_line36_zero,test_result.txt,correction,no,"no (s, alpha) with constant Delta across (p, r) found in range swept"
+qruov,Fql_mul,binOpFault/Fql_mul_line36_zero,test_result.txt,ineffective,no,no disagreement found in range swept
+qruov,Fql_mul,binOpFault/Fql_mul_line43_opA,test_result.txt,correction,no,"no (s, alpha) with constant Delta across (p, r) found in range swept"
+qruov,Fql_mul,binOpFault/Fql_mul_line43_opA,test_result.txt,ineffective,no,no disagreement found in range swept
+qruov,Fql_mul,binOpFault/Fql_mul_line43_opB,test_result.txt,correction,no,"no (s, alpha) with constant Delta across (p, r) found in range swept"
+qruov,Fql_mul,binOpFault/Fql_mul_line43_opB,test_result.txt,ineffective,no,no disagreement found in range swept
+qruov,Fql_mul,binOpFault/Fql_mul_line43_undef,test_result.txt,correction,no,"no (s, alpha) with constant Delta across (p, r) found in range swept"
+qruov,Fql_mul,binOpFault/Fql_mul_line43_undef,test_result.txt,ineffective,no,no disagreement found in range swept
+qruov,Fql_mul,binOpFault/Fql_mul_line43_zero,test_result.txt,correction,no,"no (s, alpha) with constant Delta across (p, r) found in range swept"
+qruov,Fql_mul,binOpFault/Fql_mul_line43_zero,test_result.txt,ineffective,no,no disagreement found in range swept
+qruov,Fql_mul,binOpFault/Fql_mul_line52_opA,test_result.txt,correction,no,"no (s, alpha) with constant Delta across (p, r) found in range swept"
+qruov,Fql_mul,binOpFault/Fql_mul_line52_opA,test_result.txt,ineffective,no,no disagreement found in range swept
+qruov,Fql_mul,binOpFault/Fql_mul_line52_opB,test_result.txt,correction,no,"no (s, alpha) with constant Delta across (p, r) found in range swept"
+qruov,Fql_mul,binOpFault/Fql_mul_line52_opB,test_result.txt,ineffective,no,no disagreement found in range swept
+qruov,Fql_mul,binOpFault/Fql_mul_line52_undef,test_result.txt,correction,no,"no (s, alpha) with constant Delta across (p, r) found in range swept"
+qruov,Fql_mul,binOpFault/Fql_mul_line52_undef,test_result.txt,ineffective,no,no disagreement found in range swept
+qruov,Fql_mul,binOpFault/Fql_mul_line52_zero,test_result.txt,correction,no,"no (s, alpha) with constant Delta across (p, r) found in range swept"
+qruov,Fql_mul,binOpFault/Fql_mul_line52_zero,test_result.txt,ineffective,no,no disagreement found in range swept
+qruov,Fql_mul,loadStoreSkip/Fql_mul_line12_mem,test_result.txt,correction,no,"no (s, alpha) with constant Delta across (p, r) found in range swept"
+qruov,Fql_mul,loadStoreSkip/Fql_mul_line12_mem,test_result.txt,ineffective,yes,"DETECTED on 'Z' pos 0 (s1=0 ineffective, s2=1 effective; pair on each of 4 public seeds, constant over 4 ephemeral draw(s))"
+qruov,Fql_mul,loadStoreSkip/Fql_mul_line15_mem,test_result.txt,correction,no,"no (s, alpha) with constant Delta across (p, r) found in range swept"
+qruov,Fql_mul,loadStoreSkip/Fql_mul_line15_mem,test_result.txt,ineffective,yes,"DETECTED on 'Z' pos 0 (s1=0 ineffective, s2=1 effective; pair on each of 4 public seeds, constant over 4 ephemeral draw(s))"
+qruov,Fql_mul,loadStoreSkip/Fql_mul_line20_mem,test_result.txt,correction,no,"no (s, alpha) with constant Delta across (p, r) found in range swept"
+qruov,Fql_mul,loadStoreSkip/Fql_mul_line20_mem,test_result.txt,ineffective,no,no disagreement found in range swept
+qruov,Fql_mul,loadStoreSkip/Fql_mul_line22_mem,test_result.txt,correction,no,"no (s, alpha) with constant Delta across (p, r) found in range swept"
+qruov,Fql_mul,loadStoreSkip/Fql_mul_line22_mem,test_result.txt,ineffective,yes,"DETECTED on 'Z' pos 0 (s1=0 ineffective, s2=1 effective; pair on each of 4 public seeds, constant over 4 ephemeral draw(s))"
+qruov,Fql_mul,loadStoreSkip/Fql_mul_line32_mem,test_result.txt,correction,no,"no (s, alpha) with constant Delta across (p, r) found in range swept"
+qruov,Fql_mul,loadStoreSkip/Fql_mul_line32_mem,test_result.txt,ineffective,no,no disagreement found in range swept
+qruov,Fql_mul,loadStoreSkip/Fql_mul_line35_mem,test_result.txt,correction,no,"no (s, alpha) with constant Delta across (p, r) found in range swept"
+qruov,Fql_mul,loadStoreSkip/Fql_mul_line35_mem,test_result.txt,ineffective,no,no disagreement found in range swept
+qruov,Fql_mul,loadStoreSkip/Fql_mul_line37_mem,test_result.txt,correction,no,"no (s, alpha) with constant Delta across (p, r) found in range swept"
+qruov,Fql_mul,loadStoreSkip/Fql_mul_line37_mem,test_result.txt,ineffective,no,no disagreement found in range swept
+qruov,Fql_mul,loadStoreSkip/Fql_mul_line39_mem,test_result.txt,correction,no,"no (s, alpha) with constant Delta across (p, r) found in range swept"
+qruov,Fql_mul,loadStoreSkip/Fql_mul_line39_mem,test_result.txt,ineffective,no,no disagreement found in range swept
+qruov,Fql_mul,loadStoreSkip/Fql_mul_line42_mem,test_result.txt,correction,no,"no (s, alpha) with constant Delta across (p, r) found in range swept"
+qruov,Fql_mul,loadStoreSkip/Fql_mul_line42_mem,test_result.txt,ineffective,no,no disagreement found in range swept
+qruov,Fql_mul,loadStoreSkip/Fql_mul_line44_mem,test_result.txt,correction,no,"no (s, alpha) with constant Delta across (p, r) found in range swept"
+qruov,Fql_mul,loadStoreSkip/Fql_mul_line44_mem,test_result.txt,ineffective,no,no disagreement found in range swept
+qruov,Fql_mul,loadStoreSkip/Fql_mul_line51_mem,test_result.txt,correction,no,"no (s, alpha) with constant Delta across (p, r) found in range swept"
+qruov,Fql_mul,loadStoreSkip/Fql_mul_line51_mem,test_result.txt,ineffective,no,no disagreement found in range swept
+qruov,Fql_mul,loadStoreSkip/Fql_mul_line55_mem,test_result.txt,correction,no,"no (s, alpha) with constant Delta across (p, r) found in range swept"
+qruov,Fql_mul,loadStoreSkip/Fql_mul_line55_mem,test_result.txt,ineffective,no,no disagreement found in range swept
+qruov,Fql_mul,loopOrFuncSkip/Fql_mul_fnSkip_memset_line1,test_result.txt,correction,no,"no (s, alpha) with constant Delta across (p, r) found in range swept"
+qruov,Fql_mul,loopOrFuncSkip/Fql_mul_fnSkip_memset_line1,test_result.txt,ineffective,no,no disagreement found in range swept
 qruov,Fql_sub,loadStoreSkip/Fql_sub_line10_mem,test_result.txt,correction,no,"no (s, alpha) with constant Delta across (p, r) found in range swept"
 qruov,Fql_sub,loadStoreSkip/Fql_sub_line10_mem,test_result.txt,ineffective,no,no disagreement found in range swept
 qruov,Fql_sub,loadStoreSkip/Fql_sub_line5_mem,test_result.txt,correction,no,"no (s, alpha) with constant Delta across (p, r) found in range swept"
@@ -169,6 +237,12 @@ qruov,L_inverse,loopOrFuncSkip/L_inverse_fnSkip_Fq_mxm_identity_line0,test_resul
 qruov,L_inverse,loopOrFuncSkip/L_inverse_fnSkip_Fq_mxm_identity_line0,test_result.txt,ineffective,yes,"DETECTED on 'R' pos 2862 (s1=0 ineffective, s2=1 effective; pair on each of 4 public seeds, constant over 1 ephemeral draw(s))"
 qruov,L_inverse,loopOrFuncSkip/L_inverse_fnSkip_Fq_sub_line43,test_result.txt,correction,no,"no (s, alpha) with constant Delta across (p, r) found in range swept"
 qruov,L_inverse,loopOrFuncSkip/L_inverse_fnSkip_Fq_sub_line43,test_result.txt,ineffective,no,no disagreement found in range swept
+qruov,MATRIX_ADD_MxM,loopOrFuncSkip/MATRIX_ADD_MxM_fnSkip_VECTOR_M_ADD_line7,test_result.txt,correction,no,"no (s, alpha) with constant Delta across (p, r) found in range swept"
+qruov,MATRIX_ADD_MxM,loopOrFuncSkip/MATRIX_ADD_MxM_fnSkip_VECTOR_M_ADD_line7,test_result.txt,ineffective,yes,"DETECTED on 'C' pos 0 (s1=19 ineffective, s2=0 effective; pair on each of 4 public seeds, constant over 1 ephemeral draw(s))"
+qruov,MATRIX_MUL_ADD_MxV_VxM,loopOrFuncSkip/MATRIX_MUL_ADD_MxV_VxM_fnSkip_MATRIX_ADD_MxM_line2,test_result.txt,correction,no,"no (s, alpha) with constant Delta across (p, r) found in range swept"
+qruov,MATRIX_MUL_ADD_MxV_VxM,loopOrFuncSkip/MATRIX_MUL_ADD_MxV_VxM_fnSkip_MATRIX_ADD_MxM_line2,test_result.txt,ineffective,yes,"DETECTED on 'C' pos 4 (s1=32 ineffective, s2=0 effective; pair on each of 4 public seeds, constant over 1 ephemeral draw(s))"
+qruov,MATRIX_MUL_ADD_MxV_VxM,loopOrFuncSkip/MATRIX_MUL_ADD_MxV_VxM_fnSkip_MATRIX_MUL_MxV_VxM_line1,test_result.txt,correction,no,"no (s, alpha) with constant Delta across (p, r) found in range swept"
+qruov,MATRIX_MUL_ADD_MxV_VxM,loopOrFuncSkip/MATRIX_MUL_ADD_MxV_VxM_fnSkip_MATRIX_MUL_MxV_VxM_line1,test_result.txt,ineffective,yes,"DETECTED on 'C' pos 4 (s1=32 ineffective, s2=0 effective; pair on each of 4 public seeds, constant over 1 ephemeral draw(s))"
 qruov,MATRIX_MUL_MxV_VxM,loopOrFuncSkip/MATRIX_MUL_MxV_VxM_fnSkip_VECTOR_V_MUL_MATRIX_VxM_line6,test_result.txt,correction,no,"no (s, alpha) with constant Delta across (p, r) found in range swept"
 qruov,MATRIX_MUL_MxV_VxM,loopOrFuncSkip/MATRIX_MUL_MxV_VxM_fnSkip_VECTOR_V_MUL_MATRIX_VxM_line6,test_result.txt,ineffective,yes,"DETECTED on 'C' pos 18 (s1=63 ineffective, s2=0 effective; pair on each of 4 public seeds, constant over 1 ephemeral draw(s))"
 qruov,MATRIX_MxV_MUL_SYMMETRIC_MATRIX_VxV,loopOrFuncSkip/MATRIX_MxV_MUL_SYMMETRIC_MATRIX_VxV_fnSkip_VECTOR_V_MUL_SYMMETRIC_MATRIX_VxV_line6,test_result.txt,correction,no,"no (s, alpha) with constant Delta across (p, r) found in range swept"
@@ -205,6 +279,8 @@ qruov,SIG_GEN,loopOrFuncSkip/SIG_GEN_fnSkip_Fql_sub_line22,test_result.txt,corre
 qruov,SIG_GEN,loopOrFuncSkip/SIG_GEN_fnSkip_Fql_sub_line22,test_result.txt,ineffective,no,no disagreement found in range swept
 qruov,SIG_GEN,loopOrFuncSkip/SIG_GEN_fnSkip_VECTOR_M_dot_VECTOR_M_line19,test_result.txt,correction,no,"no (s, alpha) with constant Delta across (p, r) found in range swept"
 qruov,SIG_GEN,loopOrFuncSkip/SIG_GEN_fnSkip_VECTOR_M_dot_VECTOR_M_line19,test_result.txt,ineffective,yes,"DETECTED on 'sig' pos 18 (s1=16 ineffective, s2=0 effective; pair on each of 4 public seeds, constant over 4 ephemeral draw(s))"
+qruov,VECTOR_M_ADD,loopOrFuncSkip/VECTOR_M_ADD_fnSkip_vector_M_add_line7,test_result.txt,correction,no,"no (s, alpha) with constant Delta across (p, r) found in range swept"
+qruov,VECTOR_M_ADD,loopOrFuncSkip/VECTOR_M_ADD_fnSkip_vector_M_add_line7,test_result.txt,ineffective,yes,"DETECTED on 'C' pos 0 (s1=19 ineffective, s2=0 effective; pair on each of 4 public seeds, constant over 1 ephemeral draw(s))"
 qruov,VECTOR_M_CLEAR_TAIL,loopOrFuncSkip/VECTOR_M_CLEAR_TAIL_fnSkip_memset_line6,test_result.txt,correction,no,"no (s, alpha) with constant Delta across (p, r) found in range swept"
 qruov,VECTOR_M_CLEAR_TAIL,loopOrFuncSkip/VECTOR_M_CLEAR_TAIL_fnSkip_memset_line6,test_result.txt,ineffective,no,no disagreement found in range swept
 qruov,VECTOR_M_SUB,loopOrFuncSkip/VECTOR_M_SUB_fnSkip_vector_M_sub_line7,test_result.txt,correction,no,"no (s, alpha) with constant Delta across (p, r) found in range swept"
@@ -3279,7 +3355,11 @@ qruov,crypto_sign,loopOrFuncSkip/crypto_sign_fnSkip_restore_QRUOV_SEED_line10,te
 qruov,crypto_sign,loopOrFuncSkip/crypto_sign_fnSkip_restore_QRUOV_SEED_line10,test_result.txt,ineffective,no,no disagreement found in range swept
 qruov,crypto_sign,loopOrFuncSkip/crypto_sign_fnSkip_restore_QRUOV_SEED_line9,test_result.txt,correction,no,"no (s, alpha) with constant Delta across (p, r) found in range swept"
 qruov,crypto_sign,loopOrFuncSkip/crypto_sign_fnSkip_restore_QRUOV_SEED_line9,test_result.txt,ineffective,no,no disagreement found in range swept
-qruov,crypto_sign_keypair,loopOrFuncSkip/crypto_sign_keypair_fnSkip_QRUOV_KeyGen_line6,test_result.txt,correction,yes,"[+] CORRECTION hit on 'pk' pos 16 (fq7): s=0, alpha=112 constant across 4 public seeds [0, 1, 2, 3] x 1 ephemeral draw(s)"
+qruov,crypto_sign_keypair,loopOrFuncSkip/crypto_sign_keypair_fnSkip_QRUOV_KeyGen_line6,test_result.txt,correction,yes,"SATISFIED on 'pk' pos 16 (s=0, alpha=112: y1 = y2 + alpha (mod q) for all 4 swept p x 1 ephemeral draw(s))"
+qruov,crypto_sign_keypair,loopOrFuncSkip/crypto_sign_keypair_fnSkip_QRUOV_KeyGen_line6,test_result.txt,ineffective,no,no disagreement found in range swept
+qruov,crypto_sign_keypair,loopOrFuncSkip/crypto_sign_keypair_fnSkip_randombytes_line4,test_result.txt,correction,yes,"SATISFIED on 'pk' pos 0 (s=0, alpha=136: y1 = y2 xor alpha for all 4 swept p x 1 ephemeral draw(s))"
+qruov,crypto_sign_keypair,loopOrFuncSkip/crypto_sign_keypair_fnSkip_randombytes_line4,test_result.txt,ineffective,no,no disagreement found in range swept
+qruov,crypto_sign_keypair,loopOrFuncSkip/crypto_sign_keypair_fnSkip_store_QRUOV_SEED_line8,test_result.txt,correction,yes,"[+] CORRECTION hit on 'sk' pos 0 (bytes): s=0, alpha=136 constant across 4 public seeds [0, 1, 2, 3] x 1 ephemeral draw(s)"
 qruov,ctr128_inc,binOpFault/ctr128_inc_line6_opA,test_result.txt,correction,no,"no (s, alpha) with constant Delta across (p, r) found in range swept"
 qruov,ctr128_inc,binOpFault/ctr128_inc_line6_opA,test_result.txt,ineffective,no,no disagreement found in range swept
 qruov,ctr128_inc,binOpFault/ctr128_inc_line6_opB,test_result.txt,correction,no,"no (s, alpha) with constant Delta across (p, r) found in range swept"
