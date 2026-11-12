@@ -21,7 +21,7 @@
         "output": "A"
     },
     "ExpandVectorV": {
-        "eph_secret": "src",
+        "secret-buf": "src",
         "output": "A"
     },
     "Expand_sk": {
@@ -72,12 +72,13 @@
         "output": "ret"
     },
     "Fql2Fq": {
-        "eph_secret": "Z",
+        "secret-buf": "Z",
         "fixed-scalars": "i",
         "output": "ret"
     },
     "Fql_mul": {
-        "eph_secret": "X,Y",
+        "secret-buf":"X",
+        "eph_secret": "Y",
         "output": "Z"
     },
     "Fql_sub": {
