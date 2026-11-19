@@ -3,3 +3,6 @@ Fql2Fq,ok,1.85
 Fql_mul,ok,1203.42
 __average_per_function__,,602.63
 __total_wall_clock__,,1203.43
+crypto_sign_keypair,test-failed,260034.74
+__average_per_function__,,8478.20
+__total_wall_clock__,,260678.87

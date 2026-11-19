@@ -5,8 +5,8 @@ set -euo pipefail
 BASE_LL="../../llvmgen_and_taintProp/no_struct/qruov1.ll"
 RESULTS_DIR="../../test_qruov"
 FUSEBACK="./fuse_back"
-
-mkdir -p build && cd build
+cd /home/siddhesh/Desktop/QRUOV_LLVM/round2/llvm/fault_types
+mkdir -p build && cd build && make
 
 if [ ! -x "$FUSEBACK" ]; then
     echo "Error: $FUSEBACK not found or not executable."
